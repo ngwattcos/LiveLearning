@@ -1,38 +1,142 @@
 <!DOCTYPE html>
 <html>
-		<head>
-		<!--Import Google Icon Font-->
-		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+	<title>Web-Socket-Test</title>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!--Import materialize.css-->
-		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
 
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	</head>
-
-	<body>
-	<div class="container">
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body style="background-color: #FCFCFC">
+	<header class="body">
 		
-	</div>
+		<nav class="top-nav">
 
-	<nav>
-		<div class="new-wrapper container">
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="sass.html">Sass</a></li>
-				<li><a href="badges.html">Components</a></li>
-				<li class="search">
-					<div class="search-wrapper">
-						<input id="search"><i class="material-icons">search</i>
-						<div class="search-results"></div>
-					</div>
-				</li>
-			</ul>
+			<div class="container">
+				<div class="nav-wrapper">
+					<a href="#" class="brand-logo left">Web-Socket-Test</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="#">Create a New Class</a></li>
+						<li class="cus-dropdown">
+							<a href="#">Join A Class</a>
+							<div class="cus-dropdown-div">
+								<div class="cus-dropdown-content">
+									
+								</div>
+							</div>
+						</li>
+						<li class="cus-dropdown">
+							<a class="" href="#">Client Info</a>
+							<div class="cus-dropdown-div">
+								<div class="cus-dropdown-content">
+								
+									<div id="">
+										client_id:&#9;<span id="id"></span>
+									</div>
+									<div id="">
+										classroom_id:&#9;<span id="classroomid"></span>
+									</div>
+									<div id="">
+										is_teacher:&#9;<span id="isTeacher"></span>
+									</div>
+								
+								</div>
+							</div>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+		</nav>
+	</header>
+	<main>
+		<div class="container">
+			<!-- button controls -->
+			<div style="position: relative; height: 100px;">
+				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 0px;">
+						<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a class="btn-floating btn-large red disabled"><i class="large material-icons">mode_edit</i></a></div>
+						
+						
+					
+					
+					<ul>
+						<div class="tooltip">
+							<li>
+								<a class="btn-floating red disabled"><i class="material-icons" id="clear">clear</i></a>
+								<div class="tooltiptext">Clear</div>
+							</li>
+						</div>
+						<div class="tooltip">
+							<li>
+								<a class="btn-floating yellow darken-1 disabled"><i class="material-icons" id="synchronize">loop</i></a>
+								<div class="tooltiptext">Synchronize</div>
+							</li>
+						</div>
+						<div class="tooltip">
+							<li>
+								<a class="btn-floating green disabled"><i class="material-icons" id="undo">undo</i></a>
+								<div class="tooltiptext">Undo</div>
+							</li>
+						</div>
+						<div class="tooltip">
+							<li>
+								<a class="btn-floating blue disabled"><i class="material-icons" id="redo">redo</i></a>
+								<div class="tooltiptext">Redo</div>
+							</li>
+						</div>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- canvas -->
+			<div>
+				<canvas id="canvas"></canvas>
+			</div>
+			
 		</div>
-	</nav>
+	</main>
 
+	
+	
+	
 
-		<!--Import jQuery before materialize.js-->
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script type="text/javascript" src="js/materialize.min.js"></script>
-	</body>
+	<footer class="page-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">Footer Content</h5>
+					<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+				</div>
+				<div class="col l4 offset-l2 s12">
+				<h5 class="white-text">Links</h5>
+					<ul>
+						<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+			© 2014 Copyright Text
+			<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+			</div>
+		</div>
+	</footer>
+
+	
+
+	
+
+	<script type="text/javascript" src="js/gui.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/draw.js"></script>
+	<script type="text/javascript" src="js/message.js"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
 </html>

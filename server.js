@@ -2,6 +2,7 @@ var http = require("http");
 var queryString = require("querystring");
 
 var server = http.createServer(function (request, response) {
+<<<<<<< HEAD
 	var queryData = url.parse(request.url, true).query;
 	response.writeHead(200, {"Content-Type": "text/plain"});
 	console.log("adfasd");
@@ -13,6 +14,19 @@ var server = http.createServer(function (request, response) {
 	} else {
 		response.end("Hello World\n");
 	}
+=======
+	// var queryData = url.parse(request.url, true).query;
+	// response.writeHead(200, {"Content-Type": "text/plain"});
+	// console.log("adfasd");
+
+	// if (queryData.name) {
+	// 	// user told us their name in the GET request, ex: http://host:8000/?name=Tom
+	// 	response.end('Hello ' + queryData.name + '\n');
+
+	// } else {
+	// 	response.end("Hello World\n");
+	// }
+>>>>>>> feature
 });
 
 server.listen(1234, function() {

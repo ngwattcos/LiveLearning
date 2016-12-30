@@ -1,0 +1,125 @@
+/* Tooltip container */
+.tooltip {
+	position: relative;
+	display: inline-block;
+	/*border-bottom: 1px dotted black;  If you want dots under the hoverable text */
+}
+
+.tooltiptext {
+	font-family: "andale mono";
+	font-size: 10px;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 80px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+
+	/* Position the tooltip text */
+	position: absolute;
+	z-index: -1;
+	bottom: 80%;
+	left: 50%;
+	margin-left: -48px;
+
+	/* Fade in tooltip */
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 0.8;
+}
+
+
+li.cus-dropdown {
+	display: inline-block;
+	z-index: 2000;
+	position: relative;
+}
+
+.cus-dropdown-div {
+	display: none;
+	position: absolute;
+	height: 0px;
+	width: 300px;
+	z-index: 2001;
+	right: 0px;
+}
+
+.cus-dropdown:hover .cus-dropdown-div {
+	display: block;
+	height: 10px;
+	transition: height 0.2s;
+}
+
+.cus-dropdown:hover .cus-dropdown-content {
+	/*display: inline-block;*/
+	height: 280px;
+	transition: height 0.2s;
+}
+
+.cus-dropdown:hover .cus-dropdown-content-small {
+	/*display: inline-block;*/
+	height: 180px;
+	transition: height 0.2s;
+}
+
+.cus-dropdown-content-small {
+	height: 0px;
+	z-index: 2001;
+	background-color: #F9F9F9;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	color: black;
+	padding: 5px;
+	overflow: scroll;
+}
+
+.cus-dropdown-content {
+	height: 0px;
+	z-index: 2001;
+	background-color: #F9F9F9;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	color: black;
+	padding: 5px;
+	overflow: scroll;
+}
+
+.normal-text {
+	color: #333333;
+	font-family: "andale mono";
+	font-size: 12px;
+	margin: 0px;
+}
+
+.text-area {
+	background: #FFFFFF;
+	padding: 30px;
+	color: #333333;
+	font-family: "andale mono";
+	font-size: 12px;
+	height: 100%;
+}
+
+.marginless {
+	margin: 0px;
+}

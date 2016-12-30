@@ -18,12 +18,28 @@
 				<div class="nav-wrapper">
 					<a href="#" class="brand-logo left">Web-Socket-Test</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li><a href="#">Create a New Class</a></li>
+						<li class="cus-dropdown">
+							<a href="#">Create a New Class</a>
+							<div class="cus-dropdown-div">
+								<div class="cus-dropdown-content-small">
+									<div class="text-area">
+										
+										<span class="normal-text marginless">Choose a classroom id:</span>
+										<input type="text" id="inputUser">
+									</div>
+								</div>
+							</div>
+						</li>
+
 						<li class="cus-dropdown">
 							<a href="#">Join A Class</a>
 							<div class="cus-dropdown-div">
-								<div class="cus-dropdown-content">
-									
+								<div class="cus-dropdown-content-small">
+									<div class="text-area">
+										
+										<span class="normal-text marginless">Enter an existing classroom id:</span>
+										<input type="text" id="inputUser">
+									</div>
 								</div>
 							</div>
 						</li>
@@ -31,15 +47,16 @@
 							<a class="" href="#">Client Info</a>
 							<div class="cus-dropdown-div">
 								<div class="cus-dropdown-content">
-								
-									<div id="">
-										client_id:&#9;<span id="id"></span>
-									</div>
-									<div id="">
-										classroom_id:&#9;<span id="classroomid"></span>
-									</div>
-									<div id="">
-										is_teacher:&#9;<span id="isTeacher"></span>
+									<div class="text-area">
+										<div id="">
+											client_id:&#9;<span id="id"></span>
+										</div>
+										<div id="">
+											classroom_id:&#9;<span id="classroomid"></span>
+										</div>
+										<div id="">
+											is_teacher:&#9;<span id="isTeacher"></span>
+										</div>
 									</div>
 								
 								</div>

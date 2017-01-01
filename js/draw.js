@@ -1,12 +1,13 @@
 var cv = $("canvas");
-cv.css({"border-color": "#C1E0FF", 
-	"border-width":"1px", 
+cv.css({"border-color": "#C1E0FF",
+	"border-width":"1px",
 	"border-style":"solid"});
 
 var context = document.getElementById("canvas").getContext("2d");
 context.canvas.width = 900;
 context.canvas.height = 600;
-
+context.lineWidth = 5;
+context.strokeStyle = "#000000";
 // if mouse is pressed
 var paint = false;
 
@@ -14,15 +15,16 @@ var strokeNum = -1;
 var strokes = [];
 var futureStrokes = [];
 
-function addClick(x, y, dragging) {
-	strokes[strokeNum].push({x: x, y: y});
+function addClick(x, y,dragging) {
+	strokes[strokeNum].push({x: x, y: y,lineWidth:context.lineWidth,
+													 strokeStyle:context.strokeStyle});
 }
 
 function redraw() {
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-	context.strokeStyle = "#000000";
+
 	context.lineJoin = "round";
-	context.lineWidth = 5;
+	//context.lineWidth = 10;
 
 	// loop through each individual brush stroke
 	for (var i = 0; i < strokes.length; i++) {
@@ -30,15 +32,19 @@ function redraw() {
 		for (var j = 0; j < strokes[i].length; j++) {
 			// if pixel is just dot...
 			if (j == 0) {
+				context.lineWidth = strokes[i][0].lineWidth;
+				context.strokeStyle = strokes[i][0].strokeStyle;
 				context.strokeRect(strokes[i][0].x, strokes[i][0].y, 1, 1);
 			} else {
 				context.beginPath();
+				context.lineWidth = strokes[i][j].lineWidth;
+				context.strokeStyle = strokes[i][j].strokeStyle;
 				context.moveTo(strokes[i][j - 1].x, strokes[i][j - 1].y);
 				context.lineTo(strokes[i][j].x, strokes[i][j].y);
 				context.closePath();
 				context.stroke();
 			}
-			
+
 		}
 	}
 }
@@ -76,6 +82,7 @@ function synchronize(data) {
 	strokeNum = strokes.length;
 }
 
+
 $("#canvas").mousedown(function(e) {
 	var mouseX = e.pageX - this.offsetLeft;
 	var mouseY = e.pageY - this.offsetTop;
@@ -84,7 +91,7 @@ $("#canvas").mousedown(function(e) {
 	addStroke([]);
 
 	paint = true;
-	addClick(mouseX, mouseY, true);
+	addClick(mouseX, mouseY,true);
 	redraw();
 });
 
@@ -93,6 +100,7 @@ $("#canvas").mousedown(function(e) {
 $("#canvas").mousemove(function(e) {
 	if (paint) {
 		addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+
 		redraw();
 	}
 });
@@ -155,8 +163,22 @@ clear.addEventListener("click", function() {
 	redraw();
 });
 
-// var redrawBtn = document.getElementById("redraw");
+//var redrawBtn = document.getElementById("redraw");
 
-// redrawBtn.addEventListener("click", function() {
-// 	redraw();
-// });
+//redrawBtn.addEventListener("click", function() {
+	//redraw();
+//});
+
+var sizeChangeBtn = document.getElementById("change brush size")
+
+sizeChangeBtn.addEventListener("click",function() {
+context.lineWidth =  document.getElementById("brushSize").value;
+
+});
+
+var colorChangeBtn = document.getElementById("change color")
+
+colorChangeBtn.addEventListener("click",function() {
+context.strokeStyle =  document.getElementById("color").value;
+
+});

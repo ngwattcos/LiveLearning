@@ -11,7 +11,7 @@
 </head>
 <body style="background-color: #FCFCFC">
 	<header class="body">
-		
+
 		<nav class="top-nav">
 
 			<div class="container">
@@ -23,7 +23,7 @@
 							<div class="cus-dropdown-div">
 								<div class="cus-dropdown-content-small">
 									<div class="text-area">
-										
+
 										<span class="normal-text marginless">Choose a classroom id:</span>
 										<input type="text" id="inputUser">
 									</div>
@@ -36,7 +36,7 @@
 							<div class="cus-dropdown-div">
 								<div class="cus-dropdown-content-small">
 									<div class="text-area">
-										
+
 										<span class="normal-text marginless">Enter an existing classroom id:</span>
 										<input type="text" id="inputUser">
 									</div>
@@ -58,7 +58,7 @@
 											is_teacher:&#9;<span id="isTeacher"></span>
 										</div>
 									</div>
-								
+
 								</div>
 							</div>
 							</ul>
@@ -66,19 +66,23 @@
 					</ul>
 				</div>
 			</div>
-			
+
 		</nav>
 	</header>
 	<main>
 		<div class="container">
 			<!-- button controls -->
 			<div style="position: relative; height: 100px;">
+				<input type="button" value="Change brush size" id="change brush size">
+				<input type="text" value = '' id="brushSize">
+				<input type="button" value="Change Color (hex notation)" id="change color">
+				<input type="text" value = '' id="color">
 				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 0px;">
 						<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a class="btn-floating btn-large red"><i class="large material-icons">mode_edit</i></a></div>
-						
-						
-					
-					
+
+
+
+
 					<ul>
 						<div class="tooltip">
 							<li>
@@ -107,18 +111,18 @@
 					</ul>
 				</div>
 			</div>
-			
+
 			<!-- canvas -->
 			<div>
 				<canvas id="canvas"></canvas>
 			</div>
-			
+
 		</div>
 	</main>
 
-	
-	
-	
+
+
+
 
 	<footer class="page-footer">
 		<div class="container">
@@ -146,9 +150,9 @@
 		</div>
 	</footer>
 
-	
 
-	
+
+
 
 	<script type="text/javascript" src="js/gui.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>

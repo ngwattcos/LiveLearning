@@ -8,6 +8,19 @@ var http = require("http");
 var queryString = require("querystring");
 
 var server = http.createServer(function (request, response) {
+//<<<<<<< HEAD
+	var queryData = url.parse(request.url, true).query;
+	response.writeHead(200, {"Content-Type": "text/plain"});
+	console.log("adfasd");
+
+	if (queryData.name) {
+		// user told us their name in the GET request, ex: http://host:8000/?name=Tom
+		response.end('Hello ' + queryData.name + '\n');
+
+	} else {
+		response.end("Hello World\n");
+	}
+//=======
 	// var queryData = url.parse(request.url, true).query;
 	// response.writeHead(200, {"Content-Type": "text/plain"});
 	// console.log("adfasd");
@@ -19,7 +32,8 @@ var server = http.createServer(function (request, response) {
 	// } else {
 	// 	response.end("Hello World\n");
 	// }
-});
+//>>>>>>> feature
+});raghav gopalakrishnan 
 
 server.listen(1234, function() {
 	console.log((new Date()) + " Server is listening on port 1234.");
@@ -273,6 +287,7 @@ wsServer.on("request", function(request) {
 						sendMessage(id, new Message("Rejected", "server", "classroomid," + messageData.body));
 					}
 
+
 				} else if (messageData.header == "leave-classroom") {
 					// check if part of classroom
 					if (isAssignedClassroom(id)) {
@@ -293,13 +308,19 @@ wsServer.on("request", function(request) {
 						
 					}
 				}
+
+			// send message back to each client
+			for (var i in clients) {
+					clients[i].sendUTF(message.utf8Data);
+
+
 			}
 			
 		} else if (message.type == "binary") {
 			console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
 			connection.sendBytes(message.binaryData);
 		}
-		
+
 	});
 
 	connection.on("close", function(reasonCode, description) {

@@ -1,4 +1,14 @@
 /* Tooltip container */
+
+html {
+	font-family: "Roboto";
+}
+
+.centered-text {
+	text-align: center;
+	align-items: center;
+}
+
 .tooltip {
 	position: relative;
 	display: inline-block;
@@ -6,7 +16,7 @@
 }
 
 .tooltiptext {
-	font-family: "andale mono";
+	font-family: "Lucida Sans Typewriter";
 	font-size: 10px;
 }
 
@@ -57,13 +67,24 @@ li.cus-dropdown {
 	position: relative;
 }
 
+.cus-dropdown-div-right {
+	right: 0px;
+}
+
+.cus-dropdown-div-left {
+	left: 0px;
+}
+
 .cus-dropdown-div {
 	display: none;
 	position: absolute;
 	height: 0px;
 	width: 300px;
 	z-index: 2001;
-	right: 0px;
+}
+
+.cus-dropdown-div-wide {
+	width: 400px;
 }
 
 .cus-dropdown:hover .cus-dropdown-div {
@@ -106,8 +127,8 @@ li.cus-dropdown {
 
 .normal-text {
 	color: #333333;
-	font-family: "andale mono";
-	font-size: 12px;
+	font-family: "Lucida Sans Typewriter";
+	font-size: 10px;
 	margin: 0px;
 }
 
@@ -115,8 +136,8 @@ li.cus-dropdown {
 	background: #FFFFFF;
 	padding: 30px;
 	color: #333333;
-	font-family: "andale mono";
-	font-size: 12px;
+	font-family: "Lucida Sans Typewriter";
+	font-size: 10px;
 	height: 100%;
 }
 

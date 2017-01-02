@@ -73,7 +73,7 @@ function clearStrokes() {
 function synchronize(data) {
 	strokes = data[0];
 	futureStrokes = data[1];
-	strokeNum = strokes.length;
+	strokeNum = strokes.length - 1;
 }
 
 $("#canvas").mousedown(function(e) {

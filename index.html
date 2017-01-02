@@ -89,8 +89,12 @@
 	</header>
 	<main>
 		<div class="container">
-			<!-- button controls -->
+			<!-- button controls -->	
 			<div style="position: relative; height: 100px;">
+
+				
+				
+
 				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 0px;">
 						<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a class="btn-floating btn-large red"><i class="large material-icons">mode_edit</i></a></div>
 						
@@ -127,8 +131,21 @@
 			</div>
 			
 			<!-- canvas -->
-			<div>
-				<canvas id="canvas"></canvas>
+			<div style="">
+				<div class="" style="position: relative; display: block; width: 100%; float: left;">
+					<div style="position: relative; width: 40%; display: inline-block;">
+						<input type="button" value="Change brush size" id="change-brush-size">
+						<input type="text" value="" id="brushSize">
+					</div>
+					<div style="position: relative; width: 40%; display: inline-block; float: right;">
+						<input type="button" value="Change Color (hex notation)" id="change-color">
+						<input type="text" value="" id="color">
+					</div>
+
+					
+					
+				</div>
+				<canvas id="canvas" style="position: relative;"></canvas>
 			</div>
 			
 		</div>

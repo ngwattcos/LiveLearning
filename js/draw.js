@@ -6,6 +6,7 @@ cv.css({"border-color": "#C1E0FF",
 var context = document.getElementById("canvas").getContext("2d");
 context.canvas.width = 900;
 context.canvas.height = 600;
+context.strokeStyle = "#FF0000";
 
 // if mouse is pressed
 var paint = false;
@@ -15,7 +16,7 @@ var strokes = [];
 var futureStrokes = [];
 
 function addClick(x, y, dragging) {
-	strokes[strokeNum].push({x: x, y: y});
+	strokes[strokeNum].push({x: x, y: y, lineWidth: context.lineWidth, strokeStyle: context.strokeStyle});
 }
 
 function redraw() {
@@ -31,8 +32,12 @@ function redraw() {
 			// if pixel is just dot...
 			if (j == 0) {
 				context.strokeRect(strokes[i][0].x, strokes[i][0].y, 1, 1);
+				context.lineWidth = strokes[i][0].lineWidth;
+				context.strokeStyle = strokes[i][0].strokeStyle;
 			} else {
 				context.beginPath();
+				context.lineWidth = strokes[i][j].lineWidth;
+				context.strokeStyle = strokes[i][j].strokeStyle;
 				context.moveTo(strokes[i][j - 1].x, strokes[i][j - 1].y);
 				context.lineTo(strokes[i][j].x, strokes[i][j].y);
 				context.closePath();
@@ -160,3 +165,17 @@ clear.addEventListener("click", function() {
 // redrawBtn.addEventListener("click", function() {
 // 	redraw();
 // });
+
+
+
+var sizeChangeBtn = document.getElementById("change-brush-size");
+
+sizeChangeBtn.addEventListener("click", function() {
+	context.lineWidth =  document.getElementById("brushSize").value;
+});
+
+var colorChangeBtn = document.getElementById("change-color");
+
+colorChangeBtn.addEventListener("click", function() {
+	context.strokeStyle = document.getElementById("color").value;
+});

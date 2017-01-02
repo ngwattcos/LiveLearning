@@ -6,8 +6,10 @@ cv.css({"border-color": "#C1E0FF",
 var context = document.getElementById("canvas").getContext("2d");
 context.canvas.width = 900;
 context.canvas.height = 600;
-context.lineWidth = 5;
-context.strokeStyle = "#000000";
+
+context.strokeStyle = "#FF0000";
+context.lineWidth = 1;
+
 // if mouse is pressed
 var paint = false;
 
@@ -15,9 +17,10 @@ var strokeNum = -1;
 var strokes = [];
 var futureStrokes = [];
 
-function addClick(x, y,dragging) {
-	strokes[strokeNum].push({x: x, y: y,lineWidth:context.lineWidth,
-													 strokeStyle:context.strokeStyle});
+
+function addClick(x, y, dragging) {
+	strokes[strokeNum].push({x: x, y: y, lineWidth: context.lineWidth, strokeStyle: context.strokeStyle});
+
 }
 
 function redraw() {
@@ -35,6 +38,8 @@ function redraw() {
 				context.lineWidth = strokes[i][0].lineWidth;
 				context.strokeStyle = strokes[i][0].strokeStyle;
 				context.strokeRect(strokes[i][0].x, strokes[i][0].y, 1, 1);
+				context.lineWidth = strokes[i][0].lineWidth;
+				context.strokeStyle = strokes[i][0].strokeStyle;
 			} else {
 				context.beginPath();
 				context.lineWidth = strokes[i][j].lineWidth;
@@ -79,7 +84,7 @@ function clearStrokes() {
 function synchronize(data) {
 	strokes = data[0];
 	futureStrokes = data[1];
-	strokeNum = strokes.length;
+	strokeNum = strokes.length - 1;
 }
 
 
@@ -171,6 +176,25 @@ clear.addEventListener("click", function() {
 
 var sizeChangeBtn = document.getElementById("change brush size")
 
+
+// redrawBtn.addEventListener("click", function() {
+// 	redraw();
+// });
+
+
+
+var sizeChangeBtn = document.getElementById("change-brush-size");
+
+sizeChangeBtn.addEventListener("click", function() {
+	context.lineWidth =  document.getElementById("brushSize").value;
+});
+
+var colorChangeBtn = document.getElementById("change-color");
+
+colorChangeBtn.addEventListener("click", function() {
+	context.strokeStyle = document.getElementById("color").value;
+});
+
 sizeChangeBtn.addEventListener("click",function() {
 context.lineWidth =  document.getElementById("brushSize").value;
 
@@ -182,3 +206,4 @@ colorChangeBtn.addEventListener("click",function() {
 context.strokeStyle =  document.getElementById("color").value;
 
 });
+

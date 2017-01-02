@@ -62,6 +62,7 @@ function sendMessage(clientid, message) {
 
 function createClassroom(classroomid) {
 	classrooms[classroomid] = {
+		clients: {},
 		students: {},
 		teacher: undefined
 	};
@@ -73,6 +74,10 @@ function admitTeacherToClassroom(id, classroomid) {
 
 function admitStudentToClassroom(id, classroomid) {
 	classrooms[classroomid].students[id] = clients[id];
+}
+
+function admitClientToClassroom(id, classroomid) {
+	classrooms[classroomid].clients[id] = clients[id];
 }
 
 function isAssignedClassroom(id) {
@@ -98,7 +103,7 @@ function deleteClassroom(classroomid) {
 	}
 }
 
-// remove client from list of clients in the classroom
+// remove teacher from list of clients in the classroom
 function exitClassroomTeacher(id) {
 	// server-side
 	// remove client from classroom
@@ -121,6 +126,14 @@ function exitClassroomStudent(id) {
 	
 }
 
+function exitClassroomClient(id) {
+	var classroomid = clients[id].classroomid;
+	// you can only remove the student from the classroom if the classroom exists
+	if (classroomid && classrooms[classroomid]) {
+		delete classrooms[classroomid].clients[id];
+	}
+}
+
 // client no longer belongs to a classroom
 function leaveClassroom(id) {
 	delete clients[id].classroomid;
@@ -132,7 +145,7 @@ function leaveClassroomClientSide(id) {
 	var classroomid = clients[id].classroomid;
 	sendMessage(id, new Message("*", "server", "classroomid,undefined"));
 	sendMessage(id, new Message("*", "server", "permissions,undefined"));
-	sendMessage(id, new Message("message", "server", "Disconnecting from classroom '" + classroomid + "'"));
+	sendMessage(id, new Message("message", "server", "Disconnecting from classroom '"));
 }
 
 function studentLeavesClassroom(id) {
@@ -177,6 +190,12 @@ function userLeavesClassroom(id) {
 	} else if (isStudent(id)) {
 		studentLeavesClassroom(id);
 	}
+}
+
+function clientLeavesClassroom(id) {
+	leaveClassroomClientSide(id);
+	exitClassroomClient(id);
+	leaveClassroom(id);
 }
 
 // only runs when a request occurs
@@ -274,7 +293,6 @@ wsServer.on("request", function(request) {
 						
 					}
 				}
-				
 			}
 			
 		} else if (message.type == "binary") {
@@ -288,7 +306,7 @@ wsServer.on("request", function(request) {
 		// remove references to student
 		userLeavesClassroom(id);
 		delete clients[id];
-		console.log((new Date()) +" Peer " + connection.remoteAddress + " disconnected.");
+		console.log((new Date()) +" Peer " + id + " (" + connection.remoteAddress + ") disconnected.");
 	});
 	console.log(count);
 });

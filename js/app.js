@@ -8,15 +8,22 @@ var canvas = document.getElementById("canvas");
 // send strokes to the server
 canvas.addEventListener("mouseup", function() {
 	if (client.id != undefined) {
-		var message = new Message("s", client.id, strokes[strokeNum]);
+		var message = new Message("stroke+", client.id, strokes[strokeNum]);
+
+		var thisStroke = {
+			name: "shared0",
+			stroke: strokes[strokeNum]
+		};
+
 		ws.send(JSON.stringify(message));
+		Materialize.toast("Brush stroke sent.", 1000);
 	}
 	
 });
 
 undo.addEventListener("click", function() {
 	if (client.id != undefined) {
-		var message = new Message("-", client.id, "");
+		var message = new Message(".", client.id, "");
 		ws.send(JSON.stringify(message));
 	}
 });
@@ -30,7 +37,7 @@ redo.addEventListener("click", function() {
 
 clear.addEventListener("click", function() {
 	if (client.id != undefined) {
-		var message = new Message("--", client.id, "");
+		var message = new Message("..", client.id, "");
 		ws.send(JSON.stringify(message));
 	}
 });
@@ -47,23 +54,30 @@ synchronize.addEventListener("click", function() {
 
 // listen from server
 ws.addEventListener("message", function(e) {
-	var msg = e.data;
-	if (isDirective(msg)) {
-		saveInfo(msg);
+	// console.log(e.data);
+	var messageData = JSON.parse(e.data);
+	console.log(messageData.header + ", " + messageData.sender + ", " + messageData.body);
+	if (isDirective(messageData)) {
+		saveInfo(messageData);
+	} else if (messageData.header == "Rejected") {
+		rejectInfo(messageData);
+	} else if (messageData.header == "message") {
+		Materialize.toast(messageData.body, 2000);
 	} else {
 		// regular message, originally from client
-		var message = JSON.parse(msg);
-		if (message.sender != client.id) {
-			if (message.header == "s") {
-				addStroke(message.body);
-			} else if (message.header == "-") {
+		if (messageData.sender != client.id) {
+			Materialize.toast("Command recieved.", 2000);
+			if (messageData.header == "stroke+") {
+				addStroke(messageData.body);
+				Materialize.toast("Brush stroke recieved.", 2000);
+			} else if (messageData.header == ".") {
 				undoStroke();
-			} else if (message.header == "+") {
+			} else if (messageData.header == "+") {
 				redoStroke();
-			} else if (message.header == "--") {
+			} else if (messageData.header == "..") {
 				clearStrokes();
-			} else if (message.header == "++") {
-				synchronize(message.body);
+			} else if (messageData.header == "++") {
+				synchronize(messageData.body);
 			}
 
 			redraw();
@@ -71,24 +85,34 @@ ws.addEventListener("message", function(e) {
 	}
 
 	
-	// document.getElementById("chatlog").innerHTML += "<p>" + msg + "</p>";
+	// document.getElementById("chatlog").innerHTML += "<p>" + messageData + "</p>";
 });
 
-function isDirective(str) {
-	if (str.length > 0 && str[0] == "*") {
-		return true;
-	}
-
-	return false;
+function isDirective(messageData) {
+	return messageData.header == "*";
 }
 
-function saveInfo(str) {
-	var commands = str.split(",");
+function saveInfo(messageData) {
+	var commands = messageData.body.split(",");
 	var key = commands[0];
-		key = key.substring(1, key.length);
 	var value = commands[1];
 	client[key] = value;
 
-	// console.log(key + ", " + value);
-	document.getElementById(key).innerHTML = value;
+	if (value == "undefined") {
+		value == undefined;
+		document.getElementById(key).innerHTML = "";
+	} else {
+		document.getElementById(key).innerHTML = value;
+	}
+	
+	Materialize.toast("Property '" + key + "' set to '" + value + "'", 1000);
+}
+
+function rejectInfo(messageData) {
+	var commands = messageData.body.split(",");
+	var key = commands[0];
+	var value = commands[1];
+	client[key] = value;
+
+	Materialize.toast("Rejected request to set '" + key + "' to '" + value + "'", 2000);
 }

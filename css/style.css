@@ -1,12 +1,35 @@
 /* Tooltip container */
+
+html {
+	font-family: "Roboto";
+}
+
+.container-90 {
+	margin: 0 auto;
+	max-width: 1280px;
+	width: 90%;
+}
+
+.container-full {
+	margin: 0 auto;
+	max-width: 1280px;
+	width: 100%;
+}
+
+.centered-text {
+	text-align: center;
+	align-items: center;
+}
+
 .tooltip {
 	position: relative;
 	display: inline-block;
+	z-index: 10000;
 	/*border-bottom: 1px dotted black;  If you want dots under the hoverable text */
 }
 
 .tooltiptext {
-	font-family: "andale mono";
+	font-family: "Lucida Sans Typewriter";
 	font-size: 10px;
 }
 
@@ -57,13 +80,24 @@ li.cus-dropdown {
 	position: relative;
 }
 
+.cus-dropdown-div-right {
+	right: 0px;
+}
+
+.cus-dropdown-div-left {
+	left: 0px;
+}
+
 .cus-dropdown-div {
 	display: none;
 	position: absolute;
 	height: 0px;
 	width: 300px;
 	z-index: 2001;
-	right: 0px;
+}
+
+.cus-dropdown-div-wide {
+	width: 400px;
 }
 
 .cus-dropdown:hover .cus-dropdown-div {
@@ -106,8 +140,8 @@ li.cus-dropdown {
 
 .normal-text {
 	color: #333333;
-	font-family: "andale mono";
-	font-size: 12px;
+	font-family: "Lucida Sans Typewriter";
+	font-size: 10px;
 	margin: 0px;
 }
 
@@ -115,11 +149,56 @@ li.cus-dropdown {
 	background: #FFFFFF;
 	padding: 30px;
 	color: #333333;
-	font-family: "andale mono";
-	font-size: 12px;
+	font-family: "Lucida Sans Typewriter";
+	font-size: 10px;
 	height: 100%;
 }
 
 .marginless {
 	margin: 0px;
+}
+
+.buttons-menu {
+	background-color: #666666;
+	position: absolute;
+	width: auto;
+	height: 510px;
+	top: 40px;
+}
+
+.collapsible-button {
+	position: absolute;
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	left: 0px;
+	top: 0px;
+	background-color: #DDDDDD;
+	padding-top: 5px;
+	padding-left: 10px;
+	margin: none;
+	color: white;
+}
+
+.collapsible-div {
+	posiion: absolute;
+	/*display: none;*/
+	/*right: 0px;
+	top: 0px;*/
+	width: 0px;
+	height: 400px;
+	/*z-index: 10000;*/
+	background-color: #888888;
+	color: white;
+}
+
+.collapsible-button:hover {
+	/*margin-left: 200px;*/
+	/*transition: margin 0.3s;*/
+}
+
+.collapsible-button:hover .collapsible-div {
+	/*width: 200px;*/
+	/*display: block;*/
+	/*transition: width 0.3s;*/
 }

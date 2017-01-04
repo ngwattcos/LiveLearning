@@ -4,6 +4,18 @@ html {
 	font-family: "Roboto";
 }
 
+.container-90 {
+	margin: 0 auto;
+	max-width: 1280px;
+	width: 90%;
+}
+
+.container-full {
+	margin: 0 auto;
+	max-width: 1280px;
+	width: 100%;
+}
+
 .centered-text {
 	text-align: center;
 	align-items: center;
@@ -12,6 +24,7 @@ html {
 .tooltip {
 	position: relative;
 	display: inline-block;
+	z-index: 10000;
 	/*border-bottom: 1px dotted black;  If you want dots under the hoverable text */
 }
 
@@ -143,4 +156,49 @@ li.cus-dropdown {
 
 .marginless {
 	margin: 0px;
+}
+
+.buttons-menu {
+	background-color: #666666;
+	position: absolute;
+	width: auto;
+	height: 510px;
+	top: 40px;
+}
+
+.collapsible-button {
+	position: absolute;
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	left: 0px;
+	top: 0px;
+	background-color: #DDDDDD;
+	padding-top: 5px;
+	padding-left: 10px;
+	margin: none;
+	color: white;
+}
+
+.collapsible-div {
+	posiion: absolute;
+	/*display: none;*/
+	/*right: 0px;
+	top: 0px;*/
+	width: 0px;
+	height: 400px;
+	/*z-index: 10000;*/
+	background-color: #888888;
+	color: white;
+}
+
+.collapsible-button:hover {
+	/*margin-left: 200px;*/
+	/*transition: margin 0.3s;*/
+}
+
+.collapsible-button:hover .collapsible-div {
+	/*width: 200px;*/
+	/*display: block;*/
+	/*transition: width 0.3s;*/
 }

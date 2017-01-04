@@ -11,10 +11,10 @@
 </head>
 <body style="background-color: #FCFCFC">
 	<header class="body">
-
+		
 		<nav class="top-nav">
 
-			<div class="container">
+			<div class="container-90">
 				<div class="nav-wrapper">
 					<a href="#" class="brand-logo left">Live! Learning</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -23,7 +23,7 @@
 							<div class="cus-dropdown-div cus-dropdown-div-right">
 								<div class="cus-dropdown-content-small">
 									<div class="text-area">
-
+										
 										<span class="normal-text marginless">Choose a classroom id:</span>
 										<input type="text" id="createClass">
 									</div>
@@ -36,7 +36,7 @@
 							<div class="cus-dropdown-div cus-dropdown-div-right">
 								<div class="cus-dropdown-content-small">
 									<div class="text-area">
-
+										
 										<span class="normal-text marginless">Enter an existing classroom id:</span>
 										<input type="text" id="joinClass">
 									</div>
@@ -76,7 +76,7 @@
 											permissions:&#9;<span id="permissions"></span>
 										</div>
 									</div>
-
+								
 								</div>
 							</div>
 							</ul>
@@ -84,20 +84,25 @@
 					</ul>
 				</div>
 			</div>
-
+			
 		</nav>
 	</header>
 	<main>
+
 		<div class="container">
+		Guys, consider not using class "container" here. I think it looks cool (and leaves room for chat box on the right). What do you think?
 			<!-- button controls -->	
 			<div style="position: relative; height: 100px;">
-        
+
+				
+				
+
 				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 0px;">
 						<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a class="btn-floating btn-large red"><i class="large material-icons">mode_edit</i></a></div>
-
-
-
-
+						
+						
+					
+					
 					<ul>
 						<div class="tooltip">
 							<li>
@@ -114,7 +119,7 @@
 						<div class="tooltip">
 							<li>
 								<a class="btn-floating green"><i class="material-icons" id="undo">undo</i></a>
-								<div class="tooltiptext">Undo</div
+								<div class="tooltiptext">Undo</div>
 							</li>
 						</div>
 						<div class="tooltip">
@@ -127,30 +132,49 @@
 				</div>
 			</div>
 
-			<!-- canvas -->
-			<div style="">
-				<div class="" style="position: relative; display: block; width: 100%; float: left;">
-					<div style="position: relative; width: 40%; display: inline-block;">
-						<input type="button" value="Change brush size" id="change-brush-size">
-						<input type="text" value="1" id="brushSize">
-					</div>
-					<div style="position: relative; width: 40%; display: inline-block; float: right;">
-						<input type="button" value="Change Color (hex notation)" id="change-color">
-						<input type="text" value="#FF0000" id="color">
-					</div>
-
-					
-					
+			<div class="" style="position: relative; display: block; width: 100%; background-color: #EEEEEE; margin: none; padding-left: 20px; padding-right: 20px;">
+				<div style="position: static; width: 40%; display: inline-block;">
+					<input type="button" value="Change brush size" id="change-brush-size">
+					<input type="text" value="1" id="brushSize">
 				</div>
-				<canvas id="canvas" style="position: relative;"></canvas>
+				<div style="position: static; width: 40%; display: inline-block; float: right;">
+					<input type="button" value="Change Color (hex notation)" id="change-color">
+					<input type="text" value="#FF0000" id="color">
+				</div>
 			</div>
+			
+			<!-- canvas group -->
+			<div style="margin: 0 auto; position: relative; width: auto;">
+				
+				<div style="width: 100%; margin: 0 auto; position: relative">
+					<canvas id="canvas" style="margin: 0 auto;"></canvas>
+				</div>
 
+				<div class="buttons-menu" id="leftPanel">
+					
+					<div class="collapsible-button" id="canvasButton1">
+						<
+						<div class="collapsible-div" id="panel1">
+							
+						</div>
+					</div>
+					<div class="collapsible-button red" style="top: 30px" id="canvasButton2">
+						<
+						<div class="collapsible-div" style="top: -30px" id="panel2">
+							
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>
+			
 		</div>
 	</main>
 
-
-
-
+	
+	
+	
 
 	<footer class="page-footer">
 		<div class="container">
@@ -178,9 +202,9 @@
 		</div>
 	</footer>
 
+	
 
-
-
+	
 
 	<script type="text/javascript" src="js/gui.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>

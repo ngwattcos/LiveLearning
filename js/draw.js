@@ -1,33 +1,66 @@
+/*
+* Mouse coordinate solution:
+* http://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
+
+*/
+
 var cv = $("canvas");
-cv.css({"border-color": "#C1E0FF",
-	"border-width":"1px",
-	"border-style":"solid"});
+cv.css({"border-color": "#C1E0FF", 
+	"border-width":"1px", 
+	"border-style":"solid",
+});
 
 var context = document.getElementById("canvas").getContext("2d");
-context.canvas.width = 900;
+context.canvas.width = 870;
 context.canvas.height = 600;
-
 context.strokeStyle = "#FF0000";
-context.lineWidth = 1;
+
+// http://stackoverflow.com/questions/5085689/tracking-mouse-
+// position-in-canvas-when-no-surrounding-element-exists/5086147#5086147
+function findPos(obj) {
+	var curleft = 0, curtop = 0;
+	if (obj.offsetParent) {
+		do {
+			curleft += obj.offsetLeft;
+			curtop += obj.offsetTop;
+		} while (obj = obj.offsetParent);
+		return { x: curleft, y: curtop };
+	}
+	return undefined;
+}
 
 // if mouse is pressed
 var paint = false;
+
+var layers = {};
+
+/* How a "layer" object literal will look like
+
+{
+	id: "shared.0" or "layer.0"
+	strokes: [].
+	strokeNum: 5,
+	futureStrokes: []
+}
+
+
+*/
 
 var strokeNum = -1;
 var strokes = [];
 var futureStrokes = [];
 
 
+
 function addClick(x, y, dragging) {
 	strokes[strokeNum].push({x: x, y: y, lineWidth: context.lineWidth, strokeStyle: context.strokeStyle});
-
 }
 
 function redraw() {
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-
-	context.lineJoin = "round";
-	//context.lineWidth = 10;
+	// context.strokeStyle = context.strokeStyle;
+	// context.lineJoin = "round";
+	// context.lineWidth = context.lineWidth;
 
 	// loop through each individual brush stroke
 	for (var i = 0; i < strokes.length; i++) {
@@ -35,8 +68,6 @@ function redraw() {
 		for (var j = 0; j < strokes[i].length; j++) {
 			// if pixel is just dot...
 			if (j == 0) {
-				context.lineWidth = strokes[i][0].lineWidth;
-				context.strokeStyle = strokes[i][0].strokeStyle;
 				context.strokeRect(strokes[i][0].x, strokes[i][0].y, 1, 1);
 				context.lineWidth = strokes[i][0].lineWidth;
 				context.strokeStyle = strokes[i][0].strokeStyle;
@@ -49,7 +80,7 @@ function redraw() {
 				context.closePath();
 				context.stroke();
 			}
-
+			
 		}
 	}
 }
@@ -87,16 +118,15 @@ function synchronize(data) {
 	strokeNum = strokes.length - 1;
 }
 
-
 $("#canvas").mousedown(function(e) {
 	var mouseX = e.pageX - this.offsetLeft;
 	var mouseY = e.pageY - this.offsetTop;
 
-
+	redraw();
 	addStroke([]);
 
 	paint = true;
-	addClick(mouseX, mouseY,true);
+	addClick(mouse.x, mouse.y, true);
 	redraw();
 });
 
@@ -104,10 +134,25 @@ $("#canvas").mousedown(function(e) {
 // if mouse is dragged
 $("#canvas").mousemove(function(e) {
 	if (paint) {
-		addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-
+		addClick(mouse.x, mouse.y);
 		redraw();
 	}
+});
+
+var mouse = {
+	x: 0, y: 0
+}
+
+// http://stackoverflow.com/questions/5085689/tracking-
+// mouse-position-in-canvas-when-no-surrounding-element-exists/5086147#5086147
+$('#canvas').mousemove(function(e) {
+	var pos = findPos(this);
+	var x = e.pageX - pos.x;
+	var y = e.pageY - pos.y;
+	var coordinateDisplay = "x=" + x + ", y=" + y;
+
+	mouse.x = x;
+	mouse.y = y;
 });
 
 $("#canvas").mouseup(function(e) {
@@ -168,14 +213,7 @@ clear.addEventListener("click", function() {
 	redraw();
 });
 
-//var redrawBtn = document.getElementById("redraw");
-
-//redrawBtn.addEventListener("click", function() {
-	//redraw();
-//});
-
-var sizeChangeBtn = document.getElementById("change brush size")
-
+// var redrawBtn = document.getElementById("redraw");
 
 // redrawBtn.addEventListener("click", function() {
 // 	redraw();
@@ -194,16 +232,3 @@ var colorChangeBtn = document.getElementById("change-color");
 colorChangeBtn.addEventListener("click", function() {
 	context.strokeStyle = document.getElementById("color").value;
 });
-
-sizeChangeBtn.addEventListener("click",function() {
-context.lineWidth =  document.getElementById("brushSize").value;
-
-});
-
-var colorChangeBtn = document.getElementById("change color")
-
-colorChangeBtn.addEventListener("click",function() {
-context.strokeStyle =  document.getElementById("color").value;
-
-});
-

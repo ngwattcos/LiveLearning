@@ -9,6 +9,12 @@ var canvas = document.getElementById("canvas");
 canvas.addEventListener("mouseup", function() {
 	if (client.id != undefined) {
 		var message = new Message("stroke+", client.id, strokes[strokeNum]);
+
+		var thisStroke = {
+			name: "shared0",
+			stroke: strokes[strokeNum]
+		};
+
 		ws.send(JSON.stringify(message));
 		Materialize.toast("Brush stroke sent.", 1000);
 	}

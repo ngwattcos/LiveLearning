@@ -1,16 +1,23 @@
 {
-  "name": "web-socket-test",
+  "name": "liveLearning_1617",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CSE-HighTechHighSchool/liveLearning_1617.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CSE-HighTechHighSchool/liveLearning_1617/issues"
+  },
+  "homepage": "https://github.com/CSE-HighTechHighSchool/liveLearning_1617",
   "dependencies": {
-    "querystring": "^0.2.0",
     "websocket": "^1.0.24"
   }
 }

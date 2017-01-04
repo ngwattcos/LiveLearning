@@ -45,3 +45,27 @@ var noleave = document.getElementById("noleave");
 noleave.addEventListener("click", function() {
 	Materialize.toast("Hah! scruuub.", 2000);
 });
+
+
+function openPanel() {
+
+}
+
+function closePanel() {
+	
+}
+
+
+var cv1 = document.getElementById("canvasButton1");
+var cv2 = document.getElementById("canvasButton2");
+
+var panel1 = document.getElementById("panel1");
+var panel2 = document.getElementById("panel2");
+
+cv1.addEventListener("click", function() {
+
+});
+
+cv2.addEventListener("click", function() {
+
+});

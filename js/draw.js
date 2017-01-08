@@ -54,6 +54,7 @@ var futureStrokes = [];
 
 function addClick(x, y, dragging) {
 	strokes[strokeNum].push({x: x, y: y, lineWidth: context.lineWidth, strokeStyle: context.strokeStyle});
+	console.log(context.strokeStyle);
 }
 
 function redraw() {
@@ -230,5 +231,6 @@ sizeChangeBtn.addEventListener("click", function() {
 var colorChangeBtn = document.getElementById("change-color");
 
 colorChangeBtn.addEventListener("click", function() {
-	context.strokeStyle = document.getElementById("color").value;
+	context.strokeStyle = "#ffff00";
+	console.log("color changed");
 });

@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Live! Learning</title>
@@ -10,6 +10,13 @@
 	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 </head>
 <body style="background-color: #FCFCFC">
+
+	<div id="floatingBar" class="floating-banner">
+		<div class="floatingbutton" id="floatingbutton">
+			Next
+		</div>
+	</div>
+
 	<header class="body">
 		
 		<nav class="top-nav">
@@ -91,13 +98,25 @@
 			</div>
 			
 		</nav>
+
 	</header>
 	<main>
 
 		<div class="container">
-		Guys, consider not using class "container" here. I think it looks cool (and leaves room for chat box on the right). What do you think?
 
-		<img src="images/arrow_up.png" alt="image was not found" id="randomImage"></img>
+
+		<div class = "holder">
+			<img style = "position:absolute; TOP:70px; LEFT:550px; WIDTH:20px; HEIGHT:15px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
+			<div class="top"></div>
+			<p> Hallo </p>
+			<div class="bottom"></div>
+
+		</div>
+
+		<img style = "position:absolute; TOP:70px; LEFT:650px; WIDTH:20px; HEIGHT:15px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
+
+
+
 			<!-- button controls -->	
 			<div style="position: relative; height: 100px;">
 
@@ -177,6 +196,9 @@
 			</div>
 			
 		</div>
+
+		
+
 	</main>
 
 	

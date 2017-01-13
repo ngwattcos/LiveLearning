@@ -188,11 +188,11 @@ function clientLeavesClassroom(id) {
 	leaveClassroom(id);
 }
 
-// only runs when a request occurs
-
+// this function only runs when a request occurs
 wsServer.on("request", function(request) {
 	var connection = request.accept("echo-protocol", request.origin);
 
+	// unique identifier
 	var id = count++;
 	clients[id] = connection;
 

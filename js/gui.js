@@ -1,5 +1,4 @@
 
-
 window.addEventListener("click", function() {
 	// if the click was not registered on
 });
@@ -68,4 +67,40 @@ cv1.addEventListener("click", function() {
 
 cv2.addEventListener("click", function() {
 
+});
+
+var ButtonNumber = -1;
+
+var buttons = document.getElementsByClassName("holder");
+
+// initiall
+function hideAllButtons() {
+	for (var i = 0; i < buttons.length; i++) {
+		buttons[i].style.display="none";
+	}
+
+}
+
+// once the window loads, hide all things
+
+window.addEventListener("load", function() {
+	hideAllButtons();
+	console.log("window has loaded");
+});
+
+
+
+
+var nextButton = document.getElementById("floatingbutton");
+nextButton.addEventListener("click", function() {
+	ButtonNumber++;
+
+	if(ButtonNumber>buttons.length) {
+		ButtonNumber=0;
+	}
+
+	hideAllButtons();
+	buttons[ButtonNumber].style.display="block";
+
+	console.log(ButtonNumber);
 });

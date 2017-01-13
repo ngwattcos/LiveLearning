@@ -1,6 +1,6 @@
-// var ws = new WebSocket("ws://127.0.0.1:1234", "echo-protocol");
+var ws = new WebSocket("ws://127.0.0.1:1234", "echo-protocol");
 // ip address of Raghav's computer
-var ws = new WebSocket("ws://10.122.22.46:1234", "echo-protocol");
+// var ws = new WebSocket("ws://10.122.22.42:1234", "echo-protocol");
 
 var registered = false;
 var client = {};

@@ -125,7 +125,7 @@ li.cus-dropdown {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	color: black;
 	padding: 5px;
-	overflow: scroll;
+	overflow: hidden;
 }
 
 .cus-dropdown-content {
@@ -135,7 +135,7 @@ li.cus-dropdown {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	color: black;
 	padding: 5px;
-	overflow: scroll;
+	overflow: hidden;
 }
 
 .normal-text {

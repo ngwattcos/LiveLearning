@@ -1,0 +1,7 @@
+Proposed features:
+* live chat
+* live audio (teacher end only)
+* an "accordion" representing a list of (for teachers) students who have joined or (for students) everyone else in their classroom
+
+Issues:
+* lost functionality to change color

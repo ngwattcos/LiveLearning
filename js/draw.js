@@ -13,7 +13,8 @@ cv.css({"border-color": "#C1E0FF",
 var context = document.getElementById("canvas").getContext("2d");
 context.canvas.width = 870;
 context.canvas.height = 600;
-context.strokeStyle = "#FF0000";
+context.lineJoin = "round";
+// context.strokeStyle = "#FF0000";
 
 // http://stackoverflow.com/questions/5085689/tracking-mouse-
 // position-in-canvas-when-no-surrounding-element-exists/5086147#5086147
@@ -53,7 +54,8 @@ var futureStrokes = [];
 
 
 function addClick(x, y, dragging) {
-	strokes[strokeNum].push({x: x, y: y, lineWidth: context.lineWidth, strokeStyle: context.strokeStyle});
+	strokes[strokeNum].push({x: x, y: y, lineWidth: document.getElementById("brushSize").value, strokeStyle: document.getElementById("color").value});
+	console.log(context.strokeStyle);
 }
 
 function redraw() {
@@ -67,18 +69,23 @@ function redraw() {
 		// loop through each pixel per brush stroke
 		for (var j = 0; j < strokes[i].length; j++) {
 			// if pixel is just dot...
-			if (j == 0) {
+			if (strokes[i].length <= 1) {
+				context.beginPath();
+				context.strokeStyle = strokes[i][0].strokeStyle;
 				context.strokeRect(strokes[i][0].x, strokes[i][0].y, 1, 1);
 				context.lineWidth = strokes[i][0].lineWidth;
-				context.strokeStyle = strokes[i][0].strokeStyle;
-			} else {
-				context.beginPath();
-				context.lineWidth = strokes[i][j].lineWidth;
-				context.strokeStyle = strokes[i][j].strokeStyle;
-				context.moveTo(strokes[i][j - 1].x, strokes[i][j - 1].y);
-				context.lineTo(strokes[i][j].x, strokes[i][j].y);
 				context.closePath();
-				context.stroke();
+			} else {
+				if (j > 0) {
+					context.beginPath();
+					context.lineWidth = strokes[i][j].lineWidth;
+					context.strokeStyle = strokes[i][j].strokeStyle;
+					context.moveTo(strokes[i][j - 1].x, strokes[i][j - 1].y);
+					context.lineTo(strokes[i][j].x, strokes[i][j].y);
+					context.closePath();
+					context.stroke();
+				}
+				
 			}
 			
 		}
@@ -221,14 +228,15 @@ clear.addEventListener("click", function() {
 
 
 
-var sizeChangeBtn = document.getElementById("change-brush-size");
+// var sizeChangeBtn = document.getElementById("change-brush-size");
 
-sizeChangeBtn.addEventListener("click", function() {
-	context.lineWidth =  document.getElementById("brushSize").value;
-});
+// sizeChangeBtn.addEventListener("click", function() {
+// 	context.lineWidth =  document.getElementById("brushSize").value;
+// });
 
-var colorChangeBtn = document.getElementById("change-color");
+// var colorChangeBtn = document.getElementById("change-color");
 
-colorChangeBtn.addEventListener("click", function() {
-	context.strokeStyle = document.getElementById("color").value;
-});
+// colorChangeBtn.addEventListener("click", function() {
+// 	context.strokeStyle = "blue";
+// 	console.log("color changed to");
+// });

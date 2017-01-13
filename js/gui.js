@@ -89,6 +89,8 @@ window.addEventListener("load", function() {
 });
 
 
+
+
 var nextButton = document.getElementById("floatingbutton");
 nextButton.addEventListener("click", function() {
 	ButtonNumber++;

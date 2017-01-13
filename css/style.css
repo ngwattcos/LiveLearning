@@ -193,9 +193,20 @@ li.cus-dropdown {
 }
 
 .holder {
-	height:auto;
-	width: 250px;
+	display: none;
+	position: absolute;
+	height: 100px;
+	width: 300px;
+	z-index: 2001;
+}
 
+.holder div {
+	/*border-left: 1 px solid #333; */
+	/*border-right: 1 px solid #333; */
+	border: 1px solid black;
+	padding:10px;
+	margin:0;
+	background-color: red;
 }
 
 .top {
@@ -224,15 +235,15 @@ li.cus-dropdown {
 .floating-banner {
 	position:fixed;
 	width:100%;
-	height:200px;
+	height:100px;
 	background-color: blue;
-	z-index: 10000000;
+	z-index: 100000000;
 	bottom:0px;
 }
 
 .floatingbutton {
 	position:fixed;
-	height:50px;
+	height:100px;
 	width:200px;
 	background-color: red;
 	color: white;

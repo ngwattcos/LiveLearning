@@ -145,6 +145,21 @@ li.cus-dropdown {
 	margin: 0px;
 }
 
+.small-text {
+	font-size: 10px;
+}
+
+.med-text {
+	font-size: 14px;
+}
+
+.large-text {
+	font-size: 21px;
+}
+.very-large-text {
+	font-size: 42px;
+}
+
 .text-area {
 	background: #FFFFFF;
 	padding: 30px;
@@ -152,6 +167,15 @@ li.cus-dropdown {
 	font-family: "Lucida Sans Typewriter";
 	font-size: 10px;
 	height: 100%;
+}
+
+.names-list {
+	position: absolute;
+	display: inline-block;
+	background-color: #999999;
+	height: 60%;
+	width: 20%;
+	overflow: scroll;
 }
 
 .marginless {
@@ -250,5 +274,5 @@ li.cus-dropdown {
 }
 
 .box-shadow-custom {
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.2);
 }

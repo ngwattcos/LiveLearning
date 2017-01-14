@@ -95,12 +95,12 @@ var nextButton = document.getElementById("floatingbutton");
 nextButton.addEventListener("click", function() {
 	ButtonNumber++;
 
-	if(ButtonNumber>buttons.length) {
+	if (ButtonNumber >= buttons.length) {
 		ButtonNumber=0;
 	}
 
 	hideAllButtons();
-	buttons[ButtonNumber].style.display="block";
+	buttons[ButtonNumber].style.display = "block";
 
 	console.log(ButtonNumber);
 });

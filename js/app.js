@@ -103,8 +103,10 @@ function saveInfo(messageData) {
 	if (value == "undefined") {
 		value == undefined;
 		document.getElementById(key).innerHTML = "";
+		document.getElementById(key + "_title").innerHTML = "Classroom-name";
 	} else {
 		document.getElementById(key).innerHTML = value;
+		document.getElementById(key + "_title").innerHTML = value;
 	}
 	
 	Materialize.toast("Property '" + key + "' set to '" + value + "'", 1000);

@@ -72,8 +72,8 @@ function redraw() {
 			if (strokes[i].length <= 1) {
 				context.beginPath();
 				context.strokeStyle = strokes[i][0].strokeStyle;
-				context.strokeRect(strokes[i][0].x, strokes[i][0].y, 1, 1);
 				context.lineWidth = strokes[i][0].lineWidth;
+				context.strokeRect(strokes[i][0].x, strokes[i][0].y, 1, 1);
 				context.closePath();
 			} else {
 				if (j > 0) {

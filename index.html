@@ -98,20 +98,15 @@
 	</header>
 	<main>
 
-		<div class="">
-		Guys, consider not using class "container" here. I think it looks cool (and leaves room for chat box on the right). What do you think?
-		Consider adding a drop shadow on he div around the canvas. Like on: <a href="http://www.topgear.com">http://www.topgear.com</a>
+		<div class="container-90">
+			
 			<!-- button controls -->	
 			<div style="position: relative; height: 100px;">
-
-				
-				
 
 				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 0px;">
 						<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a class="btn-floating btn-large red"><i class="large material-icons">mode_edit</i></a></div>
 						
 						
-					
 					
 					<ul>
 						<div class="tooltip">
@@ -140,39 +135,70 @@
 						</div>
 					</ul>
 				</div>
+				<div class="normal-text very-large-text" id="classroomid_title" style="width: auto; height: auto; padding: 10px; bottom: 0px; position: absolute;">
+					Classroom-name
+				</div>
 			</div>
 
-			<div class="" style="position: relative; display: block; width: 100%; background-color: #EEEEEE; margin: none; padding-left: 20px; padding-right: 20px;">
-				<div style="position: static; width: 40%; display: inline-block;">
-					<!-- <input type="button" value="Brush Size" id="change-brush-size"> -->
-					<input type="text" value="1" id="brushSize">
+			<!-- brush options control div -->
+			<div class="box-shadow-centered">
+				<div class="box-shadow-bottom" style="position: relative; display: block; width: 100%; background-color: #FFFFFF; margin: none; padding-left: 20px; padding-right: 20px; z-index: 1000;">
+					<div style="position: static; width: 40%; display: inline-block;">
+						<!-- <input type="button" value="Brush Size" id="change-brush-size"> -->
+						<input type="text" value="1" id="brushSize">
+					</div>
+					<div style="position: static; width: 40%; display: inline-block; float: right;">
+						<!-- <input type="button" value="Color (hex notation)" id="change-color"> -->
+						<input type="text" value="#0000ff" id="color">
+					</div>
 				</div>
-				<div style="position: static; width: 40%; display: inline-block; float: right;">
-					<!-- <input type="button" value="Color (hex notation)" id="change-color"> -->
-					<input type="text" value="#0000ff" id="color">
-				</div>
-			</div>
-			
-			<!-- canvas group -->
-			<div style="margin: 0 auto; position: relative; width: auto;">
 				
-				<div style="width: 100%; margin: 0 auto; position: relative">
-					<canvas id="canvas" style="margin: 0 auto; position: relative; display: inline-block;"></canvas>
-					<div style="position: absolute; display: inline-block; background-color: yellow; height: 100%; width: 20%;">Random Name<br>Random Name<br>Random Name<br>Random Name<br>Random Name<br>Random Name<br>Random Name<br>Random Name<br>Random Name<br>Random Name<br>Random Name<br>Random Name<br>Random Name<br></div>
-				</div>
-
-				<div class="buttons-menu" id="leftPanel">
+				<!-- canvas group -->
+				<div style="margin: 0 auto; position: relative; width: auto;">
 					
-					<div class="collapsible-button" id="canvasButton1">
-						<
-						<div class="collapsible-div" id="panel1">
-							
+					<div style="width: 100%; margin: 0 auto; position: relative">
+						<canvas id="canvas" style="margin: 0 auto; position: relative; display: inline-block;" class=""></canvas>
+						<div class="text-area names-list white-text box-shadow-centered" style="">
+							<div class="chip">
+								Sam
+								<i class="close material-icons">close</i>
+							</div>
+							<div class="chip">
+								Ben
+								<i class="close material-icons">close</i>
+							</div>
+							<div class="chip">
+								Rita
+								<i class="close material-icons">close</i>
+							</div>
+							<div class="chip">
+								Ryan
+								<i class="close material-icons">close</i>
+							</div>
+							<div class="chip">
+								John
+								<i class="close material-icons">close</i>
+							</div>
+							<div class="chip">
+								a
+								<i class="close material-icons">close</i>
+							</div>
 						</div>
 					</div>
-					<div class="collapsible-button red" style="top: 30px" id="canvasButton2">
-						<
-						<div class="collapsible-div" style="top: -30px" id="panel2">
-							
+
+					<div class="buttons-menu" id="leftPanel">
+						
+						<div class="collapsible-button" id="canvasButton1">
+							<
+							<div class="collapsible-div" id="panel1">
+								
+							</div>
+						</div>
+						<div class="collapsible-button red" style="top: 30px" id="canvasButton2">
+							<
+							<div class="collapsible-div" style="top: -30px" id="panel2">
+								
+							</div>
 						</div>
 					</div>
 				</div>

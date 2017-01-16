@@ -1,4 +1,10 @@
-var ws = new WebSocket("ws://127.0.0.1:1234", "echo-protocol");
+// local server
+// var ws = new WebSocket("ws://127.0.0.1:1234", "echo-protocol");
+// my laptop
+// var ws = new WebSocket("ws://192.168.1.3:1234", "echo-protocol");
+// lian's laptop
+var ws = new WebSocket("ws://192.168.1.5:1234", "echo-protocol");
+
 // ip address of Raghav's computer
 // var ws = new WebSocket("ws://10.122.22.42:1234", "echo-protocol");
 
@@ -103,8 +109,10 @@ function saveInfo(messageData) {
 	if (value == "undefined") {
 		value == undefined;
 		document.getElementById(key).innerHTML = "";
+		document.getElementById(key + "_title").innerHTML = "Classroom-name";
 	} else {
 		document.getElementById(key).innerHTML = value;
+		document.getElementById(key + "_title").innerHTML = value;
 	}
 	
 	Materialize.toast("Property '" + key + "' set to '" + value + "'", 1000);

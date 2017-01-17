@@ -4,18 +4,25 @@
 
 */
 
+// store a jQuery reference to the canvas...
 var cv = $("canvas");
+
+// to modify it
 cv.css({"border-color": "#C1E0FF", 
 	"border-width":"1px", 
 	"border-style":"solid",
 });
 
+// store a reference to the 2D drawing context of the canvas
+// in order to draw on it and format brushstrokes
 var context = document.getElementById("canvas").getContext("2d");
+
+// format size of canvas
 context.canvas.width = 870;
 context.canvas.height = 600;
 context.lineJoin = "round";
-// context.strokeStyle = "#FF0000";
 
+// solution to finding cursor position of on an absolute-positioned canvas
 // http://stackoverflow.com/questions/5085689/tracking-mouse-
 // position-in-canvas-when-no-surrounding-element-exists/5086147#5086147
 function findPos(obj) {
@@ -30,13 +37,14 @@ function findPos(obj) {
 	return undefined;
 }
 
-// if mouse is pressed
+// boolean that stores whether mouse is pressed
 var paint = false;
 
+// stores the brush stroke histories of each level
+// is not implemented yet
 var layers = {};
 
 /* How a "layer" object literal will look like
-
 {
 	id: "shared.0" or "layer.0"
 	strokes: [].
@@ -44,39 +52,43 @@ var layers = {};
 	futureStrokes: []
 }
 
-
 */
 
+// stores the index of the current stroke
 var strokeNum = -1;
+
+// stores the past brush stroke history
 var strokes = [];
+
+// stores the future brush stroke history
 var futureStrokes = [];
 
-
-
+// addes a "dot" of paint to the current brush stroke
 function addClick(x, y, dragging) {
 	strokes[strokeNum].push({x: x, y: y, lineWidth: document.getElementById("brushSize").value, strokeStyle: document.getElementById("color").value});
 	console.log(context.strokeStyle);
 }
 
+// reloads the canvas to reflect the new changes made
 function redraw() {
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-	// context.strokeStyle = context.strokeStyle;
-	// context.lineJoin = "round";
-	// context.lineWidth = context.lineWidth;
 
 	// loop through each individual brush stroke
 	for (var i = 0; i < strokes.length; i++) {
 		// loop through each pixel per brush stroke
 		for (var j = 0; j < strokes[i].length; j++) {
-			// if pixel is just dot...
+			// check if pixel is just a dot...
 			if (strokes[i].length <= 1) {
+				// create a rectangle representing the first point of paint
 				context.beginPath();
 				context.strokeStyle = strokes[i][0].strokeStyle;
 				context.lineWidth = strokes[i][0].lineWidth;
 				context.strokeRect(strokes[i][0].x, strokes[i][0].y, 1, 1);
 				context.closePath();
 			} else {
+				// if this pixel is part of a larger brush stroke
 				if (j > 0) {
+					// stroke a line segment from the previous pixel to the current pixel
 					context.beginPath();
 					context.lineWidth = strokes[i][j].lineWidth;
 					context.strokeStyle = strokes[i][j].strokeStyle;
@@ -92,24 +104,32 @@ function redraw() {
 	}
 }
 
+// addes a given brush stroke to the brush stroke history
+// used for when receiving a brush stroke from another user from the server
 function addStroke(arr) {
-	strokeNum ++;
+	strokeNum++;
 	strokes.push(arr);
 
+	// clear the future stroke history
 	futureStrokes = [];
 }
 
+// undoes the current brush stroke
 function undoStroke() {
 	if (strokes.length > 0) {
+		// moves the current brush stroke tot he list of future brush strokes
 		futureStrokes.push(strokes.splice(strokeNum, 1)[0]);
-		strokeNum --;
+		// revert the stroke index
+		strokeNum--;
 	}
 }
 
+// redoes the next future brush stroke
 function redoStroke() {
 	if (futureStrokes.length > 0) {
+		// moves the lastest future stroke to the back of the list of strokes
 		strokes.push(futureStrokes.splice(futureStrokes.length - 1, 1)[0]);
-		strokeNum ++;
+		strokeNum++;
 	}
 }
 

@@ -138,12 +138,16 @@ li.cus-dropdown {
 	overflow: hidden;
 }
 
+.heading-text {
+
+}
+
 .normal-text {
 	color: #333333;
 	font-family: "Lucida Sans Typewriter";
 	font-size: 10px;
 	margin: 0px;
-	line-height: 20px;
+	line-height: 200%;
 }
 
 .small-text {

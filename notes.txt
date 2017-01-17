@@ -1,7 +1,0 @@
-Proposed features:
-* live chat
-* an "accordion" representing a list of (for teachers) students who have joined or (for students) everyone else in their classroom
-* list number of users, and classrooms (in a "badge")
-
-Issues:
-* lost functionality to change color

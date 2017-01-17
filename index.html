@@ -2,53 +2,62 @@
 <html>
 <head>
 	<title>Live! Learning</title>
-	<!-- Live! Learning logo on top of the page -->
+	<!-- Live! Learning logo inside tab-->
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 			<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<link type="text/css" rel="stylesheet" href="css/style.css"/>
 	<!-- Imported css files -->
 	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-	<!-- imported java -->
+	<!-- imported javascript files -->
 </head>
 <body style="background-color: #FCFCFC">
 	<header class="body">
-		
+		<!-- Pink header (Tutorial, Our Team, etc) contains the navigation bar -->
 		<nav class="top-nav">
 
+			<!-- Live! Learning title on left of page -->
 			<div class="container-90">
 				<div class="nav-wrapper">
 					<a href="#" class="brand-logo left">Live! Learning</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 
+						<!-- Tutorial -->
 						<li class="cus-dropdown">
-							<a href="tutorial.html">Tutorials</a>
+							<a href="tutorial.html">Tutorial</a>
 						</li>
 
+						<!-- Our Team -->
 						<li class="cus-dropdown">
 							<a href="team.html">Our Team</a>
 						</li>
 
+						<!-- Create a New Class tab -->
 						<li class="cus-dropdown">
 							<a href="#">Create a New Class</a>
+							<!-- Dropdown Menu for choosing classroom id -->
 							<div class="cus-dropdown-div cus-dropdown-div-right">
 								<div class="cus-dropdown-content-small">
 									<div class="text-area">
 										
 										<span class="normal-text marginless">Choose a classroom id:</span>
+										<!-- Input ID -->
 										<input type="text" id="createClass">
 									</div>
 								</div>
 							</div>
 						</li>
 
+						<!-- Join a Class tab -->
 						<li class="cus-dropdown">
 							<a href="#">Join A Class</a>
+							<!-- Dropdown for entering classroom id -->
 							<div class="cus-dropdown-div cus-dropdown-div-right">
 								<div class="cus-dropdown-content-small">
 									<div class="text-area">
 										
 										<span class="normal-text marginless">Enter an existing classroom id:</span>
+										<!-- Input Join Classroom ID -->
 										<input type="text" id="joinClass">
 									</div>
 								</div>
@@ -56,11 +65,14 @@
 						</li>
 
 						<li class="cus-dropdown">
+						<!-- Leave Class tab -->
 							<a href="#">Leave Class</a>
 							<div class="cus-dropdown-div cus-dropdown-div-wide cus-dropdown-div-right">
 								<div class="cus-dropdown-content">
+								<!-- Dropdown confirmation menu -->
 									<div class="text-area">
 										
+										<!-- Press "Yes" or "No" for leaving classroom -->
 										<span class="normal-text marginless">Are you sure?</span>
 										<div style="width: 330px; margin: 0 auto; left: 50%;">
 											<a class="waves-effect waves-teal btn-flat" id="leave">Yes</a>
@@ -73,17 +85,22 @@
 						</li>
 
 						<li class="cus-dropdown">
+						<!-- Session Info Tab -->
 							<a class="" href="#">Session Info</a>
 							<div class="cus-dropdown-div cus-dropdown-div-right">
+							<!-- Dropdown for Specific Session Info -->
 								<div class="cus-dropdown-content">
 									<div class="text-area">
 										<div id="">
+										<!-- Unique id for each use -->
 											client_id:&#9;<span id="id"></span>
 										</div>
 										<div id="">
+										<!-- Unique ID for each classroom -->
 											classroom_id:&#9;<span id="classroomid"></span>
 										</div>
 										<div id="">
+										<!-- Permission (Teacher or Student) -->
 											permissions:&#9;<span id="permissions"></span>
 										</div>
 									</div>
@@ -105,6 +122,7 @@
 			<!-- button controls -->	
 			<div style="position: relative; height: 100px;">
 
+				<!-- Collapsible hover button formatting -->
 				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 0px;">
 						<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a class="btn-floating btn-large red"><i class="large material-icons">mode_edit</i></a></div>
 						
@@ -112,6 +130,7 @@
 					
 					<ul>
 						<div class="tooltip">
+						<!-- Clear entire whiteboard -->
 							<li>
 								<a class="btn-floating red"><i class="material-icons" id="clear">clear</i></a>
 								<div class="tooltiptext">Clear</div>
@@ -119,24 +138,28 @@
 						</div>
 						<div class="tooltip">
 							<li>
+							<!-- Synchronize teacher's whiteboard with students -->
 								<a class="btn-floating yellow darken-1"><i class="material-icons" id="synchronize">loop</i></a>
 								<div class="tooltiptext">Synchronize</div>
 							</li>
 						</div>
 						<div class="tooltip">
 							<li>
+							<!-- Undo last drawing if there is mistake-->
 								<a class="btn-floating green"><i class="material-icons" id="undo">undo</i></a>
 								<div class="tooltiptext">Undo</div>
 							</li>
 						</div>
 						<div class="tooltip">
 							<li>
+							<!-- Redo a mistake -->
 								<a class="btn-floating blue"><i class="material-icons" id="redo">redo</i></a>
 								<div class="tooltiptext">Redo</div>
 							</li>
 						</div>
 					</ul>
 				</div>
+				<!-- Name of Classroom -->
 				<div class="normal-text very-large-text" id="classroomid_title" style="width: auto; height: auto; padding: 10px; bottom: 0px; position: absolute;">
 					Classroom-name
 				</div>
@@ -159,6 +182,7 @@
 				<div style="margin: 0 auto; position: relative; width: auto;">
 					
 					<div style="width: 100%; margin: 0 auto; position: relative">
+					<!-- Contact Chips for students that have entered classroom -->
 						<canvas id="canvas" style="margin: 0 auto; position: relative; display: inline-block;" class=""></canvas>
 						<div class="text-area names-list white-text box-shadow-centered" style="">
 							<div class="chip">
@@ -189,7 +213,7 @@
 					</div>
 
 					<div class="buttons-menu" id="leftPanel">
-						
+						<!-- Left Panel buttons (eventually collapsible and have all drawing options) -->
 						<div class="collapsible-button" id="canvasButton1">
 							<
 							<div class="collapsible-div" id="panel1">

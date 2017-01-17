@@ -143,7 +143,7 @@ li.cus-dropdown {
 	font-family: "Lucida Sans Typewriter";
 	font-size: 10px;
 	margin: 0px;
-	line-height: 100px;
+	line-height: 20px;
 }
 
 .small-text {
@@ -231,7 +231,7 @@ li.cus-dropdown {
 	border: 1px solid black;
 	padding: 10px;
 	margin: 0;
-	background-color: red;
+	background-color: pink;
 }
 
 .top {

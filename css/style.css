@@ -143,6 +143,7 @@ li.cus-dropdown {
 	font-family: "Lucida Sans Typewriter";
 	font-size: 10px;
 	margin: 0px;
+	line-height: 100px;
 }
 
 .small-text {
@@ -260,17 +261,17 @@ li.cus-dropdown {
 	position: fixed;
 	width: 100%;
 	height: 100px;
-	background-color: blue;
+	background-color: pink;
 	z-index: 5000;
 	bottom: 0px;
 }
 
 .floatingbutton {
+	left: 50%;
+  	margin-left: -100px;
 	position:fixed;
 	height:100px;
 	width:200px;
-	background-color: red;
-	color: white;
 }
 
 .box-shadow-centered {

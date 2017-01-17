@@ -133,18 +133,23 @@ function redoStroke() {
 	}
 }
 
+// deletes all brush stroke history
 function clearStrokes() {
 	strokeNum = 0;
 	strokes = [[]];
 	futureStrokes = [];
 }
 
+// completely changes brush stroke history to reflect data recieved from server
+// used for when brush strokes go out of sync due to network latency
 function synchronize(data) {
 	strokes = data[0];
 	futureStrokes = data[1];
 	strokeNum = strokes.length - 1;
 }
 
+// add an event listener to add a dot of paint
+// for when a mouse is pressed down
 $("#canvas").mousedown(function(e) {
 	var mouseX = e.pageX - this.offsetLeft;
 	var mouseY = e.pageY - this.offsetTop;
@@ -158,6 +163,7 @@ $("#canvas").mousedown(function(e) {
 });
 
 
+// add an event listener to add a dot of paint
 // if mouse is dragged
 $("#canvas").mousemove(function(e) {
 	if (paint) {
@@ -166,12 +172,14 @@ $("#canvas").mousemove(function(e) {
 	}
 });
 
+// store the mouse coordinates
 var mouse = {
 	x: 0, y: 0
 }
 
 // http://stackoverflow.com/questions/5085689/tracking-
 // mouse-position-in-canvas-when-no-surrounding-element-exists/5086147#5086147
+// add event listener for when mouse moves to update mouse position
 $('#canvas').mousemove(function(e) {
 	var pos = findPos(this);
 	var x = e.pageX - pos.x;
@@ -182,15 +190,20 @@ $('#canvas').mousemove(function(e) {
 	mouse.y = y;
 });
 
+// add event listener to stop the brush from painting
+// when the mouse is released
 $("#canvas").mouseup(function(e) {
 	paint = false;
 	// printStrokes();
 });
 
+// add event listener to stop the brush from painting
+// when the mouse leaves the canvas
 $("#canvas").mouseleave(function(e) {
 	paint = false;
 });
 
+// utitlity tool to print brush stroke history to the canvas
 function printStrokes() {
 	var msg = "";
 	for (var i = 0; i < strokes.length; i++) {
@@ -203,6 +216,7 @@ function printStrokes() {
 	// console.log(msg);
 }
 
+// utility tool to convert stroke objects into a string
 function strokeToString() {
 	var msg = "";
 	for (var i = 0; i < strokes[strokeNum].length; i++) {
@@ -215,48 +229,30 @@ function strokeToString() {
 	return msg;
 }
 
-
-
+// get reference to the undo button
 var undo = document.getElementById("undo");
 
-// clears
+// if undo button is clicked, undo the last stroke
 undo.addEventListener("click", function() {
 	undoStroke();
 	redraw();
 });
 
+// get reference to the redo button
 var redo = document.getElementById("redo");
 
+// if redo button is clicked, redo the last undone stroke
 redo.addEventListener("click", function() {
 	redoStroke();
 	redraw();
 })
 
+// get reference to the clear button
 var clear = document.getElementById("clear");
 
+// if the clear button is clicked, completely clear the canvas
 clear.addEventListener("click", function() {
 	clearStrokes();
 
 	redraw();
 });
-
-// var redrawBtn = document.getElementById("redraw");
-
-// redrawBtn.addEventListener("click", function() {
-// 	redraw();
-// });
-
-
-
-// var sizeChangeBtn = document.getElementById("change-brush-size");
-
-// sizeChangeBtn.addEventListener("click", function() {
-// 	context.lineWidth =  document.getElementById("brushSize").value;
-// });
-
-// var colorChangeBtn = document.getElementById("change-color");
-
-// colorChangeBtn.addEventListener("click", function() {
-// 	context.strokeStyle = "blue";
-// 	console.log("color changed to");
-// });

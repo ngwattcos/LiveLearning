@@ -12,7 +12,8 @@
 <body style="background-color: #FCFCFC">
 
 	<div id="floatingBar" class="floating-banner">
-		<div class="floatingbutton" id="floatingbutton">
+	<!-- Next scrolling button to advance tutorial -->
+		<div class="floatingbutton waves-effect waves-teal btn-flat" id="floatingbutton">
 			Next
 		</div>
 	</div>
@@ -23,14 +24,15 @@
 
 			<div class="container-90">
 				<div class="nav-wrapper">
-					<a href="#" class="brand-logo left">Live! Learning</a>
+					<a href="index.html" class="brand-logo left">Live! Learning</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 
 						<li class="cus-dropdown">
-							<a href="tutorial.html">Tutorial</a>
+							<a href="#">Tutorial</a>
 
-							<div class = "holder">
-								<img style = "position:relative; WIDTH:20px; HEIGHT:50px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
+							<div class = "holder normal-text">
+							<!-- Arrow, textbox, and information for tutorial tab -->
+								<img style = "position:relative; LEFT: 50px; WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
 										You are here. 
 									</div>
@@ -41,20 +43,24 @@
 						<li class="cus-dropdown">
 							<a href="team.html">Our Team</a>
 
-							<div class = "holder">
-								<img style = "position:relative; WIDTH:20px; HEIGHT:50px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
-									<div> 
+							<div class = "holder normal-text">
+							<!-- Arrow, textbox, and information for our team tab -->
+								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
+									<div class = "normal-text"> 
 										The page displays the members of the team behind the beauty that is this project. 
 									</div>
 							</div>
+
+
 
 						</li>
 
 						<li class="cus-dropdown">
 							<a href="#">Create a New Class</a>
 
-							<div class = "holder">
-								<img style = "position:relative; WIDTH:20px; HEIGHT:50px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
+							<div class = "holder normal-text">
+							<!-- Arrow, textbox, and information for Create a new Class tab -->
+								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
 										In this page, the teacher can create an id for a new classroom.
 									</div>
@@ -74,8 +80,9 @@
 						<li class="cus-dropdown">
 							<a href="#">Join A Class</a>
 
-							<div class = "holder">
-								<img style = "position:relative; WIDTH:20px; HEIGHT:50px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
+							<div class = "holder normal-text">
+							<!-- Arrow, textbox, and information for "Join a Class" tab -->
+								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
 										In this page, students can type in the id of the calssroom their teachers created to join. 
 									</div>
@@ -94,9 +101,11 @@
 
 						<li class="cus-dropdown">
 							<a href="#">Leave Class</a>
+							<!-- changed width to fit on screen -->
+							<div class = "holder normal-text" style= "width:280px">
+							<!-- Arrow, textbox, and information for Leave Class tab -->
 
-							<div class = "holder">
-								<img style = "position:relative; WIDTH:20px; HEIGHT:50px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
+								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
 										Hovering over this tab, the students get a confirmation option of whether they want to leave the classroom or not. 
 									</div>
@@ -119,9 +128,10 @@
 
 						<li class="cus-dropdown">
 							<a class="" href="#">Session Info</a>
-
-							<div class = "holder">
-								<img style = "position:relative; WIDTH:20px; HEIGHT:50px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
+							<!-- Changed width to fit the screen -->
+							<div class = "holder normal-text" style= "width:150px">
+							<!-- Arrow, textbox, and information for Session Info tab -->
+								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
 										Hoverering over this tab will give the unique classroom and clint id, as well as a permissions section, indicating whether the user is a teacher or student.
 									</div>
@@ -150,25 +160,18 @@
 			</div>
 			
 		</nav>
-
 	</header>
 	<main>
 
-		<div class="container">
-
-
-
+		<div class="container-90">
+			
 			<!-- button controls -->	
 			<div style="position: relative; height: 100px;">
-
-				
-				
 
 				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 0px;">
 						<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a class="btn-floating btn-large red"><i class="large material-icons">mode_edit</i></a></div>
 						
 						
-					
 					
 					<ul>
 						<div class="tooltip">
@@ -197,61 +200,107 @@
 						</div>
 					</ul>
 				</div>
+				<div class="normal-text very-large-text" id="classroomid_title" style="width: auto; height: auto; padding: 10px; bottom: 0px; position: absolute;">
+					Classroom-name
+				</div>
 			</div>
 
-			<div class="" style="position: relative; display: block; width: 100%; background-color: #EEEEEE; margin: none; padding-left: 20px; padding-right: 20px;">
-				<div style="position: static; width: 40%; display: inline-block;">
+			<!-- brush options control div -->
+			<div class="box-shadow-centered">
+				<div class="box-shadow-bottom" style="position: relative; display: block; width: 100%; background-color: #FFFFFF; margin: none; padding-left: 20px; padding-right: 20px; z-index: 1000;">
+					<div style="position: static; width: 40%; display: inline-block;">
+						<!-- <input type="button" value="Brush Size" id="change-brush-size"> -->
+						<input type="text" value="1" id="brushSize">
 
-					<input type="button" value="Change brush size" id="change-brush-size">
-					<input type="text" value="1" id="brushSize">
-
-					<div class = "holder">
-								<img style = "position:relative; WIDTH:20px; HEIGHT:50px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
+						<div class = "holder normal-text">
+						<!-- Arrow, textbox, and information for brush size tab -->
+								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
 										The user can enter a number to change the size of the brush being used. 
 									</div>
 							</div>
-				</div>
-				<div style="position: static; width: 40%; display: inline-block; float: right;">
-					<input type="button" value="Change Color (hex notation)" id="change-color">
-					<input type="text" value="#FF0000" id="color">
+						</div>
 
-					<div class = "holder">
-								<img style = "position:relative; WIDTH:20px; HEIGHT:50px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
+					<div style="position: static; width: 40%; display: inline-block; float: right;">
+						<!-- <input type="button" value="Color (hex notation)" id="change-color"> -->
+						<input type="text" value="#0000ff" id="color">
+						<!-- Arrow, textbox, and information for Leave changing color tab -->
+						<div class = "holder normal-text">
+								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
-										The user can type colors of the brush; ordinary colors (red, orange, etc) can be entered or the hex notation of more exotic colors. 
+										The user can enter a number to change the size of the brush being used. 
 									</div>
 							</div>
-
-				</div>
-			</div>
-			
-			<!-- canvas group -->
-			<div style="margin: 0 auto; position: relative; width: auto;">
-				
-				<div style="width: 100%; margin: 0 auto; position: relative">
-					<canvas id="canvas" style="margin: 0 auto;"></canvas>
-				</div>
-
-				<div class="buttons-menu" id="leftPanel">
-					
-					<div class="collapsible-button" id="canvasButton1">
-						<
-						<div class="collapsible-div" id="panel1">
-							
 						</div>
 					</div>
-					<div class="collapsible-button red" style="top: 30px" id="canvasButton2">
-						<
-						<div class="collapsible-div" style="top: -30px" id="panel2">
+				
+				
+				<!-- canvas group -->
+				<div style="margin: 0 auto; position: relative; width: auto;">
+					
+					<div style="width: 100%; margin: 0 auto; position: relative">
+						<canvas id="canvas" style="margin: 0 auto; position: relative; display: inline-block;" class=""></canvas>
+						<div class="text-area names-list white-text box-shadow-centered" style="overflow:scroll">
+							<div class="chip">
+								Sam
+								<i class="close material-icons">close</i>
+							</div>
+							<div class="chip">
+								Ben
+								<i class="close material-icons">close</i>
+							</div>
+							<div class="chip">
+								Rita
+								<i class="close material-icons">close</i>
+							</div>
+							<div class="chip">
+								Ryan
+								<i class="close material-icons">close</i>
+							</div>
+							<div class="chip">
+								John
+								<i class="close material-icons">close</i>
+							</div>
+							<div class="chip">
+								a
+								<i class="close material-icons">close</i>
+							</div>
 
-							<div class = "holder">
-								<img style = "position:relative; WIDTH:20px; HEIGHT:50px" src= "images/arrow_up.png" alt="Image Not Found" id="Random Image"> </img>
+							<<div class = "holder normal-text" style= "width:150px">
+							<!-- Arrow, textbox, and information for Student list tab -->
+								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
+									<div> 
+										This is a list of the names of the students currently enrolled in the classroom.
+									</div>
+							</div>
+						</div>
+
+
+
+
+					</div>
+
+					<div class="buttons-menu" id="leftPanel">
+						
+						<div class="collapsible-button" id="canvasButton1">
+							<
+							<div class="collapsible-div" id="panel1">
+								
+							</div>
+						</div>
+						<div class="collapsible-button red" style="top: 30px" id="canvasButton2">
+							<
+							<div class="collapsible-div" style="top: -30px" id="panel2">
+
+							<div class = "holder normal-text">
+							<!-- Arrow, textbox, and information for Collapsible menu-->
+								<img style = "position:relative; LEFT: 20px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
 										Clicking on this reveals a collapsible menus offering features, such as undoing a mistake, redoing a movement, clearing the whole classroom, or synchronizing among all the students
 									</div>
 							</div>
-							
+								
+							</div>
 						</div>
 					</div>
 				</div>
@@ -260,9 +309,6 @@
 			</div>
 			
 		</div>
-
-		
-
 	</main>
 
 	

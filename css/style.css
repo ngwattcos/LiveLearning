@@ -202,24 +202,37 @@ li.cus-dropdown {
 	width: 30px;
 	left: 0px;
 	top: 0px;
-	background-color: #DDDDDD;
 	padding-top: 5px;
 	padding-left: 10px;
 	margin: none;
-	color: white;
 }
 
 .collapsible-div {
-	posiion: absolute;
+	position: absolute;
 	/*display: none;*/
 	/*right: 0px;
 	top: 0px;*/
-	width: 0px;
-	height: 400px;
-	/*z-index: 10000;*/
-	background-color: #888888;
+	width: 200px;
+	height: 500px;
+	background-color: #DDDDDD;
 	color: white;
+	left: 30px;
 }
+
+.col-light {
+	background-color: #DDDDDD;
+	color: #000000;
+}
+
+.col-med {
+	background-color: #BBBBBB;
+	color: #FFFFFF;
+}
+.col-dark {
+	background-color: #999999;
+	color: #FFFFFF;
+}
+
 
 .holder {
 	display: none;

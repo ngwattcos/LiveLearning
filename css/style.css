@@ -100,6 +100,11 @@ li.cus-dropdown {
 	width: 400px;
 }
 
+/*.cus-dropdown-div-side {
+	display: none;
+	position: absolute;
+}*/
+
 .cus-dropdown:hover .cus-dropdown-div {
 	display: block;
 	height: 10px;
@@ -212,11 +217,41 @@ li.cus-dropdown {
 	/*display: none;*/
 	/*right: 0px;
 	top: 0px;*/
-	width: 200px;
+	width: 0px;
 	height: 500px;
-	background-color: #DDDDDD;
+	padding: 0px;
+	/*background-color: #DDDDDD;*/
 	color: white;
-	left: 30px;
+	left: 40px;
+	visibility: hidden;
+}
+.collapsible-div .collapsible-content {
+	/*padding: 5px;*/
+	/*background-color: blue;*/
+	width: 0px;
+	height: 480px;
+	visibility: hidden;
+}
+
+.collapsible-button:hover {
+	/*height: 40px;*/
+	width: 50px;
+	z-index: 2001;
+	width: 50px;
+	transition: width 0.2s;
+}
+
+.collapsible-button:hover .collapsible-div {
+	visibility: visible;
+	animation-delay: 2s;
+	width: 200px;
+	padding: 10px;
+	/*transition: width 0.3s;*/
+
+}
+
+.collapsible-button:hover .collapsible-content {
+	/*visibility: visible;*/
 }
 
 .col-light {
@@ -261,17 +296,6 @@ li.cus-dropdown {
 	width: 248px;
 	height: 10px;
 	border: 1px solid #333;
-}
-
-.collapsible-button:hover {
-	/*margin-left: 200px;*/
-	/*transition: margin 0.3s;*/
-}
-
-.collapsible-button:hover .collapsible-div {
-	/*width: 200px;*/
-	/*display: block;*/
-	/*transition: width 0.3s;*/
 }
 
 .floating-banner {

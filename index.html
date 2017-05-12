@@ -5,7 +5,7 @@
 	<!-- Live! Learning logo inside tab-->
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 			<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
 	<link type="text/css" rel="stylesheet" href="css/style.css"/>
 	<!-- Imported css files -->
 	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
@@ -184,7 +184,7 @@
 					<div style="width: 100%; margin: 0 auto; position: relative">
 					<!-- Contact Chips for students that have entered classroom -->
 						<canvas id="canvas" style="margin: 0 auto; position: relative; display: inline-block;" class=""></canvas>
-						<div class="text-area names-list white-text box-shadow-centered" style="">
+						<div class="text-area names-list white-text box-shadow-centered" style="height:30px;"><!--height restriction is just for more space to make chat, remove later-->
 							<div class="chip">
 								Sam
 								<i class="close material-icons">close</i>
@@ -209,7 +209,19 @@
 								a
 								<i class="close material-icons">close</i>
 							</div>
+						</div> 
+
+
+						<div style = "position:relative;display:inline-block;border:solid;width:260px;height:300px;">
+						<div id = "prevMessages" style = "width:260px;height:225px;border:dotted;">
 						</div>
+						<div id = "currentMessage" style="width:260px;height:75px;border:dotted;"> 
+						</div>
+						</div>
+
+
+
+
 					</div>
 
 					<div class="buttons-menu" id="leftPanel">

@@ -263,7 +263,7 @@ wsServer.on("request", function(request) {
 			// log to the console the header and sender of hte message
 			console.log(messageData.header + ", " + messageData.sender);
 
-			// check if message was an instruction intended for the werver
+			// check if message was an instruction intended for the server
 			if (isDirective(messageData.header)) {
 				// if this is a request to create a class
 				if (messageData.header == "request-create-class") {

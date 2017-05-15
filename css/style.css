@@ -219,7 +219,7 @@ li.cus-dropdown {
 	top: 0px;*/
 	width: 0px;
 	height: 500px;
-	padding: 0px;
+	padding: 30px;
 	/*background-color: #DDDDDD;*/
 	color: white;
 	left: 40px;
@@ -233,9 +233,18 @@ li.cus-dropdown {
 	visibility: hidden;
 }
 
+.collapsible-button .collapsible-heading {
+	visibility: hidden;
+	padding-top: 10px;
+	padding-left: 5px;
+	padding-bottom: 0px;
+	height: 40px;
+	width: 100%;
+}
+
+
 .collapsible-button:hover {
 	/*height: 40px;*/
-	width: 50px;
 	z-index: 2001;
 	width: 50px;
 	transition: width 0.2s;
@@ -251,7 +260,17 @@ li.cus-dropdown {
 }
 
 .collapsible-button:hover .collapsible-content {
-	/*visibility: visible;*/
+	visibility: visible;
+	width: 100%;
+}
+
+.collapsible-button:hover .collapsible-heading {
+	visibility: visible;
+}
+
+.col-veryLight {
+	background-color: #EEEEEE;
+	color: #333333;
 }
 
 .col-light {
@@ -259,13 +278,82 @@ li.cus-dropdown {
 	color: #000000;
 }
 
+.col-light2 {
+	background-color: #CCCCCC;
+	color: #FFFFFF;
+}
+
 .col-med {
 	background-color: #BBBBBB;
 	color: #FFFFFF;
 }
+
+.col-med2 {
+	background-color: #A5A5A5;
+	color: #FFFFFF;
+}
+
 .col-dark {
 	background-color: #999999;
 	color: #FFFFFF;
+}
+
+
+.menu-item {
+	font-family: "Roboto";
+	display: inline-block;
+	/*height: 30px;*/
+	min-width: 80px;
+	/*background-color: #DDDDDD;*/
+	padding-top: 5px;
+	padding-bottom: 5px;
+	/*padding-left: 10px;*/
+	margin: 0;
+}
+
+/*
+
+************* SHUUD apply shadow!
+
+*/
+.dropdown-list {
+	position: absolute;
+	width: 200px;
+	background-color: white;
+	z-index: 3000;
+	/*top: 0px;*/
+	visibility: hidden;
+}
+
+
+.dropdown-item {
+	width: 100%;
+	/*height: 30px;*/
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	z-index: 3001;
+	visibility: hidden;
+}
+
+.dropdown-item:hover {
+	background-color: #d7dcdf;
+}
+
+.dropdown-item:active {
+	background-color: #1abc9c;
+}
+
+.menu-item:hover {
+	background-color: #1abc9c;
+}
+
+.menu-item:hover .dropdown-list {
+	visibility: visible;
+}
+
+.menu-item:hover .dropdown-item {
+	visibility: visible;
 }
 
 

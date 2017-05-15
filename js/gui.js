@@ -2,7 +2,9 @@
 // a click is not placed on the canvas
 window.addEventListener("click", function() {
 	// if the click was not registered on the canvas
-});
+}); 
+
+var newChatMsg = new Message("chatMessage",client.id,document.getElementById("userMessage")); 
 
 // store a reference to the input form to create a new classroom
 var chooseClassroomForm = document.getElementById("createClass");

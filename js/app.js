@@ -114,7 +114,11 @@ ws.addEventListener("message", function(e) {
 				// if the command was to syncrhonize the screen
 				// synchronize the screen
 				synchronize(messageData.body);
+			} else if (messageData.header == "chatMessage") {
+
+				document.getElementById("test").innerHTML = messageData.body;
 			}
+
 
 			// redraw the canvas to reflect changes, just in case
 			redraw();

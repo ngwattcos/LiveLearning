@@ -323,6 +323,7 @@ li.cus-dropdown {
 	z-index: 3000;
 	/*top: 0px;*/
 	visibility: hidden;
+	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
 }
 
 

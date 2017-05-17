@@ -231,6 +231,7 @@ function strokeToString() {
 
 // get reference to the undo button
 var undo = document.getElementById("undo");
+var undo2 = document.getElementById("undo2");
 
 // if undo button is clicked, undo the last stroke
 undo.addEventListener("click", function() {
@@ -238,17 +239,29 @@ undo.addEventListener("click", function() {
 	redraw();
 });
 
+undo2.addEventListener("click", function() {
+	undoStroke();
+	redraw();
+});
+
 // get reference to the redo button
 var redo = document.getElementById("redo");
+var redo2 = document.getElementById("redo2");
 
 // if redo button is clicked, redo the last undone stroke
 redo.addEventListener("click", function() {
 	redoStroke();
 	redraw();
-})
+});
+
+redo2.addEventListener("click", function() {
+	redoStroke();
+	redraw();
+});
 
 // get reference to the clear button
 var clear = document.getElementById("clear");
+var clear2 = document.getElementById("clear2");
 
 // if the clear button is clicked, completely clear the canvas
 clear.addEventListener("click", function() {
@@ -256,3 +269,10 @@ clear.addEventListener("click", function() {
 
 	redraw();
 });
+
+clear2.addEventListener("click", function() {
+	clearStrokes();
+
+	redraw();
+});
+

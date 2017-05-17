@@ -176,6 +176,59 @@
 						<!-- <input type="button" value="Color (hex notation)" id="change-color"> -->
 						<input type="text" value="#0000ff" id="color">
 					</div>
+					<div>
+						<div class="menu-item">
+							<div style="padding-left: 10px">File</div>
+							<div class="dropdown-list">
+								<div class="dropdown-item">
+									Save As...
+								</div>
+								<div class="dropdown-item">
+									Open...
+								</div>
+								<div class="dropdown-item">
+									About LiveLearning!...
+								</div>
+								<a href="team.html" style="color: black;">
+									<div class="dropdown-item">
+										Contact...
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="menu-item">
+							<div style="padding-left: 10px">Edit</div>
+							<div class="dropdown-list">
+								<div class="dropdown-item" id="undo2">
+									Undo
+								</div>
+								<div class="dropdown-item" id="redo2">
+									Redo
+								</div>
+								<div class="dropdown-item" id="clear2">
+									Clear
+								</div>
+							</div>
+						</div>
+						<div class="menu-item">
+							<div style="padding-left: 10px">Network</div>
+							<div class="dropdown-list">
+								<div class="dropdown-item">
+									Synchronize...
+								</div>
+							</div>
+						</div>
+						<div class="menu-item">
+							<div style="padding-left: 10px">Help</div><div class="dropdown-list">
+								
+								<a href="tutorial.html" style="color: black;">
+									<div class="dropdown-item">
+										Run Tutorial...
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 				
 				<!-- canvas group -->
@@ -214,16 +267,31 @@
 
 					<div class="buttons-menu" id="leftPanel">
 						<!-- Left Panel buttons (eventually collapsible and have all drawing options) -->
-						<div class="collapsible-button" id="canvasButton1">
-							<
-							<div class="collapsible-div" id="panel1">
-								
+						<div class="collapsible-button col-light" style="top: 0px" id="canvasButton1">
+							&lt;
+							<div class="collapsible-div col-light" style="top: 0px" id="panel1">
+								<div class="collapsible-content col-veryLight">
+									<div class="collapsible-heading col-light">Brush Options</div>
+									
+								</div>
 							</div>
 						</div>
-						<div class="collapsible-button red" style="top: 30px" id="canvasButton2">
-							<
-							<div class="collapsible-div" style="top: -30px" id="panel2">
-								
+						<div class="collapsible-button col-med" style="top: 30px" id="canvasButton2">
+							&lt;
+							<div class="collapsible-div col-med" style="top: -30px" id="panel1">
+								<div class="collapsible-content col-light2">
+									<div class="collapsible-heading col-med">Layer Options</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="collapsible-button col-dark" style="top: 60px" id="canvasButton3">
+							&lt;
+							<div class="collapsible-div col-dark" style="top: -60px" id="panel1">
+								<div class="collapsible-content col-med2">
+									<div class="collapsible-heading col-dark">Layers</div>
+									
+								</div>
 							</div>
 						</div>
 					</div>

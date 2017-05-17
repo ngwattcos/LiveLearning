@@ -69,11 +69,11 @@ var panel1 = document.getElementById("panel1");
 var panel2 = document.getElementById("panel2");
 
 cv1.addEventListener("click", function() {
-
+	// alert("I was clicked!");
 });
 
 cv2.addEventListener("click", function() {
-
+	// alert("I was clocked!");
 });
 
 var ButtonNumber = -1;

@@ -59,9 +59,17 @@ clear.addEventListener("click", function() {
 
 // get a reference to the synchronize button
 var synchronize = document.getElementById("synchronize");
+var synchronize2 = document.getElementById("synchronize2");
 
 // if clicked, send data to the server to synchronize screens
 synchronize.addEventListener("click", function() {
+	if (client.id != undefined) {
+		var message = new Message("++", client.id, [strokes, futureStrokes]);
+		ws.send(JSON.stringify(message));
+	}
+});
+
+synchronize2.addEventListener("click", function() {
 	if (client.id != undefined) {
 		var message = new Message("++", client.id, [strokes, futureStrokes]);
 		ws.send(JSON.stringify(message));

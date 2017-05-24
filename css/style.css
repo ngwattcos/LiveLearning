@@ -225,6 +225,11 @@ li.cus-dropdown {
 	left: 40px;
 	visibility: hidden;
 }
+
+.collapsible-div * {
+	visibility: hidden !important;
+}
+
 .collapsible-div .collapsible-content {
 	/*padding: 5px;*/
 	/*background-color: blue;*/
@@ -232,6 +237,8 @@ li.cus-dropdown {
 	height: 480px;
 	visibility: hidden;
 }
+
+
 
 .collapsible-button .collapsible-heading {
 	visibility: hidden;
@@ -243,11 +250,22 @@ li.cus-dropdown {
 }
 
 
+
+.collapsible-div .collapsible-space {
+	padding: 20px;
+	visibility: hidden;
+}
+
+
 .collapsible-button:hover {
 	/*height: 40px;*/
 	z-index: 2001;
 	width: 50px;
 	transition: width 0.2s;
+}
+
+.collapsible-button:hover * {
+	visibility: visible !important;
 }
 
 .collapsible-button:hover .collapsible-div {
@@ -265,6 +283,9 @@ li.cus-dropdown {
 }
 
 .collapsible-button:hover .collapsible-heading {
+	visibility: visible;
+}
+.collapsible-button:hover .collapsible-space {
 	visibility: visible;
 }
 

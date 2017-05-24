@@ -119,14 +119,14 @@ var sliderR = document.getElementById("r-slider");
 var sliderG = document.getElementById("g-slider");
 var sliderB = document.getElementById("b-slider");
 
-sliderR.addEventListener("mousemove", function() {
+sliderR.addEventListener("mouseup", function() {
 	console.log("r: " + sliderR.value);
 });
 
-sliderG.addEventListener("mousemove", function() {
+sliderG.addEventListener("mouseup", function() {
 	console.log("g: " + sliderG.value);
 });
 
-sliderB.addEventListener("mousemove", function() {
+sliderB.addEventListener("mouseup", function() {
 	console.log("b: " + sliderB.value);
 });

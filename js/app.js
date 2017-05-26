@@ -96,6 +96,10 @@ ws.addEventListener("message", function(e) {
 		// if the message is just a generic informative message
 		// "toast" the message to the user
 		Materialize.toast(messageData.body, 2000);
+	} 
+	else if (messageData.header == "chatMessage") {
+			console.log("new chat message received");
+			document.getElementById("prevMessages").innerHTML += messageData.body;
 	} else {
 		// if the message is a command from another user
 		if (messageData.sender != client.id) {
@@ -127,8 +131,9 @@ ws.addEventListener("message", function(e) {
 			// redraw the canvas to reflect changes, just in case
 			redraw();
 		}
-	}
 
+	}
+ 
 	
 });
 
@@ -169,3 +174,15 @@ function rejectInfo(messageData) {
 
 	Materialize.toast("Rejected request to set '" + key + "' to '" + value + "'", 2000);
 }
+
+var chatBox = document.getElementById("chatBox");
+
+chatBox.addEventListener("keydown", function(e) { //something is wrong here
+	// console.log("akdfhakjhfdkj");
+	if (e.keyCode == 13) {
+		var newChatMsg = new Message("chatMessage", client.id, chatBox.value);
+		ws.send(JSON.stringify(newChatMsg));
+		console.log("attempted to send: " + newChatMsg.body);
+	}
+
+});

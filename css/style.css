@@ -236,6 +236,7 @@ li.cus-dropdown {
 	width: 0px;
 	height: 480px;
 	visibility: hidden;
+	overflow: scroll;
 }
 
 
@@ -468,4 +469,9 @@ li.cus-dropdown {
 
 #canvas:hover {
 	cursor: crosshair;
+}
+
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent; /* make scrollbar transparent */
 }

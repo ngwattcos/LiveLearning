@@ -99,7 +99,7 @@ window.addEventListener("load", function() {
 
 
 var nextButton = document.getElementById("floatingbutton");
-/*nextButton.addEventListener("click", function() {
+nextButton.addEventListener("click", function() {
 	ButtonNumber++;
 
 	if (ButtonNumber >= buttons.length) {
@@ -110,7 +110,7 @@ var nextButton = document.getElementById("floatingbutton");
 	buttons[ButtonNumber].style.display = "block";
 
 	console.log(ButtonNumber);
-});*/
+});
 
 // alert("akjadkjfh");
 

@@ -65,7 +65,10 @@ var futureStrokes = [];
 
 // addes a "dot" of paint to the current brush stroke
 function addClick(x, y, dragging) {
-	strokes[strokeNum].push({x: x, y: y, lineWidth: document.getElementById("brushSize").value, strokeStyle: document.getElementById("color").value});
+	var colorStr = "#" + channelR + "" + channelG + "" + channelB;
+	console.log(colorStr);
+	// console.log(sliderSize.value + ", " + channelR + "" + channelG + "" + channelB);
+	strokes[strokeNum].push({x: x, y: y, lineWidth: sliderSize.value, strokeStyle: colorStr});
 	console.log(context.strokeStyle);
 }
 

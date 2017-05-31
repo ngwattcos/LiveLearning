@@ -1,8 +1,8 @@
 // placeholder event listener to listen for when
 // a click is not placed on the canvas
-window.addEventListener("click", function() {
-	// if the click was not registered on the canvas
-});
+// window.addEventListener("click", function() {
+// 	// if the click was not registered on the canvas
+// });
 
 // store a reference to the input form to create a new classroom
 var chooseClassroomForm = document.getElementById("createClass");
@@ -99,7 +99,7 @@ window.addEventListener("load", function() {
 
 
 var nextButton = document.getElementById("floatingbutton");
-nextButton.addEventListener("click", function() {
+/*nextButton.addEventListener("click", function() {
 	ButtonNumber++;
 
 	if (ButtonNumber >= buttons.length) {
@@ -110,4 +110,23 @@ nextButton.addEventListener("click", function() {
 	buttons[ButtonNumber].style.display = "block";
 
 	console.log(ButtonNumber);
+});*/
+
+// alert("akjadkjfh");
+
+
+var sliderR = document.getElementById("r-slider");
+var sliderG = document.getElementById("g-slider");
+var sliderB = document.getElementById("b-slider");
+
+sliderR.addEventListener("mousemove", function() {
+	console.log("r: " + sliderR.value);
+});
+
+sliderG.addEventListener("mousemove", function() {
+	console.log("g: " + sliderG.value);
+});
+
+sliderB.addEventListener("mousemove", function() {
+	console.log("b: " + sliderB.value);
 });

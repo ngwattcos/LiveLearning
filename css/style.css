@@ -289,6 +289,30 @@ li.cus-dropdown {
 	visibility: visible;
 }
 
+.collapsible-space p {
+	padding: 0;
+	margin: 0;
+}
+
+.collapsible-space-section {
+	padding-top: 0px;
+	padding-bottom: 30px;
+}
+
+.collapsible-space-spacer {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.cus-slider {
+	margin: 0;
+	padding: 0;
+}
+
+.cus-hr {
+	border: 1px dashed #999999;
+}
+
 .col-veryLight {
 	background-color: #EEEEEE;
 	color: #333333;
@@ -439,4 +463,9 @@ li.cus-dropdown {
 
 .box-shadow-bottom {
 	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
+}
+
+
+#canvas:hover {
+	cursor: crosshair;
 }

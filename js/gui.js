@@ -118,15 +118,39 @@ var nextButton = document.getElementById("floatingbutton");
 var sliderR = document.getElementById("r-slider");
 var sliderG = document.getElementById("g-slider");
 var sliderB = document.getElementById("b-slider");
+var sliderSize = document.getElementById("size-slider");
 
-sliderR.addEventListener("mousemove", function() {
-	console.log("r: " + sliderR.value);
+sliderR.addEventListener("mouseup", function() {
+	channelR = decToHex(sliderR.value);
 });
 
-sliderG.addEventListener("mousemove", function() {
-	console.log("g: " + sliderG.value);
+sliderG.addEventListener("mouseup", function() {
+	channelG = decToHex(sliderG.value);
+});
+	
+sliderB.addEventListener("mouseup", function() {
+	channelB = decToHex(sliderB.value);
 });
 
-sliderB.addEventListener("mousemove", function() {
-	console.log("b: " + sliderB.value);
+sliderSize.addEventListener("mouseup", function() {
+
 });
+
+var channelR = "00";
+var channelG = "00";
+var channelB = "ff";
+
+function decToHex(numStr) {
+	var num = parseInt(numStr);
+	var hexStr = num.toString(16);
+
+
+	if (hexStr.length == 1) {
+		hexStr = "0" + "" + hexStr;
+	}
+	if (hexStr.length == 0) {
+		hexStr = "0" + "" + hexStr;
+	}
+
+	return hexStr;
+}

@@ -116,11 +116,17 @@
 
 		<div class="container-90">
 			
-			<!-- button controls -->	
-			<div style="position: relative; height: 100px;">
+			
 
-				<!-- Collapsible hover button formatting -->
-				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 0px;">
+			<!-- brush options control div -->
+			<div class="box-shadow-centered" style="margin-top: 60px;">
+				<div class="box-shadow-bottom" style="position: relative; display: block; width: 100%; background-color: #FFFFFF; margin: none; padding-left: 20px; padding-right: 20px; z-index: 1000;">
+					<div class="normal-text very-large-text" id="classroomid_title" style="position: static; width: 100%; display: inline-block;">
+						<!-- <input type="button" value="Brush Size" id="change-brush-size"> -->
+						Classroom-name
+					</div>
+					<!-- Collapsible hover button formatting -->
+				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 30px;">
 						<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a class="btn-floating btn-large red"><i class="large material-icons">mode_edit</i></a></div>
 						
 						
@@ -156,23 +162,6 @@
 						</div>
 					</ul>
 				</div>
-				<!-- Name of Classroom -->
-				<div class="normal-text very-large-text" id="classroomid_title" style="width: auto; height: auto; padding: 10px; bottom: 0px; position: absolute;">
-					Classroom-name
-				</div>
-			</div>
-
-			<!-- brush options control div -->
-			<div class="box-shadow-centered">
-				<div class="box-shadow-bottom" style="position: relative; display: block; width: 100%; background-color: #FFFFFF; margin: none; padding-left: 20px; padding-right: 20px; z-index: 1000;">
-					<div style="position: static; width: 40%; display: inline-block;">
-						<!-- <input type="button" value="Brush Size" id="change-brush-size"> -->
-						<input type="text" value="1" id="brushSize">
-					</div>
-					<div style="position: static; width: 40%; display: inline-block; float: right;">
-						<!-- <input type="button" value="Color (hex notation)" id="change-color"> -->
-						<input type="text" value="#0000ff" id="color">
-					</div>
 					<div>
 						<div class="menu-item">
 							<div style="padding-left: 10px">File</div>
@@ -273,22 +262,32 @@
 										<div>
 											<p style="line-height: 1em;">R:</p>
 										</div>
-										<div class="">
+										<div class="collapsible-space-section">
 											<input id="r-slider" class="cus-slider" type="range" value="0" min="0" max="255">
 											<!-- <span class="range-slider__value">0</span> -->
 										</div>
 										<div>
 											<p style="line-height: 1em;">G:</p>
 										</div>
-										<div class="">
+										<div class="collapsible-space-section">
 											<input id="g-slider" class="cus-slider" type="range" value="0" min="0" max="255">
 											<!-- <span class="range-slider__value">0</span> -->
 										</div>
 										<div>
 											<p style="line-height: 1em;">B:</p>
 										</div>
-										<div class="">
+										<div class="collapsible-space-section">
 											<input id="b-slider" class="cus-slider" type="range" value="255" min="0" max="255">
+											<!-- <span class="range-slider__value">0</span> -->
+										</div>
+										<div class="collapsible-space-section">
+											<hr class="cus-hr"></hr>
+										</div>
+										<div>
+											<p style="line-height: 1em;">Brush Size:</p>
+										</div>
+										<div class="collapsible-space-section">
+											<input id="size-slider" class="cus-slider" type="range" value="1" min="1" max="100">
 											<!-- <span class="range-slider__value">0</span> -->
 										</div>
 									</div>

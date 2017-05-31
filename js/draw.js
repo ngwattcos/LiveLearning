@@ -42,7 +42,9 @@ var paint = false;
 
 // stores the brush stroke histories of each level
 // is not implemented yet
-var layers = {};
+var layers = [];
+var currentLayer;
+var currentLayerIdx;
 
 /* How a "layer" object literal will look like
 {
@@ -53,6 +55,37 @@ var layers = {};
 }
 
 */
+function addLayer(newLayer) {
+	layers.push(newLayer);
+
+	currentLayerIdx = layers.length - 1;
+	currentLayer = layers[curremtLayerIdx];
+}
+
+function changeLayer(idx) {
+	// attempt to change layer
+	if (idx >= 0 && idx <= layers.length - 1) {
+		currentLayer = layers[idx];
+		currentLayerIdx = idx;
+	}
+}
+
+function moveLayer(idx1, idx2) {
+
+}
+
+function getLayerByName() {
+
+}
+
+function Layer(_name, _strokes) {
+	this.name = _name;
+	this.strokeNum;
+	this.futureStrokes = [];
+	this.strokes = _strokes || [];
+	this.strokeNum = stroke.length - 1;
+	this.visible = true;
+}
 
 // stores the index of the current stroke
 var strokeNum = -1;

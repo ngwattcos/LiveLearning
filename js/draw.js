@@ -55,11 +55,25 @@ var currentLayerIdx;
 }
 
 */
+
+//https://stackoverflow.com/questions/5306680/move-an-array-element-from-one-array-position-to-another
+
+Array.prototype.move = function (old_index, new_index) {
+	if (new_index >= this.length) {
+		var k = new_index - this.length;
+		while ((k--) + 1) {
+			this.push(undefined);
+		}
+	}
+	this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+	return this; // for testing purposes
+};
+
 function addLayer(newLayer) {
 	layers.push(newLayer);
 
 	currentLayerIdx = layers.length - 1;
-	currentLayer = layers[curremtLayerIdx];
+	currentLayer = layers[currentLayerIdx];
 }
 
 function changeLayer(idx) {
@@ -70,8 +84,10 @@ function changeLayer(idx) {
 	}
 }
 
-function moveLayer(idx1, idx2) {
+addLayer(new Layer("Untitled"));
 
+function moveLayer(idx1, idx2) {
+	layers.move(idx1, idx2);
 }
 
 function getLayerByName() {
@@ -82,13 +98,16 @@ function Layer(_name, _strokes) {
 	this.name = _name;
 	this.strokeNum;
 	this.futureStrokes = [];
-	this.strokes = _strokes || [];
-	this.strokeNum = stroke.length - 1;
+	this.strokes = [];
+	this.strokeNum = this.strokes.length - 1;
 	this.visible = true;
 }
 
+// layers.add(new Layer())
+
+
 // stores the index of the current stroke
-var strokeNum = -1;
+// var strokeNum = -1;
 
 // stores the past brush stroke history
 var strokes = [];
@@ -101,8 +120,9 @@ function addClick(x, y, dragging) {
 	var colorStr = "#" + channelR + "" + channelG + "" + channelB;
 	console.log(colorStr);
 	// console.log(sliderSize.value + ", " + channelR + "" + channelG + "" + channelB);
-	strokes[strokeNum].push({x: x, y: y, lineWidth: sliderSize.value, strokeStyle: colorStr});
-	console.log(context.strokeStyle);
+	// strokes[strokeNum].push({x: x, y: y, lineWidth: sliderSize.value, strokeStyle: colorStr});
+	layers[currentLayerIdx].strokes[layers[currentLayerIdx].strokeNum].push({x: x, y: y, lineWidth: sliderSize.value, strokeStyle: colorStr});
+	// console.log(context.strokeStyle);
 }
 
 // reloads the canvas to reflect the new changes made
@@ -110,78 +130,85 @@ function redraw() {
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
 	// loop through each individual brush stroke
-	for (var i = 0; i < strokes.length; i++) {
-		// loop through each pixel per brush stroke
-		for (var j = 0; j < strokes[i].length; j++) {
-			// check if pixel is just a dot...
-			if (strokes[i].length <= 1) {
-				// create a rectangle representing the first point of paint
-				context.beginPath();
-				context.strokeStyle = strokes[i][0].strokeStyle;
-				context.lineWidth = strokes[i][0].lineWidth;
-				context.strokeRect(strokes[i][0].x, strokes[i][0].y, 1, 1);
-				context.closePath();
-			} else {
-				// if this pixel is part of a larger brush stroke
-				if (j > 0) {
-					// stroke a line segment from the previous pixel to the current pixel
-					context.beginPath();
-					context.lineWidth = strokes[i][j].lineWidth;
-					context.strokeStyle = strokes[i][j].strokeStyle;
-					context.moveTo(strokes[i][j - 1].x, strokes[i][j - 1].y);
-					context.lineTo(strokes[i][j].x, strokes[i][j].y);
-					context.closePath();
-					context.stroke();
+	for (var l = 0; l < layers.length; l++) {
+		if (layers[l].visible) {
+			for (var i = 0; i < layers[l].strokes.length; i++) {
+			// loop through each pixel per brush stroke
+				for (var j = 0; j < layers[l].strokes[i].length; j++) {
+					// check if pixel is just a dot...
+					if (layers[currentLayerIdx].strokes[i].length <= 1) {
+						// create a rectangle representing the first point of paint
+						context.beginPath();
+						context.strokeStyle = layers[l].strokes[i][0].strokeStyle;
+						context.lineWidth = layers[l].strokes[i][0].lineWidth;
+						context.strokeRect(layers[l].strokes[i][0].x, layers[l].strokes[i][0].y, 1, 1);
+						context.closePath();
+					} else {
+						// if this pixel is part of a larger brush stroke
+						if (j > 0) {
+							// stroke a line segment from the previous pixel to the current pixel
+							context.beginPath();
+							context.lineWidth = layers[l].strokes[i][j].lineWidth;
+							context.strokeStyle = layers[l].strokes[i][j].strokeStyle;
+							context.moveTo(layers[l].strokes[i][j - 1].x, layers[l].strokes[i][j - 1].y);
+							context.lineTo(layers[l].strokes[i][j].x, layers[l].strokes[i][j].y);
+							context.closePath();
+							context.stroke();
+						}
+						
+					}
+					
 				}
-				
 			}
-			
 		}
+		
+		
 	}
+	
 }
 
 // addes a given brush stroke to the brush stroke history
 // used for when receiving a brush stroke from another user from the server
 function addStroke(arr) {
-	strokeNum++;
-	strokes.push(arr);
+	layers[currentLayerIdx].strokeNum++;
+	layers[currentLayerIdx].strokes.push(arr);
 
 	// clear the future stroke history
-	futureStrokes = [];
+	layers[currentLayerIdx].futureStrokes = [];
 }
 
 // undoes the current brush stroke
 function undoStroke() {
-	if (strokes.length > 0) {
+	if (layers[currentLayerIdx].strokes.length > 0) {
 		// moves the current brush stroke tot he list of future brush strokes
-		futureStrokes.push(strokes.splice(strokeNum, 1)[0]);
+		layers[currentLayerIdx].futureStrokes.push(layers[currentLayerIdx].strokes.splice(layers[currentLayerIdx].strokeNum, 1)[0]);
 		// revert the stroke index
-		strokeNum--;
+		layers[currentLayerIdx].strokeNum--;
 	}
 }
 
 // redoes the next future brush stroke
 function redoStroke() {
-	if (futureStrokes.length > 0) {
+	if (layers[currentLayerIdx].futureStrokes.length > 0) {
 		// moves the lastest future stroke to the back of the list of strokes
-		strokes.push(futureStrokes.splice(futureStrokes.length - 1, 1)[0]);
-		strokeNum++;
+		layers[currentLayerIdx].strokes.push(layers[currentLayerIdx].futureStrokes.splice(layers[currentLayerIdx].futureStrokes.length - 1, 1)[0]);
+		layers[currentLayerIdx].strokeNum++;
 	}
 }
 
 // deletes all brush stroke history
 function clearStrokes() {
-	strokeNum = 0;
-	strokes = [[]];
-	futureStrokes = [];
+	layers[currentLayerIdx].strokeNum = -1;
+	layers[currentLayerIdx].strokes = [];
+	layers[currentLayerIdx].futureStrokes = [];
 }
 
 // completely changes brush stroke history to reflect data recieved from server
 // used for when brush strokes go out of sync due to network latency
 function synchronize(data) {
-	strokes = data[0];
-	futureStrokes = data[1];
-	strokeNum = strokes.length - 1;
+	layers[currentLayerIdx].strokes = data[0];
+	layers[currentLayerIdx].futureStrokes = data[1];
+	layers[currentLayerIdx].strokeNum = strokes.length - 1;
 }
 
 // add an event listener to add a dot of paint

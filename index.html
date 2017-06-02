@@ -14,8 +14,11 @@
 <body style="background-color: #FCFCFC">
 	<div id="floatingBar" class="floating-banner">
 	<!-- Next scrolling button to advance tutorial -->
-		<div class="floatingbutton waves-effect waves-teal btn-flat" id="floatingbutton">
+		<div class="waves-effect waves-teal btn-flat" style="display: inline-block;" id="floatingbutton">
 			Next
+		</div>
+		<div class="waves-effect waves-red btn-flat" style="display: inline-block;" id="floatingbuttonstop">
+			Stop Tutorial
 		</div>
 	</div>
 	<header class="body">
@@ -166,7 +169,7 @@
 				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 30px;">
 						<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a class="btn-floating btn-large red"><i class="large material-icons">mode_edit</i></a>
 
-							<<div class = "holder normal-text" style= "width:150px">
+							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
 								<img style = "position:relative; LEFT: 20px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
@@ -258,12 +261,11 @@
 						</div>
 						<div class="menu-item">
 							<div style="padding-left: 10px">Help</div><div class="dropdown-list">
-								
-								<a href="tutorial.html" style="color: black;">
-									<div class="dropdown-item">
-										Run Tutorial...
-									</div>
-								</a>
+							
+								<div id="startTutorial" class="dropdown-item">
+									Run Tutorial...
+								</div>
+							
 							</div>
 						</div>
 					</div>
@@ -300,7 +302,7 @@
 								a
 								<i class="close material-icons">close</i>
 							</div>
-							<<div class = "holder normal-text" style= "width:150px">
+							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
 								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
@@ -316,7 +318,7 @@
 						<!-- Left Panel buttons (eventually collapsible and have all drawing options) -->
 						<div class="collapsible-button col-light" style="top: 0px" id="canvasButton1">
 							&lt;
-							<<div class = "holder normal-text" style= "width:150px">
+							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
 								<img style = "position:relative; LEFT: 20px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
@@ -365,7 +367,7 @@
 							</div>	
 						</div>
 						<div class="collapsible-button col-med" style="top: 30px" id="canvasButton2">
-							<<div class = "holder normal-text" style= "width:150px">
+							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
 								<img style = "position:relative; LEFT: 20px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 
@@ -382,7 +384,7 @@
 						</div>
 						<div class="collapsible-button col-dark" style="top: 60px" id="canvasButton3">
 							&lt;
-							<<div class = "holder normal-text" style= "width:150px">
+							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
 								<img style = "position:relative; LEFT: 20px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div> 

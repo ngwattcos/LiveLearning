@@ -154,3 +154,14 @@ function decToHex(numStr) {
 
 	return hexStr;
 }
+var tutorialButton = document.getElementById("startTutorial");
+nextButton.addEventListener("click", function() {
+	if (true) {
+		bottombar.style.display = "block";
+		console.log("atffret");
+	}
+});
+
+var bottombar = document.getElementById("floatingBar");
+
+var stopbat = document.getElementById("floatingbuttonstop");

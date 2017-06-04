@@ -339,7 +339,7 @@ wsServer.on("request", function(request) {
 					// console.log(Object.keys(classrooms[classroomid].students));
 					for (var i in classrooms[classroomid].students) {
 						classrooms[clients[id].classroomid].students[i].sendUTF(message.utf8Data);
-						
+						console.log("test");
 					}
 				}
 			}

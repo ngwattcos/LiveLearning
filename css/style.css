@@ -200,6 +200,27 @@ li.cus-dropdown {
 	top: 40px;
 }
 
+
+
+.collapsible-section {
+	height: 50px;
+	width: 100%;
+	padding-top: 1px;
+	padding-bottom: 1px;
+
+}
+
+.collapsible-panel {
+	background-color: #999999;
+	height: 100%;
+	width: 100%;
+	padding: 10px;
+}
+
+.collapsible-section:hover .collapsible-panel {
+	background-color: #3399CC;
+}
+
 .collapsible-button {
 	position: absolute;
 	display: inline-block;
@@ -477,6 +498,7 @@ li.cus-dropdown {
 }
 
 ::-webkit-scrollbar {
-	width: 0px;
-	background: transparent; /* make scrollbar transparent */
+	/*width: 50px;*/
+	background-color: black;
+	/*background: transparent;*/
 }

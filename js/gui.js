@@ -154,14 +154,27 @@ function decToHex(numStr) {
 
 	return hexStr;
 }
+
+var bottombar = document.getElementById("floatingBar");
+
+var stopbar = document.getElementById("floatingbuttonstop");
+
 var tutorialButton = document.getElementById("startTutorial");
-nextButton.addEventListener("click", function() {
-	if (true) {
+tutorialButton.addEventListener("click", function() {
+	if (bottombar.style.display = "none") {
 		bottombar.style.display = "block";
 		console.log("atffret");
 	}
 });
 
-var bottombar = document.getElementById("floatingBar");
+stopbar.addEventListener("click", function() {
+	if (bottombar.style.display = "block") {
+		bottombar.style.display = "none";
+		console.log("atffret");
+	}
+	for (var i =0; i<buttons.length;i++) {
+		buttons[i].style.display = "none";
+	}
 
-var stopbat = document.getElementById("floatingbuttonstop");
+	ButtonNumber=-1;	
+}); 

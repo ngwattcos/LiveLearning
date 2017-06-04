@@ -450,6 +450,11 @@ li.cus-dropdown {
 	width:200px;
 }
 
+#floatingBar {
+	display: none;
+
+}
+
 .box-shadow-centered {
 	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
 }

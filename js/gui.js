@@ -99,7 +99,7 @@ window.addEventListener("load", function() {
 
 
 var nextButton = document.getElementById("floatingbutton");
-/*nextButton.addEventListener("click", function() {
+nextButton.addEventListener("click", function() {
 	ButtonNumber++;
 
 	if (ButtonNumber >= buttons.length) {
@@ -110,7 +110,7 @@ var nextButton = document.getElementById("floatingbutton");
 	buttons[ButtonNumber].style.display = "block";
 
 	console.log(ButtonNumber);
-});*/
+});
 
 // alert("akjadkjfh");
 
@@ -154,3 +154,27 @@ function decToHex(numStr) {
 
 	return hexStr;
 }
+
+var bottombar = document.getElementById("floatingBar");
+
+var stopbar = document.getElementById("floatingbuttonstop");
+
+var tutorialButton = document.getElementById("startTutorial");
+tutorialButton.addEventListener("click", function() {
+	if (bottombar.style.display = "none") {
+		bottombar.style.display = "block";
+		console.log("atffret");
+	}
+});
+
+stopbar.addEventListener("click", function() {
+	if (bottombar.style.display = "block") {
+		bottombar.style.display = "none";
+		console.log("atffret");
+	}
+	for (var i =0; i<buttons.length;i++) {
+		buttons[i].style.display = "none";
+	}
+
+	ButtonNumber=-1;	
+}); 

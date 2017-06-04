@@ -31,7 +31,7 @@
 					<a href="#" class="brand-logo left">Live! Learning</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 
-					
+
 
 						<!-- Our Team -->
 						<li class="cus-dropdown">
@@ -39,8 +39,8 @@
 							<div class = "holder normal-text">
 							<!-- Arrow, textbox, and information for our team tab -->
 								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
-									<div class = "normal-text"> 
-										The page displays the members of the team behind the beauty that is this project. 
+									<div class = "normal-text">
+										The page displays the members of the team behind the beauty that is this project.
 									</div>
 							</div>
 
@@ -52,7 +52,7 @@
 							<div class = "holder normal-text">
 							<!-- Arrow, textbox, and information for Create a new Class tab -->
 								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
-									<div> 
+									<div>
 										In this page, the teacher can create an id for a new classroom.
 									</div>
 							</div>
@@ -60,7 +60,7 @@
 							<div class="cus-dropdown-div cus-dropdown-div-right">
 								<div class="cus-dropdown-content-small">
 									<div class="text-area">
-										
+
 										<span class="normal-text marginless">Choose a classroom id:</span>
 										<!-- Input ID -->
 										<input type="text" id="createClass">
@@ -75,15 +75,15 @@
 							<div class = "holder normal-text">
 							<!-- Arrow, textbox, and information for "Join a Class" tab -->
 								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
-									<div> 
-										In this page, students can type in the id of the calssroom their teachers created to join. 
+									<div>
+										In this page, students can type in the id of the calssroom their teachers created to join.
 									</div>
 							</div>
 							<!-- Dropdown for entering classroom id -->
 							<div class="cus-dropdown-div cus-dropdown-div-right">
 								<div class="cus-dropdown-content-small">
 									<div class="text-area">
-										
+
 										<span class="normal-text marginless">Enter an existing classroom id:</span>
 										<!-- Input Join Classroom ID -->
 										<input type="text" id="joinClass">
@@ -99,22 +99,22 @@
 							<!-- Arrow, textbox, and information for Leave Class tab -->
 
 								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
-									<div> 
-										Hovering over this tab, the students get a confirmation option of whether they want to leave the classroom or not. 
+									<div>
+										Hovering over this tab, the students get a confirmation option of whether they want to leave the classroom or not.
 									</div>
 							</div>
 							<div class="cus-dropdown-div cus-dropdown-div-wide cus-dropdown-div-right">
 								<div class="cus-dropdown-content">
 								<!-- Dropdown confirmation menu -->
 									<div class="text-area">
-										
+
 										<!-- Press "Yes" or "No" for leaving classroom -->
 										<span class="normal-text marginless">Are you sure?</span>
 										<div style="width: 330px; margin: 0 auto; left: 50%;">
 											<a class="waves-effect waves-teal btn-flat" id="leave">Yes</a>
 											<a class="waves-effect waves-red btn-flat" id="noleave">No</a>
 										</div>
-										
+
 									</div>
 								</div>
 							</div>
@@ -140,7 +140,7 @@
 											permissions:&#9;<span id="permissions"></span>
 										</div>
 									</div>
-								
+
 								</div>
 							</div>
 							</ul>
@@ -148,14 +148,14 @@
 					</ul>
 				</div>
 			</div>
-			
+
 		</nav>
 	</header>
 	<main>
 
 		<div class="container-90">
-			
-			
+
+
 
 			<!-- brush options control div -->
 			<div class="box-shadow-centered" style="margin-top: 60px;">
@@ -172,7 +172,7 @@
 							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
 								<img style = "position:relative; LEFT: 20px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
-									<div> 
+									<div>
 										Hovering over this button offers the option to clear the entire screen, sync the changes with the others, and undo or redo brush strokes.
 									</div>
 							</div>
@@ -180,9 +180,9 @@
 
 
 						</div>
-						
-						
-					
+
+
+
 					<ul>
 
 
@@ -261,19 +261,19 @@
 						</div>
 						<div class="menu-item">
 							<div style="padding-left: 10px">Help</div><div class="dropdown-list">
-							
+
 								<div id="startTutorial" class="dropdown-item">
 									Run Tutorial...
 								</div>
-							
+
 							</div>
 						</div>
 					</div>
 				</div>
-				
+
 				<!-- canvas group -->
 				<div style="margin: 0 auto; position: relative; width: auto;">
-					
+
 					<div style="width: 100%; margin: 0 auto; position: relative">
 					<!-- Contact Chips for students that have entered classroom -->
 						<canvas id="canvas" style="margin: 0 auto; position: relative; display: inline-block;" class=""></canvas>
@@ -305,12 +305,25 @@
 							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
 								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
-									<div> 
+									<div>
 										This is a list of the names of the students currently enrolled in the classroom.
 									</div>
 							</div>
 
 						</div>
+
+						<div style="display:inline-block;width:260px;height:230px;border:dotted;" >
+							<div id = "prevMessages" style = "width:260px;height:165px;border:dotted;">
+
+							</div>
+
+							<div style="width:260px;height:65px;border:dotted;text-align:center;">
+
+								<input id="chatBox" type='text' name='firstname' style = "width:240px;">
+
+							</div>
+
+							</div>
 
 					</div>
 
@@ -321,8 +334,8 @@
 							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
 								<img style = "position:relative; LEFT: 20px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
-									<div> 
-										Hovering over this button reveals a menu allowing the user to change both the red, blue and green values of the color of the bursh stroke, as well as the size of the stroke. 
+									<div>
+										Hovering over this button reveals a menu allowing the user to change both the red, blue and green values of the color of the bursh stroke, as well as the size of the stroke.
 									</div>
 							</div>
 							<div class="collapsible-div col-light" style="top: 0px" id="panel1">
@@ -364,21 +377,21 @@
 									</div>
 
 								</div>
-							</div>	
+							</div>
 						</div>
 						<div class="collapsible-button col-med" style="top: 30px" id="canvasButton2">
 							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
 								<img style = "position:relative; LEFT: 20px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
-									<div> 
-										Hovering over the button reveals a menu that allows the user to change the properties for each individual layer, such as name. 
+									<div>
+										Hovering over the button reveals a menu that allows the user to change the properties for each individual layer, such as name.
 									</div>
 							</div>
 							&lt;
 							<div class="collapsible-div col-med" style="top: -30px" id="panel1">
 								<div class="collapsible-content col-light2">
 									<div class="collapsible-heading col-med">Layer Options</div>
-									
+
 								</div>
 							</div>
 						</div>
@@ -387,39 +400,39 @@
 							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
 								<img style = "position:relative; LEFT: 20px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
-									<div> 
-										Hovering over this button reveals a menu that allows the user to change the properties of all the layers, such as the order or visibility. 
+									<div>
+										Hovering over this button reveals a menu that allows the user to change the properties of all the layers, such as the order or visibility.
 									</div>
 							</div>
 							<div class="collapsible-div col-dark" style="top: -60px" id="panel1">
 								<div class="collapsible-content col-med2">
 									<div class="collapsible-heading col-dark">Layers</div>
-									
+
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
-				
+
+
 			</div>
-			
+
 		</div>
 	</main>
 
-	
-	
-	
+
+
+
 
 	<footer class="page-footer">
 		<div class="container">
 			<div class="row">
-				
+
 					<h5 class="white-text" align="center">Live! Learning</h5>
 					<p class="grey-text text-lighten-4" align="center">Your Own Personalized Online Classroom</p>
 					<p class="grey-text text-lighten-4" align="center">Live Learning provides a way for instructors to interact with their students through our website. They will be able to engage their students in real-time through an online classroom. It follows the same learning principles of Khan Academy - placing a blank canvas in front of the student to minimize distractions - with the benefits of live, social learning. </p>
-				
-				
+
+
 			</div>
 		</div>
 		<div class="footer-copyright">
@@ -430,9 +443,9 @@
 		</div>
 	</footer>
 
-	
 
-	
+
+
 
 	<script type="text/javascript" src="js/gui.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>

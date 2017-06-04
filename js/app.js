@@ -25,7 +25,7 @@ canvas.addEventListener("mouseup", function() {
 		ws.send(JSON.stringify(message));
 		Materialize.toast("Brush stroke sent.", 1000);
 	}
-	
+
 });
 
 // send data to undo the last stroke to the server if undo button is clicked
@@ -133,10 +133,15 @@ ws.addEventListener("message", function(e) {
 
 			// redraw the canvas to reflect changes, just in case
 			redraw();
+
 		}
+
+		if (messageData.header == "chatMessage+") {
+				console.log("new chat message received");
+				document.getElementById("prevMessages").innerHTML += messageData.body;
 	}
 
-	
+
 });
 
 // returns whether the message is an instruction from the server
@@ -162,7 +167,7 @@ function saveInfo(messageData) {
 		document.getElementById(key).innerHTML = value;
 		document.getElementById(key + "_title").innerHTML = value;
 	}
-	
+
 	// "toast" a notification to the user that a property was changed.
 	Materialize.toast("Property '" + key + "' set to '" + value + "'", 1000);
 }
@@ -176,3 +181,15 @@ function rejectInfo(messageData) {
 
 	Materialize.toast("Rejected request to set '" + key + "' to '" + value + "'", 2000);
 }
+
+var chatBox = document.getElementById("chatBox");
+
+chatBox.addEventListener("keydown", function(e) { //something is wrong here
+	// console.log("akdfhakjhfdkj");
+	if (e.keyCode == 13) {
+		var newChatMsg = new Message("chatMessage+", client.id, chatBox.value);
+		ws.send(JSON.stringify(newChatMsg));
+		console.log("attempted to send: " + newChatMsg.body);
+	}
+
+});

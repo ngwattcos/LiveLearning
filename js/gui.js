@@ -17,7 +17,7 @@ chooseClassroomForm.addEventListener("keydown", function(e) {
 		// send a request to create a classrom of the name of the value of the input box
 		ws.send(JSON.stringify(new Message("request-create-class", client.id, chooseClassroomForm.value)));
 	}
-	
+
 });
 
 // store a reference to the input form to join a new classroom
@@ -33,7 +33,7 @@ joinClassroomForm.addEventListener("keydown", function(e) {
 		// send a request to join a classrom of the name of the value of the input box
 		ws.send(JSON.stringify(new Message("request-join-class", client.id, joinClassroomForm.value)));
 	}
-	
+
 });
 
 // get a reference to the "yes" leaving button
@@ -58,7 +58,7 @@ function openPanel() {
 }
 
 function closePanel() {
-	
+
 }
 
 
@@ -127,7 +127,7 @@ sliderR.addEventListener("mouseup", function() {
 sliderG.addEventListener("mouseup", function() {
 	channelG = decToHex(sliderG.value);
 });
-	
+
 sliderB.addEventListener("mouseup", function() {
 	channelB = decToHex(sliderB.value);
 });
@@ -176,5 +176,5 @@ stopbar.addEventListener("click", function() {
 		buttons[i].style.display = "none";
 	}
 
-	ButtonNumber=-1;	
-}); 
+	ButtonNumber=-1;
+});

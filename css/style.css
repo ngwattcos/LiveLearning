@@ -497,8 +497,14 @@ li.cus-dropdown {
 	cursor: crosshair;
 }
 
-::-webkit-scrollbar {
+::-webkit-scrollbar-thumb {
 	/*width: 50px;*/
 	background-color: black;
+	/*background: transparent;*/
+}
+
+::-webkit-scrollbar-track {
+	/*width: 50px;*/
+	/*background-color: transparent;*/
 	/*background: transparent;*/
 }

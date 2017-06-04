@@ -80,6 +80,16 @@ function addLayer(newLayer) {
 	// update gui
 }
 
+function createLayer(_name) {
+	var _prev = getLayerByName(_name);
+
+	if (_prev != null) {
+
+	} else {
+		return new Layer(_name);
+	}
+}
+
 function deleteLayer(_idx) {
 	layers.splice(_idx, 1);
 
@@ -94,7 +104,7 @@ function changeLayer(idx) {
 	}
 }
 
-addLayer(new Layer("Untitled"));
+addLayer(createLayer("Untitled"));
 
 function moveLayer(idx1, idx2) {
 	layers.move(idx1, idx2);

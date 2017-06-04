@@ -8,8 +8,8 @@
 var cv = $("canvas");
 
 // to modify it
-cv.css({"border-color": "#C1E0FF", 
-	"border-width":"1px", 
+cv.css({"border-color": "#C1E0FF",
+	"border-width":"1px",
 	"border-style":"solid",
 });
 
@@ -97,9 +97,9 @@ function redraw() {
 					context.closePath();
 					context.stroke();
 				}
-				
+
 			}
-			
+
 		}
 	}
 }
@@ -275,4 +275,3 @@ clear2.addEventListener("click", function() {
 
 	redraw();
 });
-

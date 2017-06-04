@@ -41,7 +41,7 @@ function isDirective(str) {
 	var alpha = /^[a-zA-Z-]+$/;
 	if (str.match(alpha)) {
 		return true;
-	}	
+	}
 	return false;
 }
 
@@ -124,7 +124,7 @@ function exitClassroomTeacher(id) {
 	if (classroomid && classrooms[classroomid]) {
 		delete classrooms[classroomid].teacher;
 	}
-	
+
 }
 
 // physically remove student from classroom
@@ -137,7 +137,7 @@ function exitClassroomStudent(id) {
 	if (classroomid && classrooms[classroomid]) {
 		delete classrooms[classroomid].students[id];
 	}
-	
+
 }
 // physically remove client from classroom
 function exitClassroomClient(id) {
@@ -182,7 +182,7 @@ function studentLeavesClassroom(id) {
 // ...teacher is unassigned from the class
 function teacherLeavesClassroom(id) {
 	var classroomid = clients[id].classroomid;
-	
+
 	// disconnect all students from this classroom
 	for (var studentid in classrooms[classroomid].students) {
 		// tell each student that he/she is being disconnected
@@ -191,7 +191,7 @@ function teacherLeavesClassroom(id) {
 
 	// also, delete the classroom
 	deleteClassroom(classroomid);
-	
+
 
 	// server-side
 	exitClassroomTeacher(id);
@@ -238,6 +238,7 @@ function clientLeavesClassroom(id) {
 // a unique "copy" of this functions is assigned to
 // each unique function
 wsServer.on("request", function(request) {
+
 	// store and accept the connection
 	var connection = request.accept("echo-protocol", request.origin);
 
@@ -275,7 +276,7 @@ wsServer.on("request", function(request) {
 					if (keyExists(messageData.body, classrooms)) {
 						// send back rejection
 						sendMessage(id, new Message("Rejected", "Mr. Server", "classroomid," + messageData.body));
-						
+
 					} else {
 						// server-side
 						// create a classroom, with unique classroom id, with teacher in it
@@ -313,7 +314,7 @@ wsServer.on("request", function(request) {
 							// already part of the class!
 							sendMessage(id, new Message("message", "server", "Can not join a class you are already in."));
 						}
-						
+
 					} else {
 						// send back rejection message; cannot join class that does not exist
 						sendMessage(id, new Message("Rejected", "server", "classroomid," + messageData.body));
@@ -325,7 +326,7 @@ wsServer.on("request", function(request) {
 					if (isAssignedClassroom(id)) {
 						// leave the classroom, whether student or teacher
 						userLeavesClassroom(id);
-						
+
 					} else {
 						// notify the client that it is impossible to leave a class he/she is not a part of
 						sendMessage(id, new Message("message", "server", "Can not leave a class you are not in."));
@@ -339,17 +340,17 @@ wsServer.on("request", function(request) {
 					// console.log(Object.keys(classrooms[classroomid].students));
 					for (var i in classrooms[classroomid].students) {
 						classrooms[clients[id].classroomid].students[i].sendUTF(message.utf8Data);
-						
+					  console.log('message received by server');
 					}
 				}
 			}
-		
+
 		// log that this was a binary message
 		} else if (message.type == "binary") {
 			console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
 			connection.sendBytes(message.binaryData);
 		}
-		
+
 	});
 
 	connection.on("close", function(reasonCode, description) {

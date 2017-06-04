@@ -1,5 +1,6 @@
 // local server ip
 var ws = new WebSocket("ws://127.0.0.1:1234", "echo-protocol");
+
 // ip address of Scott's laptop
 // var ws = new WebSocket("ws://192.168.1.3:1234", "echo-protocol");
 // ip address of lian's laptop
@@ -30,7 +31,7 @@ canvas.addEventListener("mouseup", function() {
 		ws.send(JSON.stringify(message));
 		Materialize.toast("Brush stroke sent.", 1000);
 	}
-	
+
 });
 
 // send data to undo the last stroke to the server if undo button is clicked
@@ -96,11 +97,8 @@ ws.addEventListener("message", function(e) {
 		// if the message is just a generic informative message
 		// "toast" the message to the user
 		Materialize.toast(messageData.body, 2000);
-	} 
-	else if (messageData.header == "chatMessage") {
-			console.log("new chat message received");
-			document.getElementById("prevMessages").innerHTML += messageData.body;
-	} else {
+	}
+	 else {
 		// if the message is a command from another user
 		if (messageData.sender != client.id) {
 			Materialize.toast("Command recieved.", 2000);
@@ -128,13 +126,19 @@ ws.addEventListener("message", function(e) {
 				synchronize(messageData.body);
 			}
 
+
 			// redraw the canvas to reflect changes, just in case
 			redraw();
+
+		}
+		if (messageData.header == "chatMessage+") {
+				console.log("new chat message received");
+				document.getElementById("prevMessages").innerHTML += messageData.body;
 		}
 
 	}
- 
-	
+
+
 });
 
 // returns whether the message is an instruction from the server
@@ -160,7 +164,7 @@ function saveInfo(messageData) {
 		document.getElementById(key).innerHTML = value;
 		document.getElementById(key + "_title").innerHTML = value;
 	}
-	
+
 	// "toast" a notification to the user that a property was changed.
 	Materialize.toast("Property '" + key + "' set to '" + value + "'", 1000);
 }
@@ -180,7 +184,7 @@ var chatBox = document.getElementById("chatBox");
 chatBox.addEventListener("keydown", function(e) { //something is wrong here
 	// console.log("akdfhakjhfdkj");
 	if (e.keyCode == 13) {
-		var newChatMsg = new Message("chatMessage", client.id, chatBox.value);
+		var newChatMsg = new Message("chatMessage+", client.id, chatBox.value);
 		ws.send(JSON.stringify(newChatMsg));
 		console.log("attempted to send: " + newChatMsg.body);
 	}

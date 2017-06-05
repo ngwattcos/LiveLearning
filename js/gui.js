@@ -17,7 +17,7 @@ chooseClassroomForm.addEventListener("keydown", function(e) {
 		// send a request to create a classrom of the name of the value of the input box
 		ws.send(JSON.stringify(new Message("request-create-class", client.id, chooseClassroomForm.value)));
 	}
-	
+
 });
 
 // store a reference to the input form to join a new classroom
@@ -33,7 +33,7 @@ joinClassroomForm.addEventListener("keydown", function(e) {
 		// send a request to join a classrom of the name of the value of the input box
 		ws.send(JSON.stringify(new Message("request-join-class", client.id, joinClassroomForm.value)));
 	}
-	
+
 });
 
 // get a reference to the "yes" leaving button
@@ -58,7 +58,7 @@ function openPanel() {
 }
 
 function closePanel() {
-	
+
 }
 
 
@@ -99,7 +99,7 @@ window.addEventListener("load", function() {
 
 
 var nextButton = document.getElementById("floatingbutton");
-/*nextButton.addEventListener("click", function() {
+nextButton.addEventListener("click", function() {
 	ButtonNumber++;
 
 	if (ButtonNumber >= buttons.length) {
@@ -110,7 +110,7 @@ var nextButton = document.getElementById("floatingbutton");
 	buttons[ButtonNumber].style.display = "block";
 
 	console.log(ButtonNumber);
-});*/
+});
 
 // alert("akjadkjfh");
 
@@ -127,7 +127,7 @@ sliderR.addEventListener("mouseup", function() {
 sliderG.addEventListener("mouseup", function() {
 	channelG = decToHex(sliderG.value);
 });
-	
+
 sliderB.addEventListener("mouseup", function() {
 	channelB = decToHex(sliderB.value);
 });
@@ -154,3 +154,30 @@ function decToHex(numStr) {
 
 	return hexStr;
 }
+
+var bottombar = document.getElementById("floatingBar");
+
+var stopbar = document.getElementById("floatingbuttonstop");
+
+var tutorialButton = document.getElementById("startTutorial");
+tutorialButton.addEventListener("click", function() {
+	if (bottombar.style.display = "none") {
+		bottombar.style.display = "block";
+		console.log("atffret");
+	}
+});
+
+stopbar.addEventListener("click", function() {
+	if (bottombar.style.display = "block") {
+		bottombar.style.display = "none";
+		console.log("atffret");
+	}
+	for (var i = 0; i < buttons.length; i++) {
+		buttons[i].style.display = "none";
+	}
+
+	ButtonNumber =- 1;
+});
+
+var layerContainer = document.getElementById("layerContainer");
+

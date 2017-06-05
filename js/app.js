@@ -20,31 +20,41 @@ var canvas = document.getElementById("canvas");
 // send the latest stroke to the server if the mouse has been released form the curser
 canvas.addEventListener("mouseup", function() {
 	if (client.id != undefined) {
-		var message = new Message("stroke+", client.id, strokes[strokeNum]);
-
-		var thisStroke = {
-			name: "shared0",
-			stroke: strokes[strokeNum]
-		};
+		var message = new Message("stroke+", client.id, [layers[currentLayerIdx].name, layers[currentLayerIdx].strokes[layers[currentLayerIdx].strokeNum]]);
 
 		ws.send(JSON.stringify(message));
 		Materialize.toast("Brush stroke sent.", 1000);
 	}
-	
+
 });
 
 // send data to undo the last stroke to the server if undo button is clicked
 undo.addEventListener("click", function() {
 	if (client.id != undefined) {
-		var message = new Message(".", client.id, "");
+		var message = new Message(".", client.id, [layers[currentLayerIdx].name]);
 		ws.send(JSON.stringify(message));
 	}
 });
 
+undo2.addEventListener("click", function() {
+	if (client.id != undefined) {
+		var message = new Message(".", client.id, [layers[currentLayerIdx].name]);
+		ws.send(JSON.stringify(message));
+	}
+});
+
+
 // send data to redo the last undone stroke to the server if redo button is clicked
 redo.addEventListener("click", function() {
 	if (client.id != undefined) {
-		var message = new Message("+", client.id, "");
+		var message = new Message("+", client.id, [layers[currentLayerIdx].name]);
+		ws.send(JSON.stringify(message));
+	}
+});
+
+redo2.addEventListener("click", function() {
+	if (client.id != undefined) {
+		var message = new Message("+", client.id, [layers[currentLayerIdx].name]);
 		ws.send(JSON.stringify(message));
 	}
 });
@@ -58,23 +68,20 @@ clear.addEventListener("click", function() {
 });
 
 // get a reference to the synchronize button
-var synchronize = document.getElementById("synchronize");
+var synchronize1 = document.getElementById("synchronize");
 var synchronize2 = document.getElementById("synchronize2");
 
 // if clicked, send data to the server to synchronize screens
-synchronize.addEventListener("click", function() {
-	if (client.id != undefined) {
-		var message = new Message("++", client.id, [strokes, futureStrokes]);
-		ws.send(JSON.stringify(message));
-	}
-});
+synchronize1.addEventListener("click", sendSynchronize);
 
-synchronize2.addEventListener("click", function() {
+synchronize2.addEventListener("click", sendSynchronize);
+
+function sendSynchronize() {
 	if (client.id != undefined) {
-		var message = new Message("++", client.id, [strokes, futureStrokes]);
+		var message = new Message("++", client.id, [layers[currentLayerIdx].name, layers[currentLayerIdx].strokes, layers[currentLayerIdx].futureStrokes]);
 		ws.send(JSON.stringify(message));
 	}
-});
+}
 
 
 // listen to data coming from server
@@ -109,11 +116,11 @@ ws.addEventListener("message", function(e) {
 			} else if (messageData.header == ".") {
 				// if the command was to undo a stroke
 				// undo the stroke
-				undoStroke();
+				undoStrokeUpdate(messageData.body);
 			} else if (messageData.header == "+") {
 				// if the command was to redo the stroke
 				// redo the stroke
-				redoStroke();
+				redoStrokeUpdate(messageData.body);
 			} else if (messageData.header == "..") {
 				// if the command was to clear the canvas
 				// clear the brush history
@@ -126,10 +133,22 @@ ws.addEventListener("message", function(e) {
 
 			// redraw the canvas to reflect changes, just in case
 			redraw();
+
+		}
+
+		if (messageData.header == "chatMessage+") {
+			console.log("new chat message received");
+			var _para = document.createElement("p");
+			var _node = document.createTextNode(messageData.body.speaker + ": " + messageData.body.data);
+			_para.appendChild(_node);
+
+			document.getElementById("prevMessages").appendChild(_para);
+
+
 		}
 	}
 
-	
+
 });
 
 // returns whether the message is an instruction from the server
@@ -155,7 +174,7 @@ function saveInfo(messageData) {
 		document.getElementById(key).innerHTML = value;
 		document.getElementById(key + "_title").innerHTML = value;
 	}
-	
+
 	// "toast" a notification to the user that a property was changed.
 	Materialize.toast("Property '" + key + "' set to '" + value + "'", 1000);
 }
@@ -169,3 +188,35 @@ function rejectInfo(messageData) {
 
 	Materialize.toast("Rejected request to set '" + key + "' to '" + value + "'", 2000);
 }
+
+var chatBox = document.getElementById("chatBox");
+
+chatBox.addEventListener("keydown", function(e) { //something is wrong here
+	// console.log("akdfhakjhfdkj");
+	if (e.keyCode == 13) {
+		var newChatMsg;
+
+		if (client && client["permissions"] == "teacher") {
+			newChatMsg = new Message("chatMessage+", client.id, {
+				speaker: "teacher",
+				data: chatBox.value
+			});
+		} else if (client && client["permissions"] == "student") {
+			newChatMsg = new Message("chatMessage+", client.id, {
+				speaker: "student " + client["id"],
+				data: chatBox.value
+			});
+		} else {
+			newChatMsg = new Message("chatMessage+", client.id, {
+				speaker: "client " + client["id"],
+				data: chatBox.value
+			});
+		}
+		
+		ws.send(JSON.stringify(newChatMsg));
+		console.log("attempted to send: " + newChatMsg.body);
+
+		chatBox.value = "";
+	}
+
+});

@@ -184,13 +184,16 @@ var layerContainer = document.getElementById("layerContainer");
 var saveAs = document.getElementById("saveAs");
 var open = document.getElementById("open");
 
-// saveAs.addEventListener("click", function() {
-// 	var a = document.createElement("a");
-// 	var file = new Blob([JSON.stringify(layers)], {type: "text/plain"});
-// 	a.href = URL.createObjectURL(file);
-// 	a.download = "layers.txt";
-// 	a.click();
-// });
+saveAs.addEventListener("click", function() {
+	openModal.style.display = "none";
+	saveModal.style.display = "block";
+});
+
+open.addEventListener("click", function() {
+	openModal.style.display = "block";
+	saveModal.style.display = "none";
+});
+
 
 // open.addEventListener("click", function() {
 // 	var a = document.createElement("a");
@@ -199,3 +202,29 @@ var open = document.getElementById("open");
 // 	a.download = "layers.txt";
 // 	a.click();
 // });
+
+var saveModal = document.getElementById("saveModal");
+var openModal = document.getElementById("openModal");
+var cancelSaveButton = document.getElementById("cancelSaveButton");
+var saveButton = document.getElementById("saveButton");
+var saveFileNameInput = document.getElementById("saveFileName");
+var cancelOpenButton = document.getElementById("cancelOpenButton");
+var openButton = document.getElementById("openButton");
+
+cancelSaveButton.addEventListener("click", function() {
+	saveModal.style.display = "none";
+});
+
+cancelOpenButton.addEventListener("click", function() {
+	openModal.style.display = "none";
+});
+
+saveButton.addEventListener("click", function() {
+	var a = document.createElement("a");
+	var file = new Blob([JSON.stringify(layers)], {type: "text/plain"});
+	a.href = URL.createObjectURL(file);
+	a.download = saveFileNameInput.value;
+	a.click();
+
+	saveModal.style.display = "none";
+});

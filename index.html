@@ -23,18 +23,33 @@
 	</div>
 
 	<!-- modal boxes -->
-	<div class="cus-modal">
+	<div class="cus-modal" id="saveModal">
 		<div class="cus-modal-header normal-text large-text">
 			Save As
 
 		</div>
 		<div class="cus-modal-body">
-			<input type="text" value=".txt" id="" style="width: 50%; margin-left: 25%; margin-right: 25%; margin-top: 25%; margin-bottom: 25%;">
+			<input type="text" value=".txt" id="saveFileName" style="width: 50%; margin-left: 25%; margin-right: 25%; margin-top: 25%; margin-bottom: 25%;">
 			
 		</div>
-		<div class="cus-modal-bottom">
-			<a class="waves-effect waves-teal" id="">Cancel</a>
-			<a class="waves-effect waves-teal" id="">Save</a>
+		<div class="cus-modal-bottom large-text">
+			<div class="waves-effect waves-light btn" id="cancelSaveButton">Cancel</div>
+			<div class="waves-effect waves-light btn" id="saveButton">Save</div>
+		</div>
+	</div>
+
+	<div class="cus-modal" id="openModal">
+		<div class="cus-modal-header normal-text large-text">
+			Open File...
+
+		</div>
+		<div class="cus-modal-body">
+			Choose a file to open...
+			
+		</div>
+		<div class="cus-modal-bottom large-text">
+			<div class="waves-effect waves-light btn" id="cancelOpenButton">Cancel</div>
+			<div class="waves-effect waves-light btn" id="openButton">Open file...</div>
 		</div>
 	</div>
 
@@ -239,7 +254,7 @@
 						<div class="menu-item">
 							<div style="padding-left: 10px">File</div>
 							<div class="dropdown-list">
-								<a><div class="dropdown-item" id="saveAs">
+								<div class="dropdown-item" id="saveAs">
 									Save As...
 								</div>
 								<div class="dropdown-item" id="open">

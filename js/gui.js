@@ -112,7 +112,6 @@ nextButton.addEventListener("click", function() {
 	console.log(ButtonNumber);
 });
 
-// alert("akjadkjfh");
 
 
 var sliderR = document.getElementById("r-slider");
@@ -156,25 +155,35 @@ function decToHex(numStr) {
 }
 
 var bottombar = document.getElementById("floatingBar");
+// bar containing Next and Stop Tutorial buttons when Run Tutorial button is clicked
 
 var stopbar = document.getElementById("floatingbuttonstop");
+//stop button in bottom bar 
 
 var tutorialButton = document.getElementById("startTutorial");
+// Run tutorial button 
+
 tutorialButton.addEventListener("click", function() {
 	if (bottombar.style.display = "none") {
 		bottombar.style.display = "block";
 		console.log("atffret");
 	}
+	//if the bottom bar is not displayed and the Run Tutorial button is pressed, it will appear 
+
 });
 
 stopbar.addEventListener("click", function() {
 	if (bottombar.style.display = "block") {
 		bottombar.style.display = "none";
-		console.log("atffret");
 	}
-	for (var i =0; i<buttons.length;i++) {
+	//if the stop tutorial button is pressed, the bottom bar will hide 
+	for (var i = 0; i < buttons.length; i++) {
 		buttons[i].style.display = "none";
 	}
 
-	ButtonNumber=-1;
+	ButtonNumber =- 1;
+	//resets tutorial to first window 
 });
+
+var layerContainer = document.getElementById("layerContainer");
+

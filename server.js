@@ -221,6 +221,7 @@ function userLeavesClassroom(id) {
 	} else if (isStudent(id)) {
 		studentLeavesClassroom(id);
 	}
+
 }
 
 // combined actions of a client leaving a classroom
@@ -286,6 +287,7 @@ wsServer.on("request", function(request) {
 
 						// put the teacher into the classroom
 						admitTeacherToClassroom(id, messageData.body);
+						admitClientToClassroom(id, messageData.body);
 
 						// client-side
 						// tell this to the teacher/founder!
@@ -303,6 +305,7 @@ wsServer.on("request", function(request) {
 							joinClassroom(id, messageData.body, "student");
 							// place the student into the classroom
 							admitStudentToClassroom(id, messageData.body)
+							admitClientToClassroom(id, messageData.body);
 
 							// client-side
 							// tell the student that he/she is admitted to classroom
@@ -336,9 +339,15 @@ wsServer.on("request", function(request) {
 				// forwarded/broadcasted to all clients in the sender's classroom
 				if (isAssignedClassroom(id)) {
 					var classroomid = clients[id].classroomid;
+<<<<<<< HEAD
 					// 
 					for (var i in classrooms[classroomid].students) {
 						classrooms[clients[id].classroomid].students[i].sendUTF(message.utf8Data);
+=======
+					// console.log(Object.keys(classrooms[classroomid].students));
+					for (var i in classrooms[classroomid].clients) {
+						classrooms[classroomid].clients[i].sendUTF(message.utf8Data);
+>>>>>>> refs/remotes/origin/master
 						
 					}
 				}

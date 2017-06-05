@@ -131,7 +131,7 @@ ws.addEventListener("message", function(e) {
 
 		if (messageData.header == "chatMessage+") {
 				console.log("new chat message received");
-				document.getElementById("prevMessages").innerHTML += messageData.body;
+				document.getElementById("prevMessages").innerHTML += messageData.body;}
 	}
 
 

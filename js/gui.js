@@ -172,9 +172,12 @@ stopbar.addEventListener("click", function() {
 		bottombar.style.display = "none";
 		console.log("atffret");
 	}
-	for (var i =0; i<buttons.length;i++) {
+	for (var i = 0; i < buttons.length; i++) {
 		buttons[i].style.display = "none";
 	}
 
-	ButtonNumber=-1;
+	ButtonNumber =- 1;
 });
+
+var layerContainer = document.getElementById("layerContainer");
+

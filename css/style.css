@@ -200,6 +200,27 @@ li.cus-dropdown {
 	top: 40px;
 }
 
+
+
+.collapsible-section {
+	height: 40px;
+	width: 100%;
+	padding-top: 1px;
+	padding-bottom: 1px;
+
+}
+
+.collapsible-panel {
+	background-color: #999999;
+	height: 100%;
+	width: 100%;
+	padding: 10px;
+}
+
+.collapsible-section:hover .collapsible-panel {
+	background-color: #3399CC;
+}
+
 .collapsible-button {
 	position: absolute;
 	display: inline-block;
@@ -236,6 +257,7 @@ li.cus-dropdown {
 	width: 0px;
 	height: 480px;
 	visibility: hidden;
+	overflow: scroll;
 }
 
 
@@ -473,4 +495,29 @@ li.cus-dropdown {
 
 #canvas:hover {
 	cursor: crosshair;
+}
+
+.cus-message-box {
+	right: 0px;
+	height: 100%;
+	position: absolute;
+	display: inline-block;
+	padding: 20px;
+	width: 21%;
+}
+
+.cus-message-box:hover {
+	width: 300px;
+}
+
+::-webkit-scrollbar-thumb {
+	/*width: 50px;*/
+	background-color: black;
+	/*background: transparent;*/
+}
+
+::-webkit-scrollbar-track {
+	/*width: 50px;*/
+	/*background-color: transparent;*/
+	/*background: transparent;*/
 }

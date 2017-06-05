@@ -249,7 +249,7 @@ openButton.addEventListener("change", function(evt) {
 
 	reader.onload = (function(theFile) {
 
-	})
+	});
 	// var jsonData = JSON.parse(file);
 	it = file;
 });

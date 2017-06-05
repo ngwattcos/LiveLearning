@@ -192,7 +192,7 @@ function rejectInfo(messageData) {
 var chatBox = document.getElementById("chatBox");
 
 chatBox.addEventListener("keydown", function(e) { //
-	//if the enter button is pressed, create a new message with entered information and send to server
+	//if the enter button is pressed, create a new message with entered information and client information and send to server
 	if (e.keyCode == 13) {
 		var newChatMsg;
 

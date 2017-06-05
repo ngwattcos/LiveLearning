@@ -339,15 +339,15 @@ wsServer.on("request", function(request) {
 				// forwarded/broadcasted to all clients in the sender's classroom
 				if (isAssignedClassroom(id)) {
 					var classroomid = clients[id].classroomid;
-<<<<<<< HEAD
+
 					// 
 					for (var i in classrooms[classroomid].students) {
 						classrooms[clients[id].classroomid].students[i].sendUTF(message.utf8Data);
-=======
-					// console.log(Object.keys(classrooms[classroomid].students));
+
+					// send message to all clients in classroom;
 					for (var i in classrooms[classroomid].clients) {
 						classrooms[classroomid].clients[i].sendUTF(message.utf8Data);
->>>>>>> refs/remotes/origin/master
+
 						
 					}
 				}

@@ -1,4 +1,4 @@
-* Tooltip container */
+/* Tooltip container */
 
 html {
 	font-family: "Roboto";
@@ -520,4 +520,39 @@ li.cus-dropdown {
 	/*width: 50px;*/
 	/*background-color: transparent;*/
 	/*background: transparent;*/
+}
+.cus-modal {
+	height: 50%;
+	width: 50%;
+	background-color: white;
+	box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
+	z-index: 10000;
+	left: 25%;
+	right: 25%;
+	top: 25%;
+	bottom: 25%;
+	position: absolute;
+}
+
+.cus-modal .cus-modal-header {
+	height: 10%;
+	border-bottom: 1px solid #CCCCCC;
+	padding: 20px;
+	text-align: center;
+}
+
+.cus-modal .cus-modal-body {
+	width: 100%;
+	height: 80%;
+	padding: 30px;
+	left: 25%;
+	right: 25%;
+}
+
+.cus-modal .cus-modal-bottom {
+	height: 10%;
+	border-bottom: 1px solid #CCCCCC;
+	padding: 20px;
+	text-align: center;
+	background-color: red;
 }

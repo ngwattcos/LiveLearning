@@ -21,6 +21,23 @@
 			Stop Tutorial
 		</div>
 	</div>
+
+	<!-- modal boxes -->
+	<div class="cus-modal">
+		<div class="cus-modal-header normal-text large-text">
+			Save As
+
+		</div>
+		<div class="cus-modal-body">
+			<input type="text" value=".txt" id="" style="width: 50%; margin-left: 25%; margin-right: 25%; margin-top: 25%; margin-bottom: 25%;">
+			
+		</div>
+		<div class="cus-modal-bottom">
+			<a class="waves-effect waves-teal" id="">Cancel</a>
+			<a class="waves-effect waves-teal" id="">Save</a>
+		</div>
+	</div>
+
 	<header class="body">
 		<!-- Pink header (Tutorial, Our Team, etc) contains the navigation bar -->
 		<nav class="top-nav">
@@ -222,10 +239,10 @@
 						<div class="menu-item">
 							<div style="padding-left: 10px">File</div>
 							<div class="dropdown-list">
-								<div class="dropdown-item">
+								<a><div class="dropdown-item" id="saveAs">
 									Save As...
 								</div>
-								<div class="dropdown-item">
+								<div class="dropdown-item" id="open">
 									Open...
 								</div>
 								<div class="dropdown-item">
@@ -271,6 +288,8 @@
 						</div>
 					</div>
 				</div>
+
+				
 
 				<!-- main content group -->
 				<div style="margin: 0 auto; position: relative; width: auto;">

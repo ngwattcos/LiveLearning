@@ -181,3 +181,21 @@ stopbar.addEventListener("click", function() {
 
 var layerContainer = document.getElementById("layerContainer");
 
+var saveAs = document.getElementById("saveAs");
+var open = document.getElementById("open");
+
+// saveAs.addEventListener("click", function() {
+// 	var a = document.createElement("a");
+// 	var file = new Blob([JSON.stringify(layers)], {type: "text/plain"});
+// 	a.href = URL.createObjectURL(file);
+// 	a.download = "layers.txt";
+// 	a.click();
+// });
+
+// open.addEventListener("click", function() {
+// 	var a = document.createElement("a");
+// 	var file = new Blob([JSON.stringify(layers)], {type: "text/plain"});
+// 	a.href = URL.createObjectURL(file);
+// 	a.download = "layers.txt";
+// 	a.click();
+// });

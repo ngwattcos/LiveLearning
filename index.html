@@ -21,6 +21,38 @@
 			Stop Tutorial
 		</div>
 	</div>
+
+	<!-- modal boxes -->
+	<div class="cus-modal" id="saveModal">
+		<div class="cus-modal-header normal-text large-text">
+			Save As
+
+		</div>
+		<div class="cus-modal-body">
+			<input type="text" value=".txt" id="saveFileName" style="width: 50%; margin-left: 25%; margin-right: 25%; margin-top: 25%; margin-bottom: 25%;">
+			
+		</div>
+		<div class="cus-modal-bottom large-text">
+			<div class="waves-effect waves-light btn" id="cancelSaveButton">Cancel</div>
+			<div class="waves-effect waves-light btn" id="saveButton">Save</div>
+		</div>
+	</div>
+
+	<div class="cus-modal" id="openModal">
+		<div class="cus-modal-header normal-text large-text">
+			Open File...
+
+		</div>
+		<div class="cus-modal-body">
+			Choose a file to open...
+			
+		</div>
+		<div class="cus-modal-bottom large-text">
+			<div class="waves-effect waves-light btn" id="cancelOpenButton">Cancel</div>
+			<input type="file" class="waves-effect waves-light" id="openButton">
+		</div>
+	</div>
+
 	<header class="body">
 		<!-- Pink header (Tutorial, Our Team, etc) contains the navigation bar -->
 		<nav class="top-nav">
@@ -222,10 +254,10 @@
 						<div class="menu-item">
 							<div style="padding-left: 10px">File</div>
 							<div class="dropdown-list">
-								<div class="dropdown-item">
+								<div class="dropdown-item" id="saveAs">
 									Save As...
 								</div>
-								<div class="dropdown-item">
+								<div class="dropdown-item" id="open">
 									Open...
 								</div>
 								<a href="team.html" style="color: black;">
@@ -268,6 +300,8 @@
 						</div>
 					</div>
 				</div>
+
+				
 
 				<!-- main content group -->
 				<div style="margin: 0 auto; position: relative; width: auto;">

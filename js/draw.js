@@ -105,6 +105,8 @@ function changeLayer(idx) {
 }
 
 addLayer(createLayer("Untitled"));
+addLayer(createLayer("Untitled1"));
+addLayer(createLayer("Untitled2"));
 
 function moveLayer(idx1, idx2) {
 	layers.move(idx1, idx2);

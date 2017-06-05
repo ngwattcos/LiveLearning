@@ -234,3 +234,22 @@ saveButton.addEventListener("click", function() {
 
 	saveModal.style.display = "none";
 });
+
+openButton.addEventListener("click", function() {
+	openModal.style.display = "none";
+});
+
+var it = {};
+
+openButton.addEventListener("change", function(evt) {
+	var files = evt.target.files;
+	var f = files[0];
+
+	var reader = new FileReader();
+
+	reader.onload = (function(theFile) {
+
+	})
+	// var jsonData = JSON.parse(file);
+	it = file;
+});

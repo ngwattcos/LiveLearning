@@ -215,6 +215,8 @@ chatBox.addEventListener("keydown", function(e) { //something is wrong here
 		
 		ws.send(JSON.stringify(newChatMsg));
 		console.log("attempted to send: " + newChatMsg.body);
+
+		chatBox.value = "";
 	}
 
 });

@@ -138,7 +138,13 @@ ws.addEventListener("message", function(e) {
 
 		if (messageData.header == "chatMessage+") {
 			console.log("new chat message received");
-			document.getElementById("prevMessages").innerHTML += messageData.body;
+			var _para = document.createElement("p");
+			var _node = document.createTextNode(messageData.body.speaker + ": " + messageData.body.data);
+			_para.appendChild(_node);
+
+			document.getElementById("prevMessages").appendChild(_para);
+
+
 		}
 	}
 
@@ -188,7 +194,25 @@ var chatBox = document.getElementById("chatBox");
 chatBox.addEventListener("keydown", function(e) { //something is wrong here
 	// console.log("akdfhakjhfdkj");
 	if (e.keyCode == 13) {
-		var newChatMsg = new Message("chatMessage+", client.id, chatBox.value);
+		var newChatMsg;
+
+		if (client && client["permissions"] == "teacher") {
+			newChatMsg = new Message("chatMessage+", client.id, {
+				speaker: "teacher",
+				data: chatBox.value
+			});
+		} else if (client && client["permissions"] == "student") {
+			newChatMsg = new Message("chatMessage+", client.id, {
+				speaker: "student " + client["id"],
+				data: chatBox.value
+			});
+		} else {
+			newChatMsg = new Message("chatMessage+", client.id, {
+				speaker: "client " + client["id"],
+				data: chatBox.value
+			});
+		}
+		
 		ws.send(JSON.stringify(newChatMsg));
 		console.log("attempted to send: " + newChatMsg.body);
 	}

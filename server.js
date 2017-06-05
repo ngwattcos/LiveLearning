@@ -22,7 +22,7 @@ server.listen(1234, function() {
 var WebSocketServer = require("websocket").server;
 
 // create a Web Socket Server using the HTTP server above
-var wsServer = new WebSocketServer({
+wsServer = new WebSocketServer({
 	httpServer: server
 });
 
@@ -336,10 +336,10 @@ wsServer.on("request", function(request) {
 				// forwarded/broadcasted to all clients in the sender's classroom
 				if (isAssignedClassroom(id)) {
 					var classroomid = clients[id].classroomid;
-					// console.log(Object.keys(classrooms[classroomid].students));
+					// 
 					for (var i in classrooms[classroomid].students) {
 						classrooms[clients[id].classroomid].students[i].sendUTF(message.utf8Data);
-						console.log("test");
+						
 					}
 				}
 			}

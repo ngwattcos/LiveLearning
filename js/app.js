@@ -128,7 +128,7 @@ ws.addEventListener("message", function(e) {
 			redraw();
 
 		}
-
+		//if the message is a chatmessage display it in chatbox
 		if (messageData.header == "chatMessage+") {
 				console.log("new chat message received");
 				document.getElementById("prevMessages").innerHTML += messageData.body;
@@ -177,8 +177,8 @@ function rejectInfo(messageData) {
 
 var chatBox = document.getElementById("chatBox");
 
-chatBox.addEventListener("keydown", function(e) { //something is wrong here
-	// console.log("akdfhakjhfdkj");
+chatBox.addEventListener("keydown", function(e) { //
+	//if the enter button is pressed, create a new message with entered information and send to server
 	if (e.keyCode == 13) {
 		var newChatMsg = new Message("chatMessage+", client.id, chatBox.value);
 		ws.send(JSON.stringify(newChatMsg));

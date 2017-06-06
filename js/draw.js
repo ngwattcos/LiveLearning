@@ -287,7 +287,8 @@ function synchronize(data) {
 		// update this new layer with brush data
 		layers[currentLayerIdx].strokes = data[1];
 		layers[currentLayerIdx].futureStrokes = data[1];
-		layers[currentLayerIdx].strokeNum = strokes.length - 1;
+		// the current stroke is the last stroke
+		layers[currentLayerIdx].strokeNum = layers[currentLayerIdx].strokes.length - 1;
 	// if the layer does not exist on the student's computer
 	} else {
 		console.log("layer to be synchronized does not exist");

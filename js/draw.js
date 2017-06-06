@@ -37,28 +37,21 @@ function findPos(obj) {
 	return undefined;
 }
 
-// boolean that stores whether mouse is pressed
+// boolean that stores whether the brush should be painting
 var paint = false;
 
-// stores the brush stroke histories of each level
-// is not implemented yet
+// stores the list of layers representing the screen
 var layers = [];
+
+// stores the current layer in question
 var currentLayer;
 var currentLayerIdx;
 
-/* How a "layer" object literal will look like
-{
-	id: "shared.0" or "layer.0"
-	strokes: [].
-	strokeNum: 5,
-	futureStrokes: []
-}
 
-*/
-
-//https://stackoverflow.com/questions/5306680/move-an-array-element-from-one-array-position-to-another
-
-Array.prototype.move = function (old_index, new_index) {
+// Shortcut prototype method for moving an element from
+// one index to another. Source:
+// https://stackoverflow.com/questions/5306680/move-an-array-element-from-one-array-position-to-another
+Array.prototype.move = function(old_index, new_index) {
 	if (new_index >= this.length) {
 		var k = new_index - this.length;
 		while ((k--) + 1) {
@@ -69,17 +62,20 @@ Array.prototype.move = function (old_index, new_index) {
 	return this; // for testing purposes
 };
 
+// adds a new layer as an argument to the list of Layers
 function addLayer(newLayer) {
 	layers.push(newLayer);
 
+	// update current layer index to this new layer index
 	currentLayerIdx = layers.length - 1;
+	// update current layer to this new layer
 	currentLayer = layers[currentLayerIdx];
 
-	console.log("created layer with name:" + newLayer.name);
-
-	// update gui
+	// update cnavs
+	redraw();
 }
 
+// creates a new layer with specified name
 function createLayer(_name) {
 	var _prev = getLayerByName(_name);
 
@@ -90,12 +86,15 @@ function createLayer(_name) {
 	}
 }
 
+// deletes a layer at index
 function deleteLayer(_idx) {
 	layers.splice(_idx, 1);
 
-	// update gui
+	// update canvas
+	redraw();
 }
 
+// change the layer to a specified layer index
 function changeLayer(idx) {
 	// attempt to change layer
 	if (idx >= 0 && idx <= layers.length - 1) {
@@ -104,20 +103,26 @@ function changeLayer(idx) {
 	}
 }
 
+// add a few default initial layers
 addLayer(createLayer("Untitled"));
 addLayer(createLayer("Untitled1"));
 addLayer(createLayer("Untitled2"));
 
+// shifts a layer between two indices
 function moveLayer(idx1, idx2) {
 	layers.move(idx1, idx2);
 }
 
+// gets layer with a specified name
 function getLayerByName(_name) {
 	return layers.find(function(element) {
 		return element.name === _name;
 	});
 }
 
+// class representing a Layer object
+// that contains brush history
+// and a name
 function Layer(_name, _strokes) {
 	this.name = _name;
 	this.strokeNum;
@@ -127,23 +132,10 @@ function Layer(_name, _strokes) {
 	this.visible = true;
 }
 
-// layers.add(new Layer())
-
-
-// stores the index of the current stroke
-// var strokeNum = -1;
-
-// stores the past brush stroke history
-
-// stores the future brush stroke history
-var futureStrokes = [];
 
 // addes a "dot" of paint to the current brush stroke
 function addClick(x, y, dragging) {
 	var colorStr = "#" + channelR + "" + channelG + "" + channelB;
-	console.log(colorStr);
-	// console.log(sliderSize.value + ", " + channelR + "" + channelG + "" + channelB);
-	// strokes[strokeNum].push({x: x, y: y, lineWidth: sliderSize.value, strokeStyle: colorStr});
 	layers[currentLayerIdx].strokes[layers[currentLayerIdx].strokeNum].push({x: x, y: y, lineWidth: sliderSize.value, strokeStyle: colorStr});
 	// console.log(context.strokeStyle);
 }
@@ -180,22 +172,19 @@ function redraw() {
 						}
 						
 					}
-					
 				}
 			}
-		}
-		
-		
+		}	
 	}
-	
 }
 
+
 // addes a given brush stroke to the brush stroke history
-// used for when receiving a brush stroke from another user from the server
+// used for when receiving a brush stroke from another user from a teacher
 function addStroke(_data) {
 	if (_data.length > 0) {
 
-
+		// get the layer to be modified
 		var _layer = getLayerByName(_data[0]);
 
 		if (_layer != null) {
@@ -206,8 +195,6 @@ function addStroke(_data) {
 		} else {
 			
 		}
-
-		
 
 		// clear the future stroke history
 		layers[currentLayerIdx].futureStrokes = [];
@@ -235,10 +222,15 @@ function undoStroke() {
 	}
 }
 
+// the student recieves message to undo the stroke
 function undoStrokeUpdate(_data) {
+	// if data wre passed to the function
 	if (_data.length > 0) {
+		// get the layer to be modified
 		var _layer = getLayerByName(_data[0]);
 		var lastStroke = layers[currentLayerIdx].strokes.length - 1;
+
+		// if the layer in question exists
 		if (_layer != null) {
 			_layer.futureStrokes.push(_layer.strokes.splice(lastStroke, 1)[0]);
 			_layer.strokeNum--;
@@ -250,21 +242,28 @@ function undoStrokeUpdate(_data) {
 // redoes the next future brush stroke
 function redoStroke() {
 	if (layers[currentLayerIdx].futureStrokes.length > 0) {
-		// moves the lastest future stroke to the back of the list of strokes
-
+		// moves the latest future stroke to the back of the list of strokes
 		var nextStroke = layers[currentLayerIdx].futureStrokes.length - 1;
 		layers[currentLayerIdx].strokes.push(layers[currentLayerIdx].futureStrokes.splice(nextStroke, 1)[0]);
+		// increment the current stroke number
 		layers[currentLayerIdx].strokeNum++;
 	}
 }
 
+// the student retrieves data from the server to update
+// hsi or her screen by undoing the current brush stroke
 function redoStrokeUpdate(_data) {
+	// check if data were passed to this function
 	if (_data.length > 0) {
+		// get the layer that is to be modified
 		var _layer = getLayerByName(_data[0]);
 
+		// if that layer in question exists
 		if (_layer != null) {
+			// shift last undone brush stroke to strokes
 			var nextStroke = _layer.futureStrokes.length - 1;
 			_layer.strokes.push(_layer.futureStrokes.splice(nextStroke, 1)[0]);
+			// increment current brush strokes
 			_layer.strokeNum++;
 		}
 		
@@ -272,6 +271,7 @@ function redoStrokeUpdate(_data) {
 }
 
 // deletes all brush stroke history
+// and clears the current layer
 function clearStrokes() {
 	layers[currentLayerIdx].strokeNum = -1;
 	layers[currentLayerIdx].strokes = [];
@@ -282,15 +282,20 @@ function clearStrokes() {
 // used for when brush strokes go out of sync due to network latency
 function synchronize(data) {
 	var layer = getLayerByName(data[0]);
-
+	// if the layer to ny synced exists
 	if (layer != null) {
-		console.log("layer to be synchronized exists");
+		// update this new layer with brush data
 		layers[currentLayerIdx].strokes = data[1];
 		layers[currentLayerIdx].futureStrokes = data[1];
-		layers[currentLayerIdx].strokeNum = strokes.length - 1;
+		// the current stroke is the last stroke
+		layers[currentLayerIdx].strokeNum = layers[currentLayerIdx].strokes.length - 1;
+	// if the layer does not exist on the student's computer
 	} else {
 		console.log("layer to be synchronized does not exist");
+		// create a new layer representing teacher's layer
 		addLayer(new Layer(data[0]));
+
+		// update this new layer with brush data
 		layers[currentLayerIdx].strokes = data[1];
 		layers[currentLayerIdx].futureStrokes = data[1];
 		layers[currentLayerIdx].strokeNum = strokes.length - 1;

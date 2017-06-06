@@ -29,43 +29,40 @@ canvas.addEventListener("mouseup", function() {
 });
 
 // send data to undo the last stroke to the server if undo button is clicked
-undo.addEventListener("click", function() {
+undo.addEventListener("click", undoSync);
+undo2.addEventListener("click", undoSync);
+
+function undoSync() {
 	if (client.id != undefined) {
 		var message = new Message(".", client.id, [layers[currentLayerIdx].name]);
 		ws.send(JSON.stringify(message));
 	}
-});
-
-undo2.addEventListener("click", function() {
-	if (client.id != undefined) {
-		var message = new Message(".", client.id, [layers[currentLayerIdx].name]);
-		ws.send(JSON.stringify(message));
-	}
-});
-
+}
 
 // send data to redo the last undone stroke to the server if redo button is clicked
-redo.addEventListener("click", function() {
-	if (client.id != undefined) {
-		var message = new Message("+", client.id, [layers[currentLayerIdx].name]);
-		ws.send(JSON.stringify(message));
-	}
-});
+redo.addEventListener("click", redoSync);
 
-redo2.addEventListener("click", function() {
+redo2.addEventListener("click", redoSync);
+
+// sends message to the students to redo their last undone brush stroke
+function redoSync() {
 	if (client.id != undefined) {
 		var message = new Message("+", client.id, [layers[currentLayerIdx].name]);
 		ws.send(JSON.stringify(message));
 	}
-});
+}
 
 // send data to the server to clear the canvas if the clear button is clicked
-clear.addEventListener("click", function() {
+clear.addEventListener("click", clearSync);
+clear2.addEventListener("click", clearSync);
+
+// tells clients to clear their current layer
+function clearSync() {
 	if (client.id != undefined) {
 		var message = new Message("..", client.id, "");
 		ws.send(JSON.stringify(message));
 	}
-});
+}
 
 // get a reference to the synchronize button
 var synchronize1 = document.getElementById("synchronize");
@@ -73,16 +70,15 @@ var synchronize2 = document.getElementById("synchronize2");
 
 // if clicked, send data to the server to synchronize screens
 synchronize1.addEventListener("click", sendSynchronize);
-
 synchronize2.addEventListener("click", sendSynchronize);
 
+// synchronize data with all other clients
 function sendSynchronize() {
 	if (client.id != undefined) {
 		var message = new Message("++", client.id, [layers[currentLayerIdx].name, layers[currentLayerIdx].strokes, layers[currentLayerIdx].futureStrokes]);
 		ws.send(JSON.stringify(message));
 	}
 }
-
 
 // listen to data coming from server
 ws.addEventListener("message", function(e) {
@@ -136,19 +132,20 @@ ws.addEventListener("message", function(e) {
 
 		}
 
+		// if this is a chatMessagse, pay attention regardless
+		// whether the sender is the same as the receiving client
 		if (messageData.header == "chatMessage+") {
-			console.log("new chat message received");
+			// create a paragraph node
 			var _para = document.createElement("p");
+			// create a text node
 			var _node = document.createTextNode(messageData.body.speaker + ": " + messageData.body.data);
+			// add this text node to the paragraph
 			_para.appendChild(_node);
 
+			// add this new message to the list of messages display
 			document.getElementById("prevMessages").appendChild(_para);
-
-
 		}
 	}
-
-
 });
 
 // returns whether the message is an instruction from the server
@@ -161,6 +158,8 @@ function saveInfo(messageData) {
 	var commands = messageData.body.split(",");
 	var key = commands[0];
 	var value = commands[1];
+
+	// update information about this current session
 	client[key] = value;
 
 	// if value is "undefined" as oppsed to defined,
@@ -189,23 +188,31 @@ function rejectInfo(messageData) {
 	Materialize.toast("Rejected request to set '" + key + "' to '" + value + "'", 2000);
 }
 
+// the chatbox for messages between teachers, students
 var chatBox = document.getElementById("chatBox");
 
-chatBox.addEventListener("keydown", function(e) { //something is wrong here
-	// console.log("akdfhakjhfdkj");
+// whenever a key is typed, run thus event listener
+chatBox.addEventListener("keydown", function(e) {
+	// if enter key is hit
 	if (e.keyCode == 13) {
 		var newChatMsg;
 
+		// conditionally send a different kind of chat message
+		// based on whether client is a teacher, student, or some other
+		// unverified client
+		// if the client is a teacher
 		if (client && client["permissions"] == "teacher") {
 			newChatMsg = new Message("chatMessage+", client.id, {
 				speaker: "teacher",
 				data: chatBox.value
 			});
+		// if client is a student
 		} else if (client && client["permissions"] == "student") {
 			newChatMsg = new Message("chatMessage+", client.id, {
 				speaker: "student " + client["id"],
 				data: chatBox.value
 			});
+		// if client is just a generic client
 		} else {
 			newChatMsg = new Message("chatMessage+", client.id, {
 				speaker: "client " + client["id"],
@@ -213,10 +220,11 @@ chatBox.addEventListener("keydown", function(e) { //something is wrong here
 			});
 		}
 		
+		// send a stringified message to the server, to be
+		// broadcast to everyone
 		ws.send(JSON.stringify(newChatMsg));
-		console.log("attempted to send: " + newChatMsg.body);
 
+		// reset chat box valye
 		chatBox.value = "";
 	}
-
 });

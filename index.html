@@ -21,6 +21,42 @@
 			Stop Tutorial
 		</div>
 	</div>
+
+	<!-- modal boxes -->
+	<div class="cus-modal" id="saveModal">
+		<div class="cus-modal-header normal-text large-text">
+			Save As
+
+		</div>
+		<div class="cus-modal-body">
+			<div style="width: 50%; margin-left: 25%; margin-right: 25%; margin-top: 25%; margin-bottom: 25%;">
+			Choose file name:
+			<input type="text" value=".txt" id="saveFileName" style="">
+			</div>
+			
+			
+		</div>
+		<div class="cus-modal-bottom large-text">
+			<div class="waves-effect waves-light btn" id="cancelSaveButton">Cancel</div>
+			<div class="waves-effect waves-light btn" id="saveButton">Save</div>
+		</div>
+	</div>
+
+	<div class="cus-modal" id="openModal">
+		<div class="cus-modal-header normal-text large-text">
+			Open File...
+
+		</div>
+		<div class="cus-modal-body">
+			Choose a file to open...
+			
+		</div>
+		<div class="cus-modal-bottom large-text">
+			<div class="waves-effect waves-light btn" id="cancelOpenButton">Cancel</div>
+			<input type="file" class="waves-effect waves-light" id="openButton">
+		</div>
+	</div>
+
 	<header class="body">
 		<!-- Pink header (Tutorial, Our Team, etc) contains the navigation bar -->
 		<nav class="top-nav">
@@ -77,7 +113,7 @@
 							<!-- Arrow, textbox, and information for "Join a Class" tab -->
 								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div>
-										In this page, students can type in the id of the calssroom their teachers created to join.
+										In this page, students can type in the id of the classroom their teachers created to join.
 									</div>
 							</div>
 							<!-- Dropdown for entering classroom id -->
@@ -159,15 +195,16 @@
 
 
 			<!-- brush options control div -->
-			<div class="box-shadow-centered" style="margin-top: 60px;">
-				<div class="box-shadow-bottom" style="position: relative; display: block; width: 100%; background-color: #FFFFFF; margin: none; padding-left: 20px; padding-right: 20px; z-index: 1000;">
+			<div class="box-shadow-centered classes-container">
+				<!-- Box container window -->
+				<div class="box-shadow-bottom classes-header">
 					<div class="normal-text very-large-text" id="classroomid_title" style="position: static; width: 100%; display: inline-block;">
 						<!-- <input type="button" value="Brush Size" id="change-brush-size"> -->
 						Classroom-name
 					</div>
 					<!-- Collapsible hover button formatting -->
 
-				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 30px;">
+					<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 30px;">
 						<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a class="btn-floating btn-large red"><i class="large material-icons">mode_edit</i></a>
 
 							<div class = "holder normal-text" style= "width:150px">
@@ -177,55 +214,50 @@
 										Hovering over this button offers the option to clear the entire screen, sync the changes with the others, and undo or redo brush strokes.
 									</div>
 							</div>
-
-
-
 						</div>
 
 
+						<ul>
 
-					<ul>
+							<div class="tooltip">
 
-
-						<div class="tooltip">
-
-						<!-- Clear entire whiteboard -->
-							<li>
-								<a class="btn-floating red"><i class="material-icons" id="clear">clear</i></a>
-								<div class="tooltiptext">Clear</div>
-							</li>
-						</div>
-						<div class="tooltip">
-							<li>
-							<!-- Synchronize teacher's whiteboard with students -->
-								<a class="btn-floating yellow darken-1"><i class="material-icons" id="synchronize">loop</i></a>
-								<div class="tooltiptext">Synchronize</div>
-							</li>
-						</div>
-						<div class="tooltip">
-							<li>
-							<!-- Undo last drawing if there is mistake-->
-								<a class="btn-floating green"><i class="material-icons" id="undo">undo</i></a>
-								<div class="tooltiptext">Undo</div>
-							</li>
-						</div>
-						<div class="tooltip">
-							<li>
-							<!-- Redo a mistake -->
-								<a class="btn-floating blue"><i class="material-icons" id="redo">redo</i></a>
-								<div class="tooltiptext">Redo</div>
-							</li>
-						</div>
-					</ul>
-				</div>
+							<!-- Clear entire whiteboard -->
+								<li>
+									<a class="btn-floating red"><i class="material-icons" id="clear">clear</i></a>
+									<div class="tooltiptext">Clear</div>
+								</li>
+							</div>
+							<div class="tooltip">
+								<li>
+								<!-- Synchronize teacher's whiteboard with students -->
+									<a class="btn-floating yellow darken-1"><i class="material-icons" id="synchronize">loop</i></a>
+									<div class="tooltiptext">Synchronize</div>
+								</li>
+							</div>
+							<div class="tooltip">
+								<li>
+								<!-- Undo last drawing if there is mistake-->
+									<a class="btn-floating green"><i class="material-icons" id="undo">undo</i></a>
+									<div class="tooltiptext">Undo</div>
+								</li>
+							</div>
+							<div class="tooltip">
+								<li>
+								<!-- Redo a mistake -->
+									<a class="btn-floating blue"><i class="material-icons" id="redo">redo</i></a>
+									<div class="tooltiptext">Redo</div>
+								</li>
+							</div>
+						</ul>
+					</div>
 					<div>
 						<div class="menu-item">
 							<div style="padding-left: 10px">File</div>
 							<div class="dropdown-list">
-								<div class="dropdown-item">
+								<div class="dropdown-item" id="saveAs">
 									Save As...
 								</div>
-								<div class="dropdown-item">
+								<div class="dropdown-item" id="open">
 									Open...
 								</div>
 								<a href="team.html" style="color: black;">
@@ -269,40 +301,48 @@
 					</div>
 				</div>
 
+				
+
 				<!-- main content group -->
-				<div style="margin: 0 auto; position: relative; width: auto;">
+				<div class="mainContent">
 
-					<div style="width: 100%; margin: 0 auto; position: relative">
+					<div class="canvasContainer">
 					<!-- Canvas for drawing lessons -->
-						<canvas id="canvas" style="margin: 0 auto; position: relative; display: inline-block;" class=""></canvas>
-						<!-- Chat Box Area -->
-						<div class="box-shadow-centered" style="right: 0px; width: 21%; height: 100%; position: absolute; display: inline-block; padding: 20px;">
-							<div style="height: 60px" class="normal-text large-text">
-								Messages
-							</div>
-							<div id="prevMessages" style="height: 400px; background-color: #EEEEEE; padding: 20px;">
-
-							</div>
-
-							<div style="">
-
-								<input id="chatBox" type="text" name="firstname" style="">
-
-							</div>
-
-							<div class = "holder normal-text">
-							<!-- Arrow, textbox, and information for our team tab -->
-								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
-									<div class = "normal-text">
-										The user (teacher or student) can type messages here to a public chat, viewable by both the teacher and the students in the classroom. 
-									</div>
-							</div>
-
-							</div>
-
+						<canvas id="canvas" class="cus-canvas"></canvas>
 					</div>
 
 					<div class="buttons-menu" id="leftPanel">
+						<div id="openChat" class="collapsible-button-right col-light" style="right: -1100px; top: 60px;">
+							. . .
+							<div class = "holder normal-text" style= "width:150px">
+							<!-- Arrow, textbox, and information for Student list tab -->
+								<img style = "position:relative; LEFT: -20px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
+									<div class="normal-text" style="right: 50px">
+										The user (teacher or student) can type messages here to a public chat, viewable by both the teacher and the students in the classroom. 
+									</div>
+							</div>
+						</div>
+						<div id="chatBoxContainer" class="box-shadow-centered cus-chatbox" style="right: -1100px; top: -40px;">
+								<div id="closeChat" class="collapsible-button-right col-light" style="right: 0px; top: 0px; z-index: 100; text-align: center;">
+									—
+								</div>
+								<div style="height: 60px" class="normal-text large-text">
+									Messages
+								</div>
+								<!-- div for listing previous -->
+								<div id="prevMessages" style="height: 400px; background-color: #EEEEEE; padding: 20px; overflow: scroll;">
+
+								</div>
+
+								<div style="">
+
+									<input id="chatBox" type="text" name="firstname" style="">
+
+								</div>
+							</div>
+
+
+
 						<!-- Left Panel buttons (eventually collapsible and have all drawing options) -->
 						<div class="collapsible-button col-light" style="top: 0px" id="canvasButton1">
 							&lt;

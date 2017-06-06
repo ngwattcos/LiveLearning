@@ -1,4 +1,4 @@
-* Tooltip container */
+/* Tooltip container */
 
 html {
 	font-family: "Roboto";
@@ -14,6 +14,62 @@ html {
 	margin: 0 auto;
 	max-width: 1280px;
 	width: 100%;
+}
+
+.classes-container {
+	margin-top: 60px;
+	width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.classes-container .classes-header {
+	position: relative;
+	display: block;
+	width: 100%;
+	background-color: #FFFFFF;
+	margin: none;
+	padding-left: 20px;
+	padding-right: 20px;
+	z-index: 1000;
+	margin: 0 auto;
+}
+
+.mainContent {
+	/*margin: 0 auto;*/
+	position: relative;
+	/*width: 1200px;*/
+	/*background: black;*/
+}
+
+.mainContent .canvasContainer {
+	/*width: 870px;*/
+	/*margin: 0 auto;*/
+	/*left: 0px;*/
+	position: relative;
+}
+
+.mainContent .canvasContainer {
+	/*width: 100%;*/
+	margin: 0 auto;
+	position: relative;
+}
+
+.canvasContainer .cus-canvas {
+	/*margin: 0 auto;*/
+	position: relative;
+	display: inline-block;
+}
+
+.cus-chatbox {
+	z-index: 5000;
+	width: 200px;
+	height: 600px;
+	position: absolute;
+	display: inline-block;
+	padding: 20px;
+	background-color: white;
+	display: none;
 }
 
 .centered-text {
@@ -228,6 +284,16 @@ li.cus-dropdown {
 	width: 30px;
 	left: 0px;
 	top: 0px;
+	padding-top: 5px;
+	padding-left: 10px;
+	margin: none;
+}
+
+.collapsible-button-right {
+	position: absolute;
+	display: inline-block;
+	height: 30px;
+	width: 60px;
 	padding-top: 5px;
 	padding-left: 10px;
 	margin: none;
@@ -520,4 +586,40 @@ li.cus-dropdown {
 	/*width: 50px;*/
 	/*background-color: transparent;*/
 	/*background: transparent;*/
+}
+.cus-modal {
+	height: 600px;
+	width: 900px;
+	background-color: white;
+	box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
+	z-index: 10000;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	position: absolute;
+	display: none;
+}
+
+.cus-modal .cus-modal-header {
+	height: 60px;
+	border-bottom: 1px solid #CCCCCC;
+	padding: 20px;
+	text-align: center;
+}
+
+.cus-modal .cus-modal-body {
+	width: 100%;
+	height: 480px;
+	padding: 30px;
+	left: 25%;
+	right: 25%;
+}
+
+.cus-modal .cus-modal-bottom {
+	height: 60px;
+	padding: 10px;
+	text-align: center;
+	border-top: 1px solid #CCCCCC;
 }

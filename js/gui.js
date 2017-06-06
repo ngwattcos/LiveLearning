@@ -1,8 +1,8 @@
 // placeholder event listener to listen for when
 // a click is not placed on the canvas
-// window.addEventListener("click", function() {
-// 	// if the click was not registered on the canvas
-// });
+window.addEventListener("click", function() {
+	// if the click was not registered on the canvas
+});
 
 // store a reference to the input form to create a new classroom
 var chooseClassroomForm = document.getElementById("createClass");
@@ -187,3 +187,92 @@ stopbar.addEventListener("click", function() {
 
 var layerContainer = document.getElementById("layerContainer");
 
+var saveAs = document.getElementById("saveAs");
+var open = document.getElementById("open");
+
+saveAs.addEventListener("click", function() {
+	openModal.style.display = "none";
+	saveModal.style.display = "block";
+});
+
+open.addEventListener("click", function() {
+	openModal.style.display = "block";
+	saveModal.style.display = "none";
+});
+
+
+// open.addEventListener("click", function() {
+// 	var a = document.createElement("a");
+// 	var file = new Blob([JSON.stringify(layers)], {type: "text/plain"});
+// 	a.href = URL.createObjectURL(file);
+// 	a.download = "layers.txt";
+// 	a.click();
+// });
+
+var saveModal = document.getElementById("saveModal");
+var openModal = document.getElementById("openModal");
+var cancelSaveButton = document.getElementById("cancelSaveButton");
+var saveButton = document.getElementById("saveButton");
+var saveFileNameInput = document.getElementById("saveFileName");
+var cancelOpenButton = document.getElementById("cancelOpenButton");
+var openButton = document.getElementById("openButton");
+
+cancelSaveButton.addEventListener("click", function() {
+	saveModal.style.display = "none";
+});
+
+cancelOpenButton.addEventListener("click", function() {
+	openModal.style.display = "none";
+});
+
+saveButton.addEventListener("click", function() {
+	var a = document.createElement("a");
+	var file = new Blob([JSON.stringify(layers)], {type: "text/plain"});
+	a.href = URL.createObjectURL(file);
+	a.download = saveFileNameInput.value;
+	a.click();
+
+	saveModal.style.display = "none";
+});
+
+openButton.addEventListener("click", function() {
+	openModal.style.display = "none";
+});
+
+var it = {};
+
+// event listener for the "open file" button
+openButton.addEventListener("change", function(evt) {
+	// a list of files is returned
+	var files = evt.target.files;
+	// we are only concerned with the first one
+	var f = files[0];
+
+	// create a FileReader
+	var reader = new FileReader();
+
+	// callback function when the reader loads the file
+	reader.onload = (function(theFile) {
+		return function(e) {
+			layers = JSON.parse(e.target.result);
+			redraw();
+		};
+	})(f);
+
+	// actually load the file
+	reader.readAsText(f);
+
+});
+
+var openChat = document.getElementById("openChat");
+var closeChat = document.getElementById("closeChat");
+var chatBoxContainer = document.getElementById("chatBoxContainer");
+
+openChat.addEventListener("click", function(e) {
+	chatBoxContainer.style.display = "block";
+});
+
+
+closeChat.addEventListener("click", function() {
+	chatBoxContainer.style.display = "none";
+});

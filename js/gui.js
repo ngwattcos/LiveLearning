@@ -1,8 +1,8 @@
 // placeholder event listener to listen for when
 // a click is not placed on the canvas
-// window.addEventListener("click", function() {
-// 	// if the click was not registered on the canvas
-// });
+window.addEventListener("click", function() {
+	// if the click was not registered on the canvas
+});
 
 // store a reference to the input form to create a new classroom
 var chooseClassroomForm = document.getElementById("createClass");
@@ -241,15 +241,38 @@ openButton.addEventListener("click", function() {
 
 var it = {};
 
+// event listener for the "open file" button
 openButton.addEventListener("change", function(evt) {
+	// a list of files is returned
 	var files = evt.target.files;
+	// we are only concerned with the first one
 	var f = files[0];
 
+	// create a FileReader
 	var reader = new FileReader();
 
+	// callback function when the reader loads the file
 	reader.onload = (function(theFile) {
+		return function(e) {
+			layers = JSON.parse(e.target.result);
+			redraw();
+		};
+	})(f);
 
-	});
-	// var jsonData = JSON.parse(file);
-	it = file;
+	// actually load the file
+	reader.readAsText(f);
+
+});
+
+var openChat = document.getElementById("openChat");
+var closeChat = document.getElementById("closeChat");
+var chatBoxContainer = document.getElementById("chatBoxContainer");
+
+openChat.addEventListener("click", function(e) {
+	chatBoxContainer.style.display = "block";
+});
+
+
+closeChat.addEventListener("click", function() {
+	chatBoxContainer.style.display = "none";
 });

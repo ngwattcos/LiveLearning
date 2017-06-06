@@ -9,7 +9,7 @@ var cv = $("canvas");
 
 // to modify it
 cv.css({"border-color": "#C1E0FF", 
-	"border-width":"1px", 
+	"border-width":"0px", 
 	"border-style":"solid",
 });
 
@@ -18,7 +18,7 @@ cv.css({"border-color": "#C1E0FF",
 var context = document.getElementById("canvas").getContext("2d");
 
 // format size of canvas
-context.canvas.width = 870;
+context.canvas.width = 1100;
 context.canvas.height = 600;
 context.lineJoin = "round";
 

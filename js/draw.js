@@ -37,24 +37,16 @@ function findPos(obj) {
 	return undefined;
 }
 
-// boolean that stores whether mouse is pressed
+// boolean that stores whether the brush should be painting
 var paint = false;
 
-// stores the brush stroke histories of each level
-// is not implemented yet
+// stores the list of layers representing the screen
 var layers = [];
+
+// stores the current layer in question
 var currentLayer;
 var currentLayerIdx;
 
-/* How a "layer" object literal will look like
-{
-	id: "shared.0" or "layer.0"
-	strokes: [].
-	strokeNum: 5,
-	futureStrokes: []
-}
-
-*/
 
 // Shortcut prototype method for moving an element from
 // one index to another. Source:

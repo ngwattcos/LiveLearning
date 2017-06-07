@@ -1,21 +1,23 @@
-/* Tooltip container */
-
+/* general CSS fomatting*/
 html {
 	font-family: "Roboto";
 }
 
+/* wide container for the webpage */
 .container-90 {
 	margin: 0 auto;
 	max-width: 1280px;
 	width: 90%;
 }
 
+/* possible full width container for bpage*/
 .container-full {
 	margin: 0 auto;
 	max-width: 1280px;
 	width: 100%;
 }
 
+/* main container for classroom features */
 .classes-container {
 	margin-top: 60px;
 	width: 1100px;
@@ -23,6 +25,7 @@ html {
 	margin-right: auto;
 }
 
+/* header for classroom features */
 .classes-container .classes-header {
 	position: relative;
 	display: block;
@@ -35,32 +38,25 @@ html {
 	margin: 0 auto;
 }
 
+/* contains the main canvas screen */
 .mainContent {
-	/*margin: 0 auto;*/
-	position: relative;
-	/*width: 1200px;*/
-	/*background: black;*/
-}
-
-.mainContent .canvasContainer {
-	/*width: 870px;*/
-	/*margin: 0 auto;*/
-	/*left: 0px;*/
 	position: relative;
 }
 
+/* the div containing the canvas */
 .mainContent .canvasContainer {
-	/*width: 100%;*/
+	position: relative;
 	margin: 0 auto;
 	position: relative;
 }
 
+/* format the canvas */
 .canvasContainer .cus-canvas {
-	/*margin: 0 auto;*/
 	position: relative;
 	display: inline-block;
 }
 
+/* format the chatbox */
 .cus-chatbox {
 	z-index: 5000;
 	width: 200px;
@@ -72,25 +68,23 @@ html {
 	display: none;
 }
 
+/* centers text horizontally */
 .centered-text {
 	text-align: center;
 	align-items: center;
 }
 
+/* custom tooltips that appear when hte mouse hovers */
 .tooltip {
 	position: relative;
 	display: inline-block;
 	z-index: 10000;
-	/*border-bottom: 1px dotted black;  If you want dots under the hoverable text */
 }
 
-.tooltiptext {
+/* custom text inside tooltip*/
+.tooltip .tooltiptext {
 	font-family: "Lucida Sans Typewriter";
 	font-size: 10px;
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
 	visibility: hidden;
 	width: 80px;
 	background-color: #555;
@@ -130,20 +124,24 @@ html {
 }
 
 
+/* dropdown navmar menu */
 li.cus-dropdown {
 	display: inline-block;
 	z-index: 2000;
 	position: relative;
 }
 
+/* right-aligned dropdown navmar menu */
 .cus-dropdown-div-right {
 	right: 0px;
 }
 
+/* left-aligned dropdown navmar menu */
 .cus-dropdown-div-left {
 	left: 0px;
 }
 
+/* div within dropdown navmar menu */
 .cus-dropdown-div {
 	display: none;
 	position: absolute;
@@ -152,33 +150,33 @@ li.cus-dropdown {
 	z-index: 2001;
 }
 
+/* div within dropdown navmar menu, wide version */
 .cus-dropdown-div-wide {
 	width: 400px;
 }
 
-/*.cus-dropdown-div-side {
-	display: none;
-	position: absolute;
-}*/
-
+/* when the dropdown is hovered, the div will appear */
 .cus-dropdown:hover .cus-dropdown-div {
 	display: block;
 	height: 10px;
 	transition: height 0.2s;
 }
 
+/* when the dropdown is hovered, the div content will appear */
 .cus-dropdown:hover .cus-dropdown-content {
 	/*display: inline-block;*/
 	height: 280px;
 	transition: height 0.2s;
 }
 
+/* when the dropdown is hovered, the div will appear. Small version, */
 .cus-dropdown:hover .cus-dropdown-content-small {
 	/*display: inline-block;*/
 	height: 180px;
 	transition: height 0.2s;
 }
 
+/* when the dropdown is hovered, the div will appear */
 .cus-dropdown-content-small {
 	height: 0px;
 	z-index: 2001;
@@ -189,6 +187,7 @@ li.cus-dropdown {
 	overflow: hidden;
 }
 
+/* content that appears in a dropdown */
 .cus-dropdown-content {
 	height: 0px;
 	z-index: 2001;
@@ -199,10 +198,7 @@ li.cus-dropdown {
 	overflow: hidden;
 }
 
-.heading-text {
-
-}
-
+/* default text formatting */
 .normal-text {
 	color: #333333;
 	font-family: "Lucida Sans Typewriter";
@@ -211,21 +207,27 @@ li.cus-dropdown {
 	line-height: 200%;
 }
 
+/* default small font */
 .small-text {
 	font-size: 10px;
 }
 
+/* default medium font */
 .med-text {
 	font-size: 14px;
 }
 
+/* default large font */
 .large-text {
 	font-size: 21px;
 }
+
+/* default VERY large font */
 .very-large-text {
 	font-size: 42px;
 }
 
+/* default text content area */
 .text-area {
 	background: #FFFFFF;
 	padding: 30px;
@@ -235,19 +237,12 @@ li.cus-dropdown {
 	height: 100%;
 }
 
-.names-list {
-	position: absolute;
-	display: inline-block;
-	background-color: #999999;
-	height: 60%;
-	width: 20%;
-	overflow: scroll;
-}
-
+/* remove all margins */
 .marginless {
 	margin: 0px;
 }
 
+/* button menu formatting */
 .buttons-menu {
 	background-color: #666666;
 	position: absolute;
@@ -256,16 +251,15 @@ li.cus-dropdown {
 	top: 40px;
 }
 
-
-
+/* a section of the side panel */
 .collapsible-section {
 	height: 40px;
 	width: 100%;
 	padding-top: 1px;
 	padding-bottom: 1px;
-
 }
 
+/* collapsible side panel */
 .collapsible-panel {
 	background-color: #999999;
 	height: 100%;
@@ -273,10 +267,12 @@ li.cus-dropdown {
 	padding: 10px;
 }
 
+/* side panel appears shen button is hovered */
 .collapsible-section:hover .collapsible-panel {
 	background-color: #3399CC;
 }
 
+/* format the trigger button */
 .collapsible-button {
 	position: absolute;
 	display: inline-block;
@@ -289,6 +285,7 @@ li.cus-dropdown {
 	margin: none;
 }
 
+/* the trigger button on the right */
 .collapsible-button-right {
 	position: absolute;
 	display: inline-block;
@@ -299,27 +296,24 @@ li.cus-dropdown {
 	margin: none;
 }
 
+/* div that is triggered when button is highlighted */
 .collapsible-div {
 	position: absolute;
-	/*display: none;*/
-	/*right: 0px;
-	top: 0px;*/
 	width: 0px;
 	height: 500px;
 	padding: 30px;
-	/*background-color: #DDDDDD;*/
 	color: white;
 	left: 40px;
 	visibility: hidden;
 }
 
+/* aanything that is a child of a "collapsible" element will disappear by default */
 .collapsible-div * {
 	visibility: hidden !important;
 }
 
+/* content within the side div */
 .collapsible-div .collapsible-content {
-	/*padding: 5px;*/
-	/*background-color: blue;*/
 	width: 0px;
 	height: 480px;
 	visibility: hidden;
@@ -327,7 +321,7 @@ li.cus-dropdown {
 }
 
 
-
+/* heading within the side div */
 .collapsible-button .collapsible-heading {
 	visibility: hidden;
 	padding-top: 10px;
@@ -337,14 +331,13 @@ li.cus-dropdown {
 	width: 100%;
 }
 
-
-
+/* a spacer in the side div */
 .collapsible-div .collapsible-space {
 	padding: 20px;
 	visibility: hidden;
 }
 
-
+/* when the side panel trigger buttons are hovered... */
 .collapsible-button:hover {
 	/*height: 40px;*/
 	z-index: 2001;
@@ -352,86 +345,101 @@ li.cus-dropdown {
 	transition: width 0.2s;
 }
 
+/* ...unhide everything a level down */
 .collapsible-button:hover * {
 	visibility: visible !important;
 }
 
+/* format the animation */
 .collapsible-button:hover .collapsible-div {
 	visibility: visible;
 	animation-delay: 2s;
 	width: 200px;
 	padding: 10px;
-	/*transition: width 0.3s;*/
-
 }
 
+/* show the side panel content when the trigger button is hovered */
 .collapsible-button:hover .collapsible-content {
 	visibility: visible;
 	width: 100%;
 }
 
+/* show the side panel header when the trigger button is hovered */
 .collapsible-button:hover .collapsible-heading {
 	visibility: visible;
 }
+
+/* show the side panel spacers when the trigger button is hovered */
 .collapsible-button:hover .collapsible-space {
 	visibility: visible;
 }
 
+/* format paragraphs within spaces in the side panels */
 .collapsible-space p {
 	padding: 0;
 	margin: 0;
 }
 
+/* a "section" within side panel */
 .collapsible-space-section {
 	padding-top: 0px;
 	padding-bottom: 30px;
 }
 
+/* default formatting for spacer in the side panels */
 .collapsible-space-spacer {
 	padding-top: 30px;
 	padding-bottom: 30px;
 }
 
+/* format the slider for adjjusting color */
 .cus-slider {
 	margin: 0;
 	padding: 0;
 }
 
+/* format a horizontal rule */
 .cus-hr {
 	border: 1px dashed #999999;
 }
 
+/* format a very light panel */
 .col-veryLight {
 	background-color: #EEEEEE;
 	color: #333333;
 }
 
+/* format a light panel */
 .col-light {
 	background-color: #DDDDDD;
 	color: #000000;
 }
 
+/* format a very light panel */
 .col-light2 {
 	background-color: #CCCCCC;
 	color: #FFFFFF;
 }
 
+/* format a medium panel */
 .col-med {
 	background-color: #BBBBBB;
 	color: #FFFFFF;
 }
 
+/* format a lightmedium panel */
 .col-med2 {
 	background-color: #A5A5A5;
 	color: #FFFFFF;
 }
 
+/* format a dark panel */
 .col-dark {
 	background-color: #999999;
 	color: #FFFFFF;
 }
 
-
+/* format a dropdown menu item */
 .menu-item {
 	font-family: "Roboto";
 	display: inline-block;
@@ -444,11 +452,7 @@ li.cus-dropdown {
 	margin: 0;
 }
 
-/*
-
-************* SHUUD apply shadow!
-
-*/
+/* format a list of dropdown items */
 .dropdown-list {
 	position: absolute;
 	width: 200px;
@@ -459,7 +463,7 @@ li.cus-dropdown {
 	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
 }
 
-
+/* format menu mbar drwopdown elements */
 .dropdown-item {
 	width: 100%;
 	/*height: 30px;*/
@@ -470,27 +474,32 @@ li.cus-dropdown {
 	visibility: hidden;
 }
 
+/* when a menu item is hovered */
 .dropdown-item:hover {
 	background-color: #d7dcdf;
 }
 
+/* when a menu item is being clicked */
 .dropdown-item:active {
 	background-color: #1abc9c;
 }
 
+/* when a menu item is being hovered */
 .menu-item:hover {
 	background-color: #1abc9c;
 }
 
+/* format a dropdown list under a menu item when hovered */
 .menu-item:hover .dropdown-list {
 	visibility: visible;
 }
 
+/* format a dropdown list under a menu element when hovered */
 .menu-item:hover .dropdown-item {
 	visibility: visible;
 }
 
-
+/* format a helper tutorial */
 .holder {
 	display: none;
 	position: absolute;
@@ -499,27 +508,29 @@ li.cus-dropdown {
 	z-index: 5000;
 }
 
+/* format the div within a helper tutorial */
 .holder div {
-	/*border-left: 1 px solid #333; */
-	/*border-right: 1 px solid #333; */
 	border: 1px solid black;
 	padding: 10px;
 	margin: 0;
 	background-color: pink;
 }
 
+/* format top part of helper tutorial */
 .top {
 	width: 248px;
 	height: 30px;
 	border: 1px solid #333;
 }
 
+/* format bottom part of helper tutorial */
 .bottom {
 	width: 248px;
 	height: 10px;
 	border: 1px solid #333;
 }
 
+/* format the message part of the helper tutorial */
 .floating-banner {
 	position: fixed;
 	width: 100%;
@@ -529,6 +540,7 @@ li.cus-dropdown {
 	bottom: 0px;
 }
 
+/* format the next button for tutorial */
 .floatingbutton {
 	left: 50%;
   	margin-left: -100px;
@@ -537,32 +549,38 @@ li.cus-dropdown {
 	width:200px;
 }
 
+/* format the navbar for the tutorial */
 #floatingBar {
 	display: none;
 
 }
 
+/* default shadow */
 .box-shadow-centered {
 	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
 }
 
+/* shadow to the left */
 .box-shadow-left {
 	box-shadow: -16px 0px 16px 0px rgba(0,0,0,0.2);
 }
 
+/* shadow to the right */
 .box-shadow-right {
 	box-shadow: 16px 0px 16px 0px rgba(0,0,0,0.2);
 }
 
+/* shadow to the bottom */
 .box-shadow-bottom {
 	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
 }
 
-
+/* format canvas when hovered */
 #canvas:hover {
 	cursor: crosshair;
 }
 
+/* format message box*/
 .cus-message-box {
 	right: 0px;
 	height: 100%;
@@ -572,21 +590,26 @@ li.cus-dropdown {
 	width: 21%;
 }
 
+/* format message box when hovered */
 .cus-message-box:hover {
 	width: 300px;
 }
 
+/* options for formatting scrollbars*/
 ::-webkit-scrollbar-thumb {
 	/*width: 50px;*/
 	background-color: black;
 	/*background: transparent;*/
 }
 
+/* options for foramtting scrollbar track */
 ::-webkit-scrollbar-track {
 	/*width: 50px;*/
 	/*background-color: transparent;*/
 	/*background: transparent;*/
 }
+
+/* format a default modal box*/
 .cus-modal {
 	height: 600px;
 	width: 900px;
@@ -602,6 +625,7 @@ li.cus-dropdown {
 	display: none;
 }
 
+/* format default modal box header */
 .cus-modal .cus-modal-header {
 	height: 60px;
 	border-bottom: 1px solid #CCCCCC;
@@ -609,6 +633,7 @@ li.cus-dropdown {
 	text-align: center;
 }
 
+/* format default modal box body */
 .cus-modal .cus-modal-body {
 	width: 100%;
 	height: 480px;
@@ -617,6 +642,7 @@ li.cus-dropdown {
 	right: 25%;
 }
 
+/* format default modal box bottom */
 .cus-modal .cus-modal-bottom {
 	height: 60px;
 	padding: 10px;

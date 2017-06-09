@@ -67,14 +67,12 @@
 					<a href="#" class="brand-logo left">Live! Learning</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 
-
-
 						<!-- Our Team -->
 						<li class="cus-dropdown">
 							<a href="team.html">Our Team</a>
 							<div class = "holder normal-text">
 							<!-- Arrow, textbox, and information for our team tab -->
-								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
+								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src="images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div class = "normal-text">
 										The page displays the members of the team behind the beauty that is this project.
 									</div>
@@ -87,7 +85,7 @@
 							<a href="#">Create a New Class</a>
 							<div class = "holder normal-text">
 							<!-- Arrow, textbox, and information for Create a new Class tab -->
-								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src= "images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
+								<img style = "position:relative; LEFT: 50px;WIDTH:64px; HEIGHT:64px" src="images/newarrow.png" alt="Image Not Found" id="Random Image"> </img>
 									<div>
 										In this page, the teacher can create an id for a new classroom.
 									</div>
@@ -189,7 +187,7 @@
 		</nav>
 	</header>
 	<main>
-
+		<!-- main container for website content -->
 		<div class="container-90">
 
 
@@ -322,7 +320,9 @@
 									</div>
 							</div>
 						</div>
+						<!-- container for chatbox -->
 						<div id="chatBoxContainer" class="box-shadow-centered cus-chatbox" style="right: -1100px; top: -40px;">
+								<!-- close chat button -->
 								<div id="closeChat" class="collapsible-button-right col-light" style="right: 0px; top: 0px; z-index: 100; text-align: center;">
 									—
 								</div>
@@ -333,7 +333,7 @@
 								<div id="prevMessages" style="height: 400px; background-color: #EEEEEE; padding: 20px; overflow: scroll;">
 
 								</div>
-
+								<!-- div containing input box -->
 								<div style="">
 
 									<input id="chatBox" type="text" name="firstname" style="">
@@ -353,40 +353,48 @@
 										Hovering over this button reveals a menu allowing the user to change both the red, blue and green values of the color of the bursh stroke, as well as the size of the stroke.
 									</div>
 							</div>
+							<!-- sliders that pop out of the screen that control brush and layer options -->
 							<div class="collapsible-div col-light" style="top: 0px" id="panel1">
 								<div class="collapsible-content col-veryLight">
+									<!-- control thickness and color of brush -->
 									<div class="collapsible-heading col-light">Brush Options</div>
 									<div class="collapsible-space">
 										<div>
 											<p style="line-height: 1em;">R:</p>
 										</div>
+										<!-- red channel slider container -->
 										<div class="collapsible-space-section">
 											<input id="r-slider" class="cus-slider" type="range" value="0" min="0" max="255">
 											<!-- <span class="range-slider__value">0</span> -->
 										</div>
+										
 										<div>
 											<p style="line-height: 1em;">G:</p>
 										</div>
+										<!-- green channel slider container -->
 										<div class="collapsible-space-section">
 											<input id="g-slider" class="cus-slider" type="range" value="0" min="0" max="255">
-											<!-- <span class="range-slider__value">0</span> -->
+											
 										</div>
+										<!-- blue channel slider container -->
 										<div>
 											<p style="line-height: 1em;">B:</p>
 										</div>
 										<div class="collapsible-space-section">
 											<input id="b-slider" class="cus-slider" type="range" value="255" min="0" max="255">
-											<!-- <span class="range-slider__value">0</span> -->
+											
 										</div>
+										<!-- spacer -->
 										<div class="collapsible-space-section">
 											<hr class="cus-hr"></hr>
 										</div>
 										<div>
 											<p style="line-height: 1em;">Brush Size:</p>
 										</div>
+										<!-- brush size slider container -->
 										<div class="collapsible-space-section">
 											<input id="size-slider" class="cus-slider" type="range" value="1" min="1" max="100">
-											<!-- <span class="range-slider__value">0</span> -->
+											
 										</div>
 
 									</div>
@@ -394,6 +402,7 @@
 								</div>
 							</div>
 						</div>
+						<!-- second button controlling per-layer options -->
 						<div class="collapsible-button col-med" style="top: 30px" id="canvasButton2">
 							<div class = "holder normal-text" style= "width:150px">
 							<!-- Arrow, textbox, and information for Student list tab -->
@@ -410,6 +419,7 @@
 								</div>
 							</div>
 						</div>
+						<!-- third button controlling the order and names of layers -->
 						<div class="collapsible-button col-dark" style="top: 60px" id="canvasButton3">
 							&lt;
 							<div class = "holder normal-text" style= "width:150px">
@@ -419,6 +429,7 @@
 										Hovering over this button reveals a menu that allows the user to change the properties of all the layers, such as the order or visibility.
 									</div>
 							</div>
+							<!-- placeholder names for layers -->
 							<div class="collapsible-div col-dark" style="top: -60px" id="panel1">
 								<div class="collapsible-content col-med2" id="layerContainer">
 									<div class="collapsible-heading col-dark">Layers</div>
@@ -454,15 +465,12 @@
 
 		</div>
 	</main>
-
-
-
-
-
+	
+	<!-- footer of the website -->
 	<footer class="page-footer">
 		<div class="container">
 			<div class="row">
-
+					<!-- mission statement -->
 					<h5 class="white-text" align="center">Live! Learning</h5>
 					<p class="grey-text text-lighten-4" align="center">Your Own Personalized Online Classroom</p>
 					<p class="grey-text text-lighten-4" align="center">Live Learning provides a way for instructors to interact with their students through our website. They will be able to engage their students in real-time through an online classroom. It follows the same learning principles of Khan Academy - placing a blank canvas in front of the student to minimize distractions - with the benefits of live, social learning. </p>

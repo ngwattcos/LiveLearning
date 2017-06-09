@@ -1,9 +1,10 @@
 // local server ip
+// unfortunately only works locally (within LAN)
 var ws = new WebSocket("ws://127.0.0.1:1234", "echo-protocol");
 // ip address of Scott's laptop
-// var ws = new WebSocket("ws://192.168.1.3:1234", "echo-protocol");
+// var ws = new WebSocket("ws://xxx.xxx.x.x:1234", "echo-protocol");
 // ip address of lian's laptop
-// var ws = new WebSocket("ws://192.168.1.5:1234", "echo-protocol");
+// var ws = new WebSocket("ws://xxx.xxx.x.x:1234", "echo-protocol");
 
 // ip address of Raghav's workstation
 // var ws = new WebSocket("ws://10.122.22.42:1234", "echo-protocol");
@@ -11,7 +12,7 @@ var ws = new WebSocket("ws://127.0.0.1:1234", "echo-protocol");
 // stores whether a client is registered with server
 var registered = false;
 
-// stores client info
+// stores client info such as id, permissions level
 var client = {};
 
 // store a reference to the canvas

@@ -8,17 +8,17 @@ Live! Learning is a Node.js–based web application that allows anyone to teach 
 What a typical Live!Learning session looks like.
 
 ### Creating a Class
-![creating class](https://github.com/ngwattcos/LiveLearning/blob/master/screenshots/sreenshots/create_class.png)
+![creating class](https://github.com/ngwattcos/LiveLearning/blob/master/sreenshots/create_class.png)
 For teachers who would like to create a classroom.
 
 ### Joining a Class
-![joining class](https://github.com/ngwattcos/LiveLearning/blob/master/screenshots/sreenshots/join_class.png)
+![joining class](https://github.com/ngwattcos/LiveLearning/blob/master/sreenshots/join_class.png)
 For students who would like to join a classroom.
 
 ### Saving Entire Screen
-![saving screen](https://github.com/ngwattcos/LiveLearning/blob/master/screenshots/sreenshots/save_as.png)
+![saving screen](https://github.com/ngwattcos/LiveLearning/blob/master/sreenshots/save_as.png)
 Saves all layers (even hidden layers) to a JSON file.
 
 ### Loading a Previously Saved Screen
-![loading saved screen](https://github.com/ngwattcos/LiveLearning/blob/master/screenshots/sreenshots/open.png)
+![loading saved screen](https://github.com/ngwattcos/LiveLearning/blob/master/sreenshots/open.png)
 Opens and reners a previously saved JSON file representing the layers.
